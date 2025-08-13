@@ -8,35 +8,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/output.css" rel="stylesheet">
 </head>
-<body class="ml-14 mr-14 border border-red-500">
-  <nav id="main-nav" class="flex mt-[50px] items-center justify-between">
-    <div id="nav-logo">
-      <p class="text-3xl">[ lucas mcallister ]</p>
+
+
+<body class="ml-8 mr-8 sm:ml-14 sm:mr-14 max-w-screen">
+  <div class="landing-page-container h-screen flex flex-col">
+    <nav id="main-nav" class="flex flex-col md:flex-row mt-[50px] items-center justify-between">
+      <div id="nav-logo">
+        <p class="text-xl lg:text-3xl">[ lucas mcallister ]</p>
+        </div>
+      <div id="nav-links" class="flex gap-[48px] lg:gap-[64px] items-center">
+        <a href="#projects-section" class='text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>PROJECTS</a>
+        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" class=' text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>LINKEDIN</a>
+        <div id='dark-mode-button' class="drop-shadow-[0_0px_20px_rgba(0,0,0,0.5)] hidden md:inline-block w-[48px] lg:w-[56px] h-[48px] lg:h-[56px] bg-[#D9D9D9] rounded-full border mt-[6px]"></div>
       </div>
-    <div id="nav-links" class="flex gap-[64px] items-center">
-      <a href="#projects-section" class='text-xl mt-[6px]'>PROJECTS</a>
-      <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" class='text-xl mt-[6px]'>LINKEDIN</a>
-      <div id='dark-mode-button' class="drop-shadow-[0_0px_20px_rgba(0,0,0,0.5)] w-[56px] h-[56px] bg-[#D9D9D9] rounded-full border mt-[6px]"></div>
-    </div>
-  </nav>
-  <section id='hero' class='mt-[100px] mb-[5px] border border-blue-500 ml-6'>
-    <p class='text-5xl/18 w-[1168px] border text-wrap'>I’m Lucas, a Computer Science undergraduate at UF focused on User Experience and front-end programming.</p>
-    <a href='#projects-section' class="inline-block border border-green-500"><svg id="home-arrow" xmlns="http://www.w3.org/2000/svg" width="49" height="154" viewBox="0 0 49 154" fill="none" class="mt-[75px] mb-[50px] transform -translate-y-15 border border-pink-500">
-    <path d="M24.5 0V152.5M24.5 152.5L48 129M24.5 152.5L1 129" stroke="black" stroke-width="2"/>
-    </svg></a>
-  </section>
-  <section id="projects-section" class="w-full h-screen flex flex-col justify-center items-center">
-    <div class="box relative w-19/20 h-5/7 bg-gray-500 overflow-hidden">
-      <img src="/images/carulla_wireframe.jpg" alt="Carulla wireframe" class="object-cover absolute left-48 -bottom-27 transform scale-130">
-    </div>
-    <div class="project-description flex justify-between border border-orange-400 w-19/20 h-auto mt-6 items-center">
-      <div class="container-text flex flex-col align-start border border-amber-600">
-        <p class='text-2xl w-xs text-wrap'>Carulla - Case Study</p>
-        <p class="text-lg w-xs text-wrap">complete web/mobile design</p>
+    </nav>
+    <section id='hero' class='flex flex-col justify-center items-center flex-1 mt-0 md:items-start md:mt-[10%] xl:mt-[6%] 2xl:mt-[8%] md:ml-6 gap-y-[7%]'>
+      <p class='text-justify w-full text-3xl/10 text-wrap
+                md:mb-[5%] md:text-left lg:text-4xl/14 xl:text-5xl/18 2xl:text-6xl/20 md:w-[90%] lg:w-[80%]'>I’m Lucas, a Computer Science undergraduate at UF focused on User Experience and front-end programming.</p>
+      <div class="arrow-div mb-[15%] transform scale-75 md:scale-100 md:justify-start ">
+        <a href='#projects-section'><svg id="home-arrow" xmlns="http://www.w3.org/2000/svg" width="49" height="154" viewBox="0 0 49 154" fill="none">
+        <path d="M24.5 0V152.5M24.5 152.5L48 129M24.5 152.5L1 129" stroke="black" stroke-width="2"/>
+        </svg></a>  
       </div>
-      <button class="expand-button w-32 h-12 bg-black rounded-full text-white text-xl">Expand</button>
-    </div>
-  </section>
+    </section>
+  </div>
+
+
+  <!--<section id="projects-section" class="border w-full h-screen flex flex-col justify-start items-center">
+    
+      <div class="box relative w-19/20 bg-gray-500 aspect-4/3 sm:aspect-5/2 overflow-hidden">
+        <img src="/images/carulla_wireframe.jpg" alt="Carulla wireframe" class="object-cover w-full h-full transform scale-[120%] translate-x-[10%]">
+      </div>
+      <div class="project-description flex justify-between w-19/20 h-auto mt-6 items-center">
+        <div class="container-text flex flex-col align-start">
+          <p class='text-lg lg:text-2xl w-xs text-wrap'>Carulla - Case Study</p>
+          <p class="text-sm lg:text-lg w-xs text-wrap">complete web/mobile design</p>
+        </div>
+        <button class="expand-button w-26 lg:w-32 h-10 lg:w-12 bg-black rounded-full text-white text-lg lg:text-xl">Expand</button>
+      </div>
+
+  </section> -->
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
