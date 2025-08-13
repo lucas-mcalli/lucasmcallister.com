@@ -5,9 +5,28 @@ press("#dark-mode-button", (element) => {
         animate(element, {scale: 1.0}, {type: "spring", stiffness: 500})
     }
 });
-animate(
-  "#home-arrow",
-  { y: 40},
-  { delay: 0.5, duration: 1 }
-)
+
+// OS Dark mode check
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  console.log("OS/browser is in dark mode");
+} else {
+  console.log("OS/browser is in light mode");
+}
+
+animate("#home-arrow", 
+  { y: [0, 40] },
+  {
+    delay: 0.5,
+    duration: 3,
+    ease: 'easeInOut',
+    repeat: Infinity,
+    repeatType: 'reverse'
+  }
+);
+
+const darkModeButton = document.getElementById("dark-mode-button")
+const html = document.documentElement;
+darkModeButton.addEventListener("click", () => {
+  html.classList.toggle("dark");
+});
 

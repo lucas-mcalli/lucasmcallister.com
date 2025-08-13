@@ -4,7 +4,8 @@
 @layer base {
     *, html, body {
       font-family: 'Space Mono', monospace;  
-      background-color: #fffbfb;
       scroll-behavior: smooth;
     }
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
