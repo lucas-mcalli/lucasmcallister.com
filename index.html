@@ -14,19 +14,19 @@
   <div id='landing-page' class="landing-page-container h-[80vh] lg:h-screen flex flex-col">
     <nav id="main-nav" class="flex flex-wrap flex-row mt-[50px] mb-[50px] md:mb-0 items-center justify-between">
       <div id="nav-logo">
-        <p class="text-xl lg:text-3xl">[ lucas mcallister ]</p>
+        <p class="nav-element text-xl lg:text-3xl">[ lucas mcallister ]</p>
         </div>
       <div id="nav-links" class="flex gap-[48px] lg:gap-[64px] items-center">
-        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" class='inline-block md:hidden transform scale-200 mr-2'><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#projects-section-text" class='hidden md:inline-block text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>PROJECTS</a>
-        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" class='hidden md:inline-block text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>LINKEDIN</a>
-        <div id='dark-mode-button' class="drop-shadow-[0_0px_20px_rgba(0,0,0,0.5)] dark:drop-shadow-[0_0px_20px_#FFFFFF] cursor-pointer hidden md:inline-block w-[48px] lg:w-[56px] h-[48px] lg:h-[56px] bg-[#D9D9D9] rounded-full dark:border-white border mt-[6px]"></div>
+        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" class='nav-element inline-block md:hidden transform scale-200 mr-2'><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#projects-section-text" class='nav-element hidden md:inline-block text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>PROJECTS</a>
+        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" class=' nav-element hidden md:inline-block text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>LINKEDIN</a>
+        <div id='dark-mode-button' class="will-change-transform cursor-pointer drop-shadow-[0_0_20px_rgba(0,0,0,0.5)] hidden md:inline-block w-[48px] lg:w-[56px] h-[48px] lg:h-[56px] bg-[#D9D9D9] rounded-full dark:border-white border mt-[6px] nav-element"></div>
       </div>
     </nav>
     <section id='hero' class='flex flex-col flex-grow justify-center items-center mt-0 md:items-start md:mt-[10%] xl:mt-[4%] 2xl:mt-[8%] lg:ml-6 gap-y-0 lg:gap-y-[7%]'>
-      <p class='text-justify w-full text-4xl/12 text-wrap mb-[15vh]
+      <p class='hero-element text-justify w-full text-4xl/12 text-wrap mb-[15vh]
                 md:text-5xl/18 lg:text-left lg:text-5xl/18 2xl:text-6xl/20 3xl: 3xl:text-7xl/20 lg:w-[95%] xl:w-[80%]'>I’m Lucas, a Computer Science undergraduate at UF focused on User Experience and front-end programming.</p>
-      <div class="hidden mt-0 lg:-mt-10 2xl:mt-0 lg:inline-block arrow-div sm:mb-[15%] justify-start">
+      <div class="hero-element arrow-div hidden mt-0 lg:-mt-15 2xl:mt-0 lg:inline-block sm:mb-[15%] justify-start">
         <a href='#projects-section-text'><svg id="home-arrow" xmlns="http://www.w3.org/2000/svg" width="49" height="154" viewBox="0 0 49 154" fill="none" class="stroke-black dark:stroke-white">
         <path d="M24.5 0V152.5M24.5 152.5L48 129M24.5 152.5L1 129" stroke-width="2"/>
         </svg></a>  
@@ -49,7 +49,7 @@
     </div>
   </section>
   <footer class="w-full flex flex-start">
-    <a href="#landing-page" class="text-xs lg:text-md mb-4 underline">Back to top</a>
+    <a href="#landing-page" class="hidden sm:inline-block text-xs lg:text-md mb-4 underline">Back to top</a>
   </footer>
 
   <script type="module" src="/src/main.js"></script>
