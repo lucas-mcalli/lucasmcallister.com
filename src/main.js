@@ -57,5 +57,14 @@ animate(".nav-element",
   {delay: stagger(0.1,)}
 );
 
+const expandButtonOne = document.getElementById('expand-button-one');
+expandButtonOne.addEventListener('click', () => {
+  if (expandButtonOne.innerText === 'Expand') {
+    expandButtonOne.innerText = 'Collapse';
+    
+  } else {
+    expandButtonOne.innerText = 'Expand';
+  }
 
+});
 
