@@ -6,12 +6,18 @@ function App() {
   const [isDark, setIsDark] = useState(false);
   const [expandButtonOne, setExpandButtonOne] = useState('Expand');
   const [expandButtonTwo, setExpandButtonTwo] = useState('Expand');
-  
+  const [showImageOne, setShowImageOne] = useState(true);
+  const [showImageTwo, setShowImageTwo] = useState(true);
+
   const darkModeButtonRef = useRef(null);
   const homeArrowRef = useRef(null);
   const heroElementsRef = useRef([]);
   const navElementsRef = useRef([]);
   const expandButtonRefs = useRef([]);
+  const imageOneRef = useRef(null);
+  const projectOneDescRef = useRef(null);
+  const imageTwoRef = useRef(null);
+  const projectTwoDescRef = useRef(null);
 
   // Set default to light mode (white background)
   useEffect(() => {
@@ -115,6 +121,81 @@ function App() {
     );
   }, []);
 
+  // Handles expansion of project
+  const toggleExpand = (projectNum) => {
+
+    let imageRef;
+    let projectRef;
+    let expandButton;
+    let setExpandButton;
+    let showImage;
+    let setShowImage;
+    let projectId;
+
+    if (projectNum === 1) {
+      imageRef = imageOneRef;
+      projectRef = projectOneDescRef;
+      expandButton = expandButtonOne;
+      setExpandButton = setExpandButtonOne;
+      showImage = showImageOne;
+      setShowImage = setShowImageOne;
+      projectId = 'projects-section-text';
+    }
+
+    if (projectNum === 2) {
+      imageRef = imageTwoRef;
+      projectRef = projectTwoDescRef;
+      expandButton = expandButtonTwo;
+      setExpandButton = setExpandButtonTwo;
+      showImage = showImageTwo;
+      setShowImage = setShowImageTwo;
+      projectId = 'project-two-section'
+    }
+
+    if (expandButton === 'Expand'){
+      const projectSection = document.getElementById(projectId);
+      if (projectSection){
+        projectSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+      setTimeout(()=>{
+        if (imageRef.current){ // ensures imageRef exists
+        animate(imageRef.current,
+          {opacity: 0, height: 0},
+          {duration: 0.4}
+        )
+      }
+      }, 200)
+      setExpandButton('Close');
+      setTimeout(()=>{
+        setShowImage(false);
+      }, 600)
+    } else {
+      setShowImage(true);
+      setExpandButton("Expand");
+      requestAnimationFrame(() => { // without this, it will render image instantly
+        const image = imageRef.current;
+        if (!image) return;
+
+        // Get natural height
+        const fullHeight = image.scrollHeight;
+
+        // Start collapsed
+        image.style.height = "0px";
+        image.style.opacity = "0";
+
+        // Animate open
+        animate(
+          image,
+          { height: fullHeight, opacity: 1 },
+          { duration: 0.4, easing: "ease-out" }
+        );
+
+        // Remove fixed height after animation so responsive layout works
+        setTimeout(() => (image.style.height = "auto"), 400);
+      });
+    }
+  }
+
   return (
     <div className="dark:text-white dark:bg-black bg-white text-black min-h-screen overflow-x-hidden">
       <div className="mx-8 sm:mx-14 max-w-screen">
@@ -151,20 +232,22 @@ function App() {
 
       <section id="projects-section" className="pt-0 lg:pt-[7%] mb-[10%] flex flex-col justify-start items-center">
         <ul>
-          <li className="mb-20">
-            <div id='projects-section-text' className="projects-section-text scroll-mt-[30px] flex w-full justify-start text-md mb-[2%]">// PROJECTS</div>
-            <div className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden">
+          <li id='projects-section-text' className="mb-20 scroll-mt-[30px]">
+            <div className="projects-section-text flex w-full justify-start text-md mb-[2%]">// PROJECTS</div>
+            {showImageOne && ( // conditional rendering, only renders if showImageOne = true;
+            <div ref={imageOneRef} className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden">
               <img src="/public/carulla_wireframe_cropped.jpg" alt="Carulla wireframe" className="object-cover w-full h-full" />
             </div>
+            )}
             <div className="project-description w-full flex justify-between h-auto mt-6 items-center">
-              <div className="container-text flex flex-col align-start">
+              <div ref={projectOneDescRef} className="container-text flex flex-col align-start">
                 <p className='text-lg xl:text-2xl text-wrap'>Carulla - Case Study</p>
                 <p className="text-sm xl:text-lg text-wrap">complete web/mobile design</p>
               </div>
-              <button 
+              <button
                 ref={el => expandButtonRefs.current[0] = el}
-                onClick={() => setExpandButtonOne(prev => prev === 'Expand' ? 'Collapse' : 'Expand')}
-                id='expand-button-one' 
+                onClick={() => toggleExpand(1)}
+                id='expand-button-one'
                 className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#007AFF] rounded-full text-white text-md xl:text-xl hover:bg-[#0060C0] transition-colors duration-200 ease-in-out"
               >
                 {expandButtonOne}
@@ -172,17 +255,20 @@ function App() {
             </div>
           </li>
           <li>
-            <div className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden">
-              <img src="/public/carulla_wireframe_cropped.jpg" alt="Carulla wireframe" className="object-cover w-full h-full" />
+            {showImageTwo && ( // conditional rendering
+            <div id='project-two-section' ref={imageTwoRef} className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden">
+              <img src="/public/gatorgaming_cover.png" alt="Carulla wireframe" className="object-cover w-full h-full" />
             </div>
+            )}
             <div className="project-description w-full flex justify-between h-auto mt-6 items-center">
-              <div className="container-text flex flex-col align-start">
-                <p className='text-lg xl:text-2xl text-wrap'>Gator Gaming - First Year Design Team</p>
-                <p className="text-sm xl:text-lg text-wrap">research based web/brand redesign</p>
+              <div ref={projectTwoDescRef} className="container-text flex flex-col align-start">
+                <p className='hidden md:inline text-lg xl:text-2xl text-wrap'>Gator Gaming - Design Team</p>
+                <p className="md:hidden text-lg text-wrap">Gator Gaming</p>
+                <p className="text-sm xl:text-lg text-wrap">web/brand redesign</p>
               </div>
-              <button 
+              <button
                 ref={el => expandButtonRefs.current[1] = el}
-                onClick={() => setExpandButtonTwo(prev => prev === 'Expand' ? 'Collapse' : 'Expand')}
+                onClick={() => toggleExpand(2)}
                 id='expand-button-two'
                 className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#007AFF] rounded-full text-white text-md xl:text-xl hover:bg-[#0060C0] transition-colors duration-200 ease-in-out"
               >
@@ -195,6 +281,14 @@ function App() {
       <footer className="w-full flex flex-start">
         <a href="#landing-page" className="hidden sm:inline-block text-xs lg:text-md mb-4 underline">Back to top</a>
       </footer>
+      </div>
+      <div className="fixed bottom-4 right-4 bg-black text-white px-4 py-2 rounded-lg text-sm font-mono z-50">
+        <span className="sm:hidden">xs (&lt;640px)</span>
+        <span className="hidden sm:inline md:hidden">sm (≥640px)</span>
+        <span className="hidden md:inline lg:hidden">md (≥768px)</span>
+        <span className="hidden lg:inline xl:hidden">lg (≥1024px)</span>
+        <span className="hidden xl:inline 2xl:hidden">xl (≥1280px)</span>
+        <span className="hidden 2xl:inline">2xl (≥1536px)</span>
       </div>
     </div>
   );
