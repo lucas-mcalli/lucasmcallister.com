@@ -1,11 +1,37 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 @layer base {
     *, html, body {
       font-family: 'Space Mono', monospace;  
       scroll-behavior: smooth;
     }
+}
+
+@font-face {
+  font-family: "Untitled Sans";
+  src: url("/public/TestUntitledSans-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    font-optical-sizing: auto;
+    @apply leading-normal;
+  }
+
+  .font-mono {
+    font-family: 'Space Mono', monospace;
+  }
+  
+  .font-sans {
+    font-family: "Untitled Sans", sans-serif;
+  }
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
