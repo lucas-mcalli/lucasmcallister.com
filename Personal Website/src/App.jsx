@@ -14,6 +14,10 @@ import CompAnalysis from "/public/comp_analysis.png";
 import CompAnalysisDark from "/public/comp_analysis_dark.png";
 import Requirements from "/public/requirements.png";
 import RequirementsDark from "/public/requirements_dark.png";
+import Sitemap from "/public/sitemap.webp";
+import SitemapDark from "/public/sitemap_dark.webp";
+import UserPersonaAnalysis from "/public/user_persona_analysis.png";
+import UserPersonaAnalysisDark from "/public/user_persona_analysis_dark.png";
 
 
 function App() {
@@ -42,6 +46,14 @@ function App() {
     requirements: {
       light: Requirements,
       dark: RequirementsDark
+    },
+    sitemap: {
+      light: Sitemap,
+      dark: SitemapDark
+    },
+    user_persona_analysis: {
+      light: UserPersonaAnalysis,
+      dark: UserPersonaAnalysisDark
     }
   }
   
@@ -63,6 +75,8 @@ function App() {
   const imageTwoRef = useRef(null);
   const projectTwoDescRef = useRef(null);
   const projectTwoElementsRef = useRef([]);
+  const projectOneBorderRef = useRef(null);
+  const projectTwoBorderRef = useRef(null);
 
   // Get appropriate graphic
   const getGraphic = (key) => {
@@ -216,15 +230,11 @@ function App() {
       setExpandButton = setExpandButtonTwo;
       showImage = showImageTwo;
       setShowImage = setShowImageTwo;
-      projectId = 'project-two-section';
+      projectId = "sticky-p2-desc";
       setShowProject = setShowProjectTwo;
     }
 
     if (expandButton === 'Expand'){
-      const projectSection = document.getElementById(projectId);
-      if (projectSection){
-        projectSection.scrollIntoView({behavior: 'smooth', block: 'start'});
-      }
       setTimeout(()=>{
         if (imageRef.current){ // ensures imageRef exists
         animate(imageRef.current,
@@ -232,16 +242,25 @@ function App() {
           {duration: 0.4}
         )
       }
-      }, 200)
+      }, 100)
       setExpandButton('Close');
       setTimeout(()=>{
         setShowImage(false);
         setShowProject(true);
-      }, 500)
-    } else {
+      }, 300)
+      setTimeout(()=>{
+        const projectSection = document.getElementById(projectId);
+        if (projectSection){
+          projectSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+      }, 320)
+    } else {   
+      // Wait for scroll to complete, then show and animate the image
       setShowImage(true);
+      setShowProject(false);
       setExpandButton("Expand");
-      requestAnimationFrame(() => { // without this, it will render image instantly
+      
+      requestAnimationFrame(() => {
         const image = imageRef.current;
         if (!image) return;
 
@@ -259,19 +278,26 @@ function App() {
           { duration: 0.4, easing: "ease-out" }
         );
 
-        // Remove fixed height after animation so responsive layout works, show project two
-        setTimeout(() => (
-          image.style.height = "auto",
-          setShowProject(false)
-        ), 400);
+        // Remove fixed height after animation
+        setTimeout(() => {
+          image.style.height = "auto";
+        }, 400);
+        
+        // Scroll to anchor
+        setTimeout(() =>{
+          const projectSection = document.getElementById(projectNum === 1 ? 'projects-section-text' : 'project-two-scroll-anchor');
+          if (projectSection){
+          projectSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+          }
+        }, 400)
       });
     }
   }
 
   return (
-    <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black min-h-screen overflow-x-hidden">
+    <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black min-h-screen">
       <div className="mx-6 md:mx-15 max-w-screen">
-      <div id='landing-page' className="landing-page-container h-[80vh] lg:h-screen flex flex-col">
+      <div id='landing-page' className="landing-page-container h-[80vh] lg:h-screen flex flex-col relative">
         <nav id="main-nav" className="flex flex-wrap flex-row mt-[50px] mb-[50px] md:mb-0 items-center justify-between">
           <div id="nav-logo" className='flex gap-6 items-center'>
             <img ref={el => navElementsRef.current[0] = el} src='/public/THUMBNAIL.png' className='w-8 h-8 md:w-9 md:h-9'/>
@@ -327,29 +353,49 @@ function App() {
               </button>
             </div>
           </li>
-          <li>
+          <li id='project-two-container' className="relative">
+            <div id="project-two-scroll-anchor" className="absolute -top-10 left-0"></div> 
             {showImageTwo && ( // conditional rendering
             <div id='project-two-section' ref={imageTwoRef} className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden scroll-mt-[30px]">
               <img src="/public/gatorgaming_cover.webp" alt="Carulla wireframe" className="object-cover w-full h-full" />
             </div>
             )}
-            <div className="project-description w-full flex justify-between h-auto mt-6 items-center">
-              <div ref={projectTwoDescRef} className="container-text flex flex-col align-start ">
-                <p className='hidden md:inline text-lg xl:text-2xl text-wrap'>Gator Gaming - Design Team</p>
-                <p className="md:hidden text-lg text-wrap">Gator Gaming</p>
-                <p className="text-sm xl:text-lg text-wrap">web/brand redesign</p>
+            {/* Description when project is CLOSED */}
+            {!showProjectTwo && (
+              <div className="project-description w-full flex justify-between h-auto mt-6 items-center">
+                <div ref={projectTwoDescRef} className="container-text flex flex-col align-start">
+                  <p className='hidden md:inline text-lg xl:text-2xl text-wrap'>Gator Gaming - Design Team</p>
+                  <p className="md:hidden text-lg text-wrap">Gator Gaming</p>
+                  <p className="text-sm xl:text-lg text-wrap">website redesign</p>
+                </div>
+                <button
+                  ref={el => expandButtonRefs.current[1] = el}
+                  onClick={() => toggleExpand(2)}
+                  id='expand-button-two'
+                  className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#007AFF] rounded-full text-white text-md xl:text-xl hover:bg-[#0060C0] transition-colors duration-200 ease-in-out"
+                >
+                  {expandButtonTwo}
+                </button>
               </div>
-              <button
-                ref={el => expandButtonRefs.current[1] = el}
-                onClick={() => toggleExpand(2)}
-                id='expand-button-two'
-                className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#007AFF] rounded-full text-white text-md xl:text-xl hover:bg-[#0060C0] transition-colors duration-200 ease-in-out"
-              >
-                {expandButtonTwo}
-              </button>
-            </div>
+            )}
+            {/* Description when project is OPEN (sticky version) */}
             {showProjectTwo && (
-              <div className="border-t dark:border-white border-black w-full flex h-auto mt-6">
+              <div className="relative">
+                <div id="sticky-p2-desc" className="project-description sticky top-0 z-10 bg-white dark:bg-neutral-900 w-full flex justify-between py-6 items-center">
+                  <div className="container-text flex flex-col align-start">
+                    <p className='hidden md:inline text-lg xl:text-2xl text-wrap'>Gator Gaming - Design Team</p>
+                    <p className="md:hidden text-lg text-wrap">Gator Gaming</p>
+                    <p className="text-sm xl:text-lg text-wrap">website redesign</p>
+                  </div>
+                  <button
+                    onClick={() => toggleExpand(2)}
+                    className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#007AFF] rounded-full text-white text-md xl:text-xl hover:bg-[#0060C0] transition-colors duration-200 ease-in-out"
+                  >
+                    {expandButtonTwo}
+                  </button>
+                </div>
+      
+                <div id="project-2-border" ref={projectTwoBorderRef} className="border-t dark:border-white border-black w-full flex h-1"></div>
                 <div className="project-two flex gap-9 flex-col">
                   <section id="CONTEXT" ref={el => projectTwoElementsRef.current[0] = el}>
                     <p className=" mt-10 md:mt-12 lg:mt-18 text-sm">CONTEXT</p>
@@ -373,9 +419,9 @@ function App() {
                   </section>
                   <section id='PROBLEM' ref={el => projectTwoElementsRef.current[1] = el}>
                     <div className="flex flex-col gap-4 md:gap-6">
-                      <div>
+                      <div className='flex flex-col gap-2'>
                         <p className=" mt-10 lg:mt-18 text-sm">PROBLEM</p>
-                        <p className=" font-serif mt-2 sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[70%]">How might we communicate value to prospective members while serving as a central hub for existing ones? How can we memorably distinguish ourselves from others?</p>
+                        <p className="font-serif sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[70%]">How might we communicate value to prospective members while serving as a central hub for existing ones? How can we memorably distinguish ourselves from others?</p>
                       </div>
                       <img src="/public/problem_image.jpg" className="xl:w-[80%] h-auto"/>
                       <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">The University of Florida is home to over 1,000 student organizations, each with their own story, mission, and community.  Yet despite this abundance, students struggle to find clubs that reflect their interests due to outdated online information, a lack of clear digital presence, and poor branding. Understanding that this was the difference between a club being discovered or overlooked was fundamental to our process.</p>
@@ -396,12 +442,26 @@ function App() {
                         <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Next, we observed similar clubs using the issues found as criteria, ensuring we focused on actual user pain points and was relevant to discovering how to meet the goals of target users.</p>
                         <img src={getGraphic("comp_analysis")} className="xl:w-[79%] h-auto"/>
                         <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">We then grouped our findings into three key requirements, each informing an area of the redesign.</p>
-                        <img src={getGraphic("requirements")} className="xl:w-[70%] h-auto"/>
+                        <img src={getGraphic("requirements")} className="xl:w-[80%] h-auto"/>
+                      </div>
+                    </div>
+                  </section>
+                  <section id="DESIGN" ref={el => projectTwoElementsRef.current[3] = el}>
+                    <div className="flex flex-col gap-4 md:gap-6">
+                      <div className='flex flex-col gap-2'>
+                        <p className=" mt-10 lg:mt-18 text-sm">DESIGN</p>
+                        <p className="font-serif sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[70%]">Finding frictionless ways for users to get to what they need.</p>
+                      </div>
+                      <div className="flex flex-col gap-8">
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Once we defined our site’s overall structure, we needed to find the best way of organizing content to meet our objectives in a way users would understand. We first analyzed sites from our competitive analysis, then expanded to broader best-in-class sites to identify common patterns and proven solutions. With the notes we took, we created a conceptual sitemap.</p>
+                        <img src={getGraphic("sitemap")} className="xl:w-[80%] h-auto"/>
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">We then tested our initial user personas against the sitemap, ensuring that each one of their goals could be achieved intuitively and quickly using this structure.</p>
+                        <img src={getGraphic("user_persona_analysis")} className="xl:w-[80%] h-auto"/>
                       </div>
                     </div>
                   </section>
                 </div>
-              </div>
+            </div>
             )}
           </li>
         </ul>
