@@ -16,8 +16,14 @@ import Requirements from "/public/requirements.png";
 import RequirementsDark from "/public/requirements_dark.png";
 import Sitemap from "/public/sitemap.webp";
 import SitemapDark from "/public/sitemap_dark.webp";
-import UserPersonaAnalysis from "/public/user_persona_analysis.png";
-import UserPersonaAnalysisDark from "/public/user_persona_analysis_dark.png";
+import UserPersonaAnalysis from "/public/user_persona_analysis.webp";
+import UserPersonaAnalysisDark from "/public/user_persona_analysis_dark.webp";
+import Gaps from "/public/gaps.png";
+import GapsDark from "/public/gaps_dark.png";
+import SurveyInsights from "/public/survey_insights.webp";
+import SurveyInsightsDark from "/public/survey_insights_dark.webp";
+import Hifis from "/public/hifis.webp";
+import HifisDark from "/public/hifis_dark.webp";
 
 
 function App() {
@@ -54,6 +60,18 @@ function App() {
     user_persona_analysis: {
       light: UserPersonaAnalysis,
       dark: UserPersonaAnalysisDark
+    },
+    gaps: {
+      light: Gaps,
+      dark: GapsDark
+    },
+    survey_insights: {
+      light: SurveyInsights,
+      dark: SurveyInsightsDark
+    },
+    hifis: {
+      light: Hifis,
+      dark: HifisDark
     }
   }
   
@@ -296,7 +314,7 @@ function App() {
 
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black min-h-screen">
-      <div className="mx-6 md:mx-15 max-w-screen">
+      <div className="mx-6 xl:mx-15 max-w-screen">
       <div id='landing-page' className="landing-page-container h-[80vh] lg:h-screen flex flex-col relative">
         <nav id="main-nav" className="flex flex-wrap flex-row mt-[50px] mb-[50px] md:mb-0 items-center justify-between">
           <div id="nav-logo" className='flex gap-6 items-center'>
@@ -436,13 +454,21 @@ function App() {
                       <div className="flex flex-col gap-8">
                         <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">After interviewing club executives and understanding what their priorities and expectations are for a website redesign, each group member created a user persona. Together, we identified 4 key user groups that our redesign needed to support.</p>
                         <img src={getGraphic("key_users")} className="xl:w-[80%] h-auto"/>
-                        <p className=" font-serif mt-2 sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[70%]">Next, we defined what constitutes a successful design from the perspective of our key user groups.</p>
+                        <p className=" font-serif mt-2 sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[80%]">Next, we defined what constitutes a successful design in our case.</p>
                         <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">First, we quickly wrote down ways the current website fails to deliver on the goals of our key user groups. </p>
-                        <img src={getGraphic("notes")} className="xl:w-[79%] h-auto"/>
-                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Next, we observed similar clubs using the issues found as criteria, ensuring we focused on actual user pain points and was relevant to discovering how to meet the goals of target users.</p>
-                        <img src={getGraphic("comp_analysis")} className="xl:w-[79%] h-auto"/>
-                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">We then grouped our findings into three key requirements, each informing an area of the redesign.</p>
-                        <img src={getGraphic("requirements")} className="xl:w-[80%] h-auto"/>
+                        <img src={getGraphic("notes")} className="xl:w-[80%] h-auto"/>
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Next, we evaluated the websites of comparable clubs using the opportunities identified in our original site analysis as criteria. This helped us find gaps that could guide our strategy in the redesign.</p>
+                        <img src={getGraphic("comp_analysis")} className="xl:w-[80%] h-auto"/>
+                        <img src={getGraphic("gaps")} className="xl:w-[80%] h-auto"/>
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">We then surveyed existing members to better understand the role the website should play for Gator Gaming and to learn from their joining experience and sustained membership. From the results, we identified three major insights that would shape our design for prospective members.</p>
+                        <div className='flex justify-center w-[80%]'>
+                          <img src={getGraphic("survey_insights")} className="xl:w-[85%] h-auto"/>
+                        </div>
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Finally, compiling all of our research, we created a list of 3 core goals, each with actionable objectives for our redesign.</p>
+                        <div className='flex justify-center w-[80%]'>
+                          <img src={getGraphic("requirements")} className="xl:w-[90%] h-auto"/>
+                        </div>
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Considering these objectives and expectations established during our initial meeting with club executives, we determined that the most straightforward layout consisted of five pages: Home, About, Team, Events, and Gallery.</p>
                       </div>
                     </div>
                   </section>
@@ -450,13 +476,18 @@ function App() {
                     <div className="flex flex-col gap-4 md:gap-6">
                       <div className='flex flex-col gap-2'>
                         <p className=" mt-10 lg:mt-18 text-sm">DESIGN</p>
-                        <p className="font-serif sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[70%]">Finding frictionless ways for users to get to what they need.</p>
+                        <p className="font-serif sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[80%]">Finding frictionless ways for users to get to what they need.</p>
                       </div>
                       <div className="flex flex-col gap-8">
-                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Once we defined our site’s overall structure, we needed to find the best way of organizing content to meet our objectives in a way users would understand. We first analyzed sites from our competitive analysis, then expanded to broader best-in-class sites to identify common patterns and proven solutions. With the notes we took, we created a conceptual sitemap.</p>
-                        <img src={getGraphic("sitemap")} className="xl:w-[80%] h-auto"/>
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Once the site’s layout was defined, the next step was to find the best way of organizing content to meet the objectives in a way users would understand. After analyzing sites from our competitive analysis and elsewhere, we created a conceptual sitemap.</p>
+                        <div className="flex justify-center xl:w-[80%]">
+                          <img src={getGraphic("sitemap")} className="xl:w-[90%] h-auto"/>
+                        </div>
                         <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">We then tested our initial user personas against the sitemap, ensuring that each one of their goals could be achieved intuitively and quickly using this structure.</p>
                         <img src={getGraphic("user_persona_analysis")} className="xl:w-[80%] h-auto"/>
+                        <p className="font-serif sm:text-2xl lg:text-3xl xl:text-4xl xl:w-[80%]">Validating our high-fidelity designs with defined requirements.</p>
+                        <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">Informed by the sitemap and defined requirements, each team member initially explored different layout and design approaches. These were then progressively refined into a cohesive design system, which informed the final high-fidelity prototype.</p>
+                        <img src={getGraphic("hifis")} className="xl:w-[80%] h-auto"/>
                       </div>
                     </div>
                   </section>
