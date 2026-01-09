@@ -7,6 +7,16 @@
       font-family: 'Space Mono', monospace;  
       scroll-behavior: smooth;
     }
+    
+    ::selection {
+      background-color: #FFF9E6;
+      color: inherit;
+    }
+    
+    ::-moz-selection {
+      background-color: #FFF9E6;
+      color: inherit;
+    }
 }
 
 @font-face {

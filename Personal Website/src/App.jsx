@@ -5,8 +5,8 @@ import './input.css';
 import Navbar from "./components/Navbar.jsx"
 import Hero from "./components/Hero.jsx"
 import GGProject from "./components/GGProject.jsx"
-import SixGraphic from "/public/6_graphic.svg";
-import SixGraphicDark from "/public/6_graphic_dark.svg";
+import SixGraphic from "/public/6_graphic.webp";
+import SixGraphicDark from "/public/6_graphic_dark.webp";
 import TimelineGraphic from "/public/timeline.png";
 import TimelineGraphicDark from "/public/timeline_dark.png";
 import KeyUsersGraphic from "/public/key_users.png";
@@ -27,7 +27,10 @@ import SurveyInsights from "/public/survey_insights.webp";
 import SurveyInsightsDark from "/public/survey_insights_dark.webp";
 import Hifis from "/public/hifis.webp";
 import HifisDark from "/public/hifis_dark.webp";
-
+import Reflections from "/public/reflections.webp"
+import ReflectionsDark from "/public/reflections_dark.webp"
+import GroupReflections from "/public/group_reflections.webp"
+import GroupReflectionsDark from "/public/group_reflections_dark.webp"
 
 function App() {
 
@@ -75,11 +78,19 @@ function App() {
     hifis: {
       light: Hifis,
       dark: HifisDark
+    },
+    reflections: {
+      light: Reflections,
+      dark: ReflectionsDark
+    },
+    group_reflections: {
+      light: GroupReflections,
+      dark: GroupReflectionsDark
     }
   }
   
   const [isDark, setIsDark] = useState(false);
-  const [expandButtonOne, setExpandButtonOne] = useState('Expand');
+  const [expandButtonOne, setExpandButtonOne] = useState('Soon');
   const [expandButtonTwo, setExpandButtonTwo] = useState('Expand');
   const [showImageOne, setShowImageOne] = useState(true);
   const [showImageTwo, setShowImageTwo] = useState(true);
@@ -238,7 +249,7 @@ function App() {
 
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black min-h-screen">
-      <div className="mx-6 xl:mx-15 max-w-screen">
+      <div className="mx-6 md:mx-15 max-w-screen">
       <div id='landing-page' className="landing-page-container h-[80vh] lg:h-screen flex flex-col relative">
         <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode}/>
         <Hero/>
@@ -247,7 +258,7 @@ function App() {
       <section id="projects-section" className="pt-0 lg:pt-[7%] mb-[10%] flex flex-col justify-start items-center">
         <ul>
           <li id='projects-section-text' className="mb-20 scroll-mt-[30px]">
-            <div className="projects-section-text flex w-full justify-start text-sm xl:text-base mb-[2%]">// PROJECTS</div>
+            <div className="projects-section-text flex w-full justify-start text-xs xl:text-base mb-[4%] md:mb-[2%]">// PROJECTS</div>
             {showImageOne && ( // conditional rendering, only renders if showImageOne = true;
             <div ref={imageOneRef} className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden">
               <img src="/public/carulla_wireframe_cropped.webp" alt="Carulla wireframe" className="object-cover w-full h-full" />
@@ -260,9 +271,9 @@ function App() {
               </div>
               <button
                 ref={el => expandButtonRefs.current[0] = el}
-                onClick={() => toggleExpand(1)}
+                // onClick={() => toggleExpand(1)}
                 id='expand-button-one'
-                className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#007AFF] rounded-full text-white text-md xl:text-xl hover:bg-[#0060C0] transition-colors duration-200 ease-in-out"
+                className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#888888] rounded-full text-white text-md xl:text-xl hover:bg-[#888888] transition-colors duration-200 ease-in-out"
               >
                 {expandButtonOne}
               </button>
@@ -302,6 +313,7 @@ function App() {
                     <p className="md:hidden text-lg text-wrap">Gator Gaming</p>
                     <p className="text-sm xl:text-lg text-wrap">website redesign</p>
                   </div>
+                
                   <button
                     ref={el => expandButtonRefs.current[1] = el}
                     onClick={() => toggleExpand(2)}
