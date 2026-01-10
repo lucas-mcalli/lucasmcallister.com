@@ -99,7 +99,7 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
         <div className="flex flex-col gap-3 md:gap-5">
           <div className="flex items-center w-full gap-6 xl:gap-10 xl:w-[90%]">
             <p className="font-serif mt-2 sm:text-xl lg:text-2xl xl:text-3xl xl:w-[75%]">This project was completed as part of a Gator User Design initiative to give members experience in research-driven design serving other on-campus organizations.</p>
-            <img className="w-1/10 h-1/10 max-w-[100px] max-h-[100px] min-w-[80px] max-w-[80px] rotate-[17.45deg] rounded-full shadow-[0px_0px_21.399999618530273px_12px_rgba(0,0,0,0.25)] dark:shadow-[0px_0px_21.4px_12px_rgba(255,255,255,0.25)] outline outline-1 outline-black" src="/public/gator_user_design_logo.jpeg" alt="Gator User Design logo" />
+            <img className="w-1/10 h-1/10 max-w-[100px] max-h-[100px] min-w-[80px] max-w-[80px] rotate-[17.45deg] rounded-full shadow-[0px_0px_21.399999618530273px_12px_rgba(0,0,0,0.25)] dark:shadow-[0px_0px_21.4px_12px_rgba(255,255,255,0.25)] outline outline-1 outline-black" src="/gator_user_design_logo.jpeg" alt="Gator User Design logo" />
           </div>   
           <div className='flex items-start xl:items-center w-full gap-6 xl:gap-10 xl:w-[80%]'>
             <div className="flex flex-col ml-3 xl:ml-4 gap-2 xl:gap-5 items-center max-w-[100px] w-[20%]">
@@ -123,7 +123,7 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
             <p className="mt-8 lg:mt-14 text-xs sm:text-sm">PROBLEM</p>
             <p className="font-serif sm:text-xl lg:text-2xl xl:text-3xl xl:w-[70%]">How might we communicate value to prospective members while serving as a central hub for existing ones? How can we memorably distinguish ourselves from others?</p>
           </div>
-          <img src="/public/problem_image.jpg" className="xl:w-[80%] h-auto" alt="Image showing final mobile prototypes" />
+          <img src="/problem_image.jpg" className="xl:w-[80%] h-auto" alt="Image showing final mobile prototypes" />
           <p className=" font-sans text-xs xl:w-[80%] md:text-base lg:text-lg">The University of Florida is home to over 1,000 student organizations, each with their own story, mission, and community.  Yet despite this abundance, students struggle to find clubs that reflect their interests due to outdated online information, a lack of clear digital presence, and poor branding. Understanding that this was the difference between a club being discovered or overlooked was fundamental to our process.</p>
         </div>
       </section>

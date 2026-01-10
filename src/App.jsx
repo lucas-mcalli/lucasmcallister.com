@@ -5,87 +5,61 @@ import './input.css';
 import Navbar from "./components/Navbar.jsx"
 import Hero from "./components/Hero.jsx"
 import GGProject from "./components/GGProject.jsx"
-import SixGraphic from "/public/6_graphic.webp";
-import SixGraphicDark from "/public/6_graphic_dark.webp";
-import TimelineGraphic from "/public/timeline.png";
-import TimelineGraphicDark from "/public/timeline_dark.png";
-import KeyUsersGraphic from "/public/key_users.png";
-import KeyUsersGraphicDark from "/public/key_users_dark.png";
-import NotesGraphic from "/public/notes_graphic.png";
-import NotesGraphicDark from "/public/notes_graphic_dark.png";
-import CompAnalysis from "/public/comp_analysis.png";
-import CompAnalysisDark from "/public/comp_analysis_dark.png";
-import Requirements from "/public/requirements.png";
-import RequirementsDark from "/public/requirements_dark.png";
-import Sitemap from "/public/sitemap.webp";
-import SitemapDark from "/public/sitemap_dark.webp";
-import UserPersonaAnalysis from "/public/user_persona_analysis.webp";
-import UserPersonaAnalysisDark from "/public/user_persona_analysis_dark.webp";
-import Gaps from "/public/gaps.png";
-import GapsDark from "/public/gaps_dark.png";
-import SurveyInsights from "/public/survey_insights.webp";
-import SurveyInsightsDark from "/public/survey_insights_dark.webp";
-import Hifis from "/public/hifis.webp";
-import HifisDark from "/public/hifis_dark.webp";
-import Reflections from "/public/reflections.webp"
-import ReflectionsDark from "/public/reflections_dark.webp"
-import GroupReflections from "/public/group_reflections.webp"
-import GroupReflectionsDark from "/public/group_reflections_dark.webp"
 
 function App() {
 
   const graphics = {
     six: {
-      light: SixGraphic,
-      dark: SixGraphicDark
+      light: "/6_graphic.webp",
+      dark: "/6_graphic_dark.webp"
     },
     timeline: {
-      light: TimelineGraphic,
-      dark: TimelineGraphicDark
+      light: "/timeline.png",
+      dark: "/timeline_dark.png"
     },
     key_users: {
-      light: KeyUsersGraphic,
-      dark: KeyUsersGraphicDark
+      light: "/key_users.png",
+      dark: "/key_users_dark.png"
     },
     notes: {
-      light: NotesGraphic,
-      dark: NotesGraphicDark
+      light: "/notes_graphic.png",
+      dark: "/notes_graphic_dark.png"
     },
     comp_analysis: {
-      light: CompAnalysis,
-      dark: CompAnalysisDark
+      light: "/comp_analysis.png",
+      dark: "/comp_analysis_dark.png"
     },
     requirements: {
-      light: Requirements,
-      dark: RequirementsDark
+      light: "/requirements.png",
+      dark: "/requirements_dark.png"
     },
     sitemap: {
-      light: Sitemap,
-      dark: SitemapDark
+      light: "/sitemap.webp",
+      dark: "/sitemap_dark.webp"
     },
     user_persona_analysis: {
-      light: UserPersonaAnalysis,
-      dark: UserPersonaAnalysisDark
+      light: "/user_persona_analysis.webp",
+      dark: "/user_persona_analysis_dark.webp"
     },
     gaps: {
-      light: Gaps,
-      dark: GapsDark
+      light: "/gaps.png",
+      dark: "/gaps_dark.png"
     },
     survey_insights: {
-      light: SurveyInsights,
-      dark: SurveyInsightsDark
+      light: "/survey_insights.webp",
+      dark: "/survey_insights_dark.webp"
     },
     hifis: {
-      light: Hifis,
-      dark: HifisDark
+      light: "/hifis.webp",
+      dark: "/hifis_dark.webp"
     },
     reflections: {
-      light: Reflections,
-      dark: ReflectionsDark
+      light: "/reflections.webp",
+      dark: "/reflections_dark.webp"
     },
     group_reflections: {
-      light: GroupReflections,
-      dark: GroupReflectionsDark
+      light: "/group_reflections.webp",
+      dark: "/group_reflections_dark.webp"
     }
   }
   
@@ -261,7 +235,7 @@ function App() {
             <div className="projects-section-text flex w-full justify-start text-xs xl:text-base mb-[4%] md:mb-[2%]">// PROJECTS</div>
             {showImageOne && ( // conditional rendering, only renders if showImageOne = true;
             <div ref={imageOneRef} className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden">
-              <img src="/public/carulla_wireframe_cropped.webp" alt="Carulla wireframe" className="object-cover w-full h-full" />
+              <img src="/carulla_wireframe_cropped.webp" alt="Carulla wireframe" className="object-cover w-full h-full" />
             </div>
             )}
             <div className="project-description w-full flex justify-between h-auto mt-6 items-center">
@@ -283,7 +257,7 @@ function App() {
             <div id="project-two-scroll-anchor" className="absolute -top-10 left-0"></div> 
             {showImageTwo && ( // conditional rendering
             <div id='project-two-section' ref={imageTwoRef} className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] bg-gray-500 overflow-hidden scroll-mt-[30px]">
-              <img src="/public/gatorgaming_cover.webp" alt="Carulla wireframe" className="object-cover w-full h-full" />
+              <img src="/gatorgaming_cover.webp" alt="Gator Gaming Cover" className="object-cover w-full h-full" />
             </div>
             )}
             {/* Description when project is CLOSED */}

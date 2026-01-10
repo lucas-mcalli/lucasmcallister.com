@@ -35,7 +35,7 @@ const Navbar = ({isDark, toggleDarkMode}) => {
   return (
     <nav id="main-nav" className="flex flex-wrap flex-row mt-[50px] mb-[50px] md:mb-0 items-center justify-between">
       <div id="nav-logo" className='flex gap-6 items-center'>
-        <img ref={el => navElementsRef.current[0] = el} src='/public/THUMBNAIL.png' className='w-8 h-8 md:w-9 md:h-9'/>
+        <img ref={el => navElementsRef.current[0] = el} src='/THUMBNAIL.png' className='w-8 h-8 md:w-9 md:h-9'/>
         <p ref={el => navElementsRef.current[1] = el} className="nav-element hidden md:block sm:text-xl lg:text-3xl">lucas mcallister</p>
       </div>
       <div id="nav-links" className="flex gap-[48px] lg:gap-[64px] items-center">
