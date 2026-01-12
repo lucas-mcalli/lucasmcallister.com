@@ -222,7 +222,7 @@ function App() {
   
 
   return (
-    <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black min-h-screen">
+    <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
       <div className="mx-6 md:mx-15 max-w-screen">
       <div id='landing-page' className="landing-page-container h-[80vh] lg:h-screen flex flex-col relative">
         <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode}/>
