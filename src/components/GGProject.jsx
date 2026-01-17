@@ -1,4 +1,4 @@
-import { animate, stagger } from 'motion';
+import { animate, stagger, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 
 import Timeline from "./Timeline.jsx"
@@ -189,6 +189,21 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
             <img src={getGraphic("reflections")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Individual reflections"/>
             <img src={getGraphic("group_reflections")} className="xl:w-[75%] 2xl:w-[65%] h-auto" alt="Group reflections"/>
           </div>
+        </div>
+      </section>
+      <section id="FINISHED PRODUCT">
+      <div className="w-full xl:w-[80%] 2xl:w-[70%] h-auto flex flex-col justify-center items-center -mt-12 md:-mt-4">
+          <motion.a href="https://www.gatorgaminguf.com/" whileHover={{scale: 1.03}} target="_blank" rel="noopener noreferrer" className="inline-flex pointer-events-auto">
+          <div>
+            <img src="/gg_logo.webp" className="w-16 h-auto translate-y-8 -translate-x-6 md:w-24 md:translate-y-11 md:-translate-x-9"/>
+            <div className="w-60 h-10 px-6 py-1 md:w-80 md:h-14 md:px-10 md:py-2 rounded-lg outline outline-1 outline-offset-[-1px] outline-zinc-300 inline-flex justify-center items-center gap-2.5">
+              <div className="justify-start text-black text-lg md:text-2xl font-normal font-sans leading-9">
+                gatorgaminguf.com
+              </div>
+            </div>
+          </div>
+          </motion.a>
+          <p className="text-xs md:text-sm font-sans mt-3 md:mt-5 -translate-x-1">View the finished product via the link above!</p>
         </div>
       </section>
     </div>

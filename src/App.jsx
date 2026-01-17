@@ -280,7 +280,7 @@ function App() {
             )}
             {/* Load when project is OPEN (sticky version) */}
             {showProjectTwo && (
-              <div className="relative">
+              <div>
                 <div id="sticky-p2-desc" className="project-description sticky top-0 z-10 bg-white dark:bg-neutral-900 w-full flex justify-between py-6 items-center">
                   <div className="container-text flex flex-col align-start">
                     <p className='hidden md:inline text-lg xl:text-2xl text-wrap'>Gator Gaming - Design Team</p>
