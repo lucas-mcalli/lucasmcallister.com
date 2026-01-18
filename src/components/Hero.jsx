@@ -1,66 +1,45 @@
 import { useEffect, useRef } from "react";
 import { animate, stagger } from "motion";
 
-const Hero = (isFirstHeroLoad) => {
+const Hero = ({ isFirstHeroLoad }) => {
 
   const homeArrowRef = useRef(null);
   const heroElementsRef = useRef([]);
+  const isFirst = isFirstHeroLoad.current;
 
   // Home arrow animation
   useEffect(() => {
-    if (isFirstHeroLoad.current){
-      if (!homeArrowRef.current) return;
-      animate(
-        homeArrowRef.current,
-        { y: [0, 30] },
-        {
-          delay: 0.5,
-          duration: 3,
-          ease: 'easeInOut',
-          repeat: Infinity,
-          repeatType: 'reverse'
-        }
-      );
-    } else {
-      if (!homeArrowRef.current) return;
-      animate(
-        homeArrowRef.current,
-        { y: [0, 30] },
-        {
-          delay: 0.2,
-          duration: 3,
-          ease: 'easeInOut',
-          repeat: Infinity,
-          repeatType: 'reverse'
-        }
-      );
-    }
+    if (!homeArrowRef.current) return;
+    
+    const arrowDelay = isFirst ? 0.5 : 0.2;
+    
+    animate(
+      homeArrowRef.current,
+      { y: [0, 30] },
+      {
+        delay: arrowDelay,
+        duration: 3,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse'
+      }
+    );
   }, []);
 
   // Hero elements animation
   useEffect(() => {
-    if (isFirstHeroLoad.current){
-      console.log("Running FIRST!")
-      const elements = heroElementsRef.current.filter(el => el !== null);
-      if (elements.length === 0) return;
-
-      animate(
-        elements,
-        { y: [-20, 0], opacity: [0, 100], filter: ["blur(6px)", "blur(0px)"] },
-        { delay: stagger(0.3, { startDelay: 0.7 }), duration: 0.6 }
-      );
-      isFirstHeroLoad.current = false;
-    } else {
-      console.log("Running ALREADY LOADED!")
-      const elements = heroElementsRef.current.filter(el => el !== null);
-      if (elements.length === 0) return;
-
-      animate(
-        elements,
-        { y: [-20, 0], opacity: [0, 100], filter: ["blur(6px)", "blur(0px)"] },
-        { delay: stagger(0.3, { startDelay: 0.2 }), duration: 0.6 }
-      );
-    }
+    const elements = heroElementsRef.current.filter(el => el !== null);
+    if (elements.length === 0) return;
+    
+    const elementDelay = isFirst ? 0.7 : 0.2;
+    
+    animate(
+      elements,
+      { y: [-20, 0], opacity: [0, 100], filter: ["blur(6px)", "blur(0px)"] },
+      { delay: stagger(0.3, { startDelay: elementDelay }), duration: 0.6 }
+    );
+    
+    isFirstHeroLoad.current = false;
     }, []);
     
 
