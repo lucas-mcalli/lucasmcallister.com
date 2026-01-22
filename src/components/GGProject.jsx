@@ -175,7 +175,7 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
             <img src={getGraphic("user_persona_analysis")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="User persona analysis against sitemap structure" />
             <p className="font-serif sm:text-xl lg:text-2xl xl:text-3xl xl:w-[80%] 2xl:w-[70%]">Validating our high-fidelity designs with defined requirements.</p>
             <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">Informed by the sitemap and defined requirements, each team member initially explored different layout and design approaches. These were then progressively refined into a cohesive design system, which informed the final high-fidelity prototype.</p>
-            <img src={getGraphic("hifis")} className="xl:w-[70%] 2xl:w-[65%] h-auto" alt="High-fidelity design prototypes for Gator Gaming website" />
+            <img src={getGraphic("hifis")} className="xl:w-[70%] 2xl:w-[65%] h-auto " alt="High-fidelity design prototypes for Gator Gaming website" />
           </div>
         </div>
       </section>
@@ -187,7 +187,7 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
           <p className="mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm">REFLECTION</p>
           <div className="flex flex-col gap-6 2xl:gap-8">
             <img src={getGraphic("reflections")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Individual reflections"/>
-            <img src={getGraphic("group_reflections")} className="xl:w-[75%] 2xl:w-[65%] h-auto" alt="Group reflections"/>
+            <img src={getGraphic("group_reflections")} className="xl:w-[75%] 2xl:w-[65%] h-auto mb-10" alt="Group reflections"/>
           </div>
         </div>
       </section>
@@ -195,9 +195,9 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
       <div className="w-full xl:w-[80%] 2xl:w-[70%] h-auto flex flex-col justify-center items-center -mt-12 md:-mt-4">
           <motion.a href="https://www.gatorgaminguf.com/" whileHover={{scale: 1.03}} target="_blank" rel="noopener noreferrer" className="inline-flex pointer-events-auto">
           <div>
-            <img src="/gg_logo.webp" className="w-16 h-auto translate-y-8 -translate-x-6 md:w-24 md:translate-y-11 md:-translate-x-9"/>
+            <img src="/gg_logo.webp" className="w-10 h-auto translate-y-5 -translate-x-3 md:w-16 md:translate-y-7 md:-translate-x-4"/>
             <div className="w-60 h-10 px-6 py-1 md:w-80 md:h-14 md:px-10 md:py-2 rounded-lg outline outline-1 outline-offset-[-1px] outline-zinc-300 inline-flex justify-center items-center gap-2.5">
-              <div className="justify-start text-black text-lg md:text-2xl font-normal font-sans leading-9">
+              <div className="justify-start text-lg md:text-2xl font-sans leading-9">
                 gatorgaminguf.com
               </div>
             </div>

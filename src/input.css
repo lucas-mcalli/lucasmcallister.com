@@ -9,12 +9,12 @@
     }
     
     ::selection {
-      background-color: #FFF9E6;
+      background-color: #eec12e;
       color: inherit;
     }
     
     ::-moz-selection {
-      background-color: #FFF9E6;
+      background-color: #eec12e;
       color: inherit;
     }
 }

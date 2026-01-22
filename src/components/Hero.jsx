@@ -31,7 +31,7 @@ const Hero = ({ isFirstHeroLoad }) => {
     const elements = heroElementsRef.current.filter(el => el !== null);
     if (elements.length === 0) return;
     
-    const elementDelay = isFirst ? 0.7 : 0.2;
+    const elementDelay = isFirst ? 0.7 : 0.1;
     
     animate(
       elements,

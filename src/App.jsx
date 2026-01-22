@@ -1,4 +1,4 @@
-import {React, useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home.jsx";

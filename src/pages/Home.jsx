@@ -202,7 +202,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
 
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
-      <div className="mx-6 md:mx-15 max-w-screen">
+      <div className="mx-6 md:mx-15 2xl:mx-auto max-w-[1600px]">
         <div id='landing-page' className="landing-page-container h-[80vh] lg:h-screen flex flex-col">
           <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
           <Hero isFirstHeroLoad={isFirstHeroLoad}/>
@@ -219,8 +219,8 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
             )}
             <div className="project-description w-full flex justify-between h-auto mt-6 items-center">
               <div ref={projectOneDescRef} className="container-text flex flex-col align-start">
-                <p className='text-lg xl:text-2xl text-wrap'>Carulla - Case Study</p>
-                <p className="text-sm xl:text-lg text-wrap">complete web/mobile design</p>
+                <p className='text-lg xl:text-2xl text-wrap '>Carulla - Case Study</p>
+                <p className="text-sm xl:text-lg text-wrap text-[#777777]">complete web/mobile design</p>
               </div>
               <button
                 ref={el => expandButtonRefs.current[0] = el}
@@ -245,7 +245,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
                 <div ref={projectTwoDescRef} className="container-text flex flex-col align-start">
                   <p className='hidden md:inline text-lg xl:text-2xl text-wrap'>Gator Gaming - Design Team</p>
                   <p className="md:hidden text-lg text-wrap">Gator Gaming</p>
-                  <p className="text-sm xl:text-lg text-wrap">website redesign</p>
+                  <p className="text-sm xl:text-lg text-wrap text-[#777777]">website redesign</p>
                 </div>
                 <button
                   ref={el => expandButtonRefs.current[1] = el}
@@ -264,7 +264,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
                   <div className="container-text flex flex-col align-start">
                     <p className='hidden md:inline text-lg xl:text-2xl text-wrap'>Gator Gaming - Design Team</p>
                     <p className="md:hidden text-lg text-wrap">Gator Gaming</p>
-                    <p className="text-sm xl:text-lg text-wrap">website redesign</p>
+                    <p className="text-sm xl:text-lg text-wrap text-[#777777]">website redesign</p>
                   </div>
                 
                   <button
