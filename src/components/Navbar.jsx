@@ -40,13 +40,13 @@ const Navbar = ({isDark, toggleDarkMode, isFirstLoad}) => {
   return (
     <nav id="main-nav" className="flex flex-wrap flex-row mt-[50px] mb-[50px] md:mb-0 items-center justify-between">
       <Link to="/"><div id="nav-logo" className='flex gap-6 items-center'>
-        <img ref={el => navElementsRef.current[0] = el} src='/THUMBNAIL.png' className='w-8 h-8 md:w-9 md:h-9'/>
-        <p ref={el => navElementsRef.current[1] = el} className="nav-element hidden md:block sm:text-xl lg:text-3xl">lucas mcallister</p>
+        <img ref={el => navElementsRef.current[0] = el} src='/THUMBNAIL.png' className='w-8 h-8'/>
+        <p ref={el => navElementsRef.current[1] = el} className="nav-element hidden md:block sm:text-xl lg:text-2xl">lucas mcallister</p>
       </div></Link>
-      <div id="nav-links" className="flex gap-[48px] lg:gap-[64px] items-center">
+      <div id="nav-links" className="flex gap-8 lg:gap-12 items-center">
         <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" ref={el => navElementsRef.current[2] = el} className='nav-element inline-block md:hidden transform scale-200 mr-2'><i className="fa-brands fa-linkedin"></i></a>
-        <Link to="/about" ref={el => navElementsRef.current[3] = el} className='nav-element hidden md:inline-block text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>PROJECTS</Link>
-        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" ref={el => navElementsRef.current[4] = el} className='nav-element hidden md:inline-block text-lg lg:text-xl mt-[20px] md:mt-[6px] underline md:no-underline z-2'>LINKEDIN</a>
+        <Link to="/about" ref={el => navElementsRef.current[3] = el} className='nav-element hidden md:inline-block text-lg mt-[20px] md:mt-[6px] underline md:no-underline z-2'>ABOUT</Link>
+        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" ref={el => navElementsRef.current[4] = el} className='nav-element hidden md:inline-block text-lg mt-[20px] md:mt-[6px] underline md:no-underline z-2'>LINKEDIN</a>
         <div 
           ref={el => { 
             darkModeButtonRef.current = el;

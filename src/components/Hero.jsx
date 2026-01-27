@@ -45,7 +45,7 @@ const Hero = ({ isFirstHeroLoad }) => {
 
   return (
     <section id='hero' className='flex flex-col flex-grow justify-center items-center mt-0 md:items-start md:mt-[10%] xl:mt-[4%] gap-y-0 lg:gap-y-[7%]'>
-      <p ref={el => heroElementsRef.current[0] = el} className='hero-element text-justify w-full text-4xl/12 text-wrap mb-[15vh] md:text-5xl/18 lg:text-left 2xl:text-6xl/20 3xl:text-7xl/20 lg:w-[95%] xl:w-[75%] 2xl:w-[70%]'>
+      <p ref={el => heroElementsRef.current[0] = el} className='hero-element text-justify w-full text-4xl/12 text-wrap mb-[15vh] md:text-4xl/16 lg:text-5xl/17 lg:text-left 2xl:text-6xl/20 3xl:text-7xl/20 lg:w-[95%] xl:w-[75%] 2xl:w-[70%]'>
         I'm Lucas, a Computer Science undergraduate at UF focused on User Experience and front-end programming.
       </p>
       <div ref={el => heroElementsRef.current[1] = el} className="hero-element arrow-div hidden mt-0 lg:-mt-15 2xl:mt-0 lg:inline-block sm:mb-[15%] justify-start">
