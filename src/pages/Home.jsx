@@ -287,14 +287,6 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
         <a href="#landing-page" className="hidden sm:inline-block text-xs lg:text-md mb-4 underline">Back to top</a>
       </footer>
       </div>
-      <div className="fixed bottom-4 right-4 bg-black text-white px-4 py-2 rounded-lg text-sm font-mono z-50">
-        <span className="sm:hidden">xs (&lt;640px)</span>
-        <span className="hidden sm:inline md:hidden">sm (≥640px)</span>
-        <span className="hidden md:inline lg:hidden">md (≥768px)</span>
-        <span className="hidden lg:inline xl:hidden">lg (≥1024px)</span>
-        <span className="hidden xl:inline 2xl:hidden">xl (≥1280px)</span>
-        <span className="hidden 2xl:inline">2xl (≥1536px)</span>
-      </div>
     </div>
   );
 }
