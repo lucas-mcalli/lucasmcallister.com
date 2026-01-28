@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
 
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/" element={<Home isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad} isFirstHeroLoad={isFirstHeroLoad} />} />
         <Route path="/about" element={<About isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad} />} />
       </Routes>
+      <Analytics/>
     </BrowserRouter>
   );
 }
