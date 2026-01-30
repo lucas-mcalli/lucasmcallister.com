@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Timeline from "./Timeline.jsx"
 
-const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
+const CarullaProject = ({getGraphic, projectOneElementsRef, showProjectOne}) => {
 
   const contextRef = useRef(null)
   const problemRef = useRef(null)
@@ -69,11 +69,11 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
         cancelAnimationFrame(resizeRAF)
       }
     }
-  }, [showProjectTwo])
+  }, [showProjectOne])
 
-    // Project two element animation
+    // Project one element animation
   useEffect(() => {
-    const elements = projectTwoElementsRef.current.filter(el => el !== null);
+    const elements = projectOneElementsRef.current.filter(el => el !== null);
     if (elements.length === 0) return;
 
     animate(
@@ -81,17 +81,17 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
       {y: [15, 0], opacity: [0,100], filter:["blur(6px)", "blur(0px)"]},
       {delay: stagger(0.15, { startDelay: 0.1 }), duration: 0.3, easing: "ease-out"}
     );
-  }, [showProjectTwo])
+  }, [showProjectOne])
 
   return (
     <>
       <Timeline 
-        ref={el => projectTwoElementsRef.current[2] = el} 
+        ref={el => projectOneElementsRef.current[2] = el} 
         activeSection={activeSection}
       />
-      <div className="project-two flex gap-7 2xl:gap-10 flex-col relative pointer-events-none">
-      <section id="CONTEXT" className="scroll-mt-45" ref={el => {
-        projectTwoElementsRef.current[0] = el;
+      <div className="project-one flex gap-7 2xl:gap-10 flex-col relative pointer-events-none">
+      <section id="CONTEXT-ONE" className="scroll-mt-45" ref={el => {
+        projectOneElementsRef.current[0] = el;
         contextRef.current = el;
       }
       }>
@@ -114,8 +114,8 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
           <img src={getGraphic("timeline")} className="sm:hidden -mt-2" alt="Project timeline showing key milestones" />
         </div>
       </section>
-      <section id="PROBLEM" className="scroll-mt-15" ref={el => {
-        projectTwoElementsRef.current[1] = el;
+      <section id="PROBLEM-ONE" className="scroll-mt-15" ref={el => {
+        projectOneElementsRef.current[1] = el;
         problemRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
@@ -127,8 +127,8 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
           <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">The University of Florida is home to over 1,000 student organizations, each with their own story, mission, and community.  Yet despite this abundance, students struggle to find clubs that reflect their interests due to outdated online information, a lack of clear digital presence, and poor branding. Understanding that this was the difference between a club being discovered or overlooked was fundamental to our process.</p>
         </div>
       </section>
-      <section id="RESEARCH" className="scroll-mt-15" ref={el => {
-        projectTwoElementsRef.current[3] = el;
+      <section id="RESEARCH-ONE" className="scroll-mt-15" ref={el => {
+        projectOneElementsRef.current[3] = el;
         researchRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7" >
@@ -157,8 +157,8 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
           </div>
         </div>
       </section>
-      <section id="DESIGN" className="scroll-mt-15" ref={el => {
-        projectTwoElementsRef.current[4] = el;
+      <section id="DESIGN-ONE" className="scroll-mt-15" ref={el => {
+        projectOneElementsRef.current[4] = el;
         designRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
@@ -179,8 +179,8 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
           </div>
         </div>
       </section>
-      <section id="REFLECTION" className="scroll-mt-15" ref={el => {
-        projectTwoElementsRef.current[5] = el;
+      <section id="REFLECTION-ONE" className="scroll-mt-15" ref={el => {
+        projectOneElementsRef.current[5] = el;
         handoffRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
@@ -191,7 +191,7 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
           </div>
         </div>
       </section>
-      <section id="FINISHED PRODUCT">
+      <section id="FINISHED PRODUCT-ONE">
       <div className="w-full xl:w-[80%] 2xl:w-[70%] h-auto flex flex-col justify-center items-center -mt-12 md:-mt-4">
           <motion.a href="https://www.gatorgaminguf.com/" whileHover={{scale: 1.03}} target="_blank" rel="noopener noreferrer" className="inline-flex pointer-events-auto">
           <div>
@@ -211,4 +211,4 @@ const GGProject = ({getGraphic, projectTwoElementsRef, showProjectTwo}) => {
   )
 }
 
-export default GGProject;
+export default CarullaProject;
