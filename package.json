@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.5.0",
+    "@react-three/postprocessing": "^3.0.4",
     "@tailwindcss/cli": "^4.1.17",
     "@tailwindcss/vite": "^4.1.14",
     "@vercel/analytics": "^1.6.1",
     "motion": "^12.23.22",
+    "postprocessing": "^6.38.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router": "^7.12.0",
