@@ -135,15 +135,18 @@ const ASCIIRain = ({
 
   if (!isVisible) return null;
 
+  const backgroundColor = isDark ? '#171717' : '#ffffff';
+
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none overflow-hidden whitespace-pre select-none z-0 font-menlo"
+      className="fixed inset-0 pointer-events-none overflow-hidden whitespace-pre select-none z-0 font-code"
       style={{
         fontSize: `${fontSize}px`,
         color: currentColor,
         lineHeight: '1.2',
-        letterSpacing: '0'
+        letterSpacing: '0',
+        backgroundColor: backgroundColor
       }}
     >
       {grid.map((row, rowIndex) => (

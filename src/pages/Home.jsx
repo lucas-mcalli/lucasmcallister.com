@@ -90,7 +90,10 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
     if (!showProjectOne && !showProjectTwo) return;
 
     const handleScroll = () => {
-      if (window.scrollY < 700) {
+      // Use responsive threshold: smaller on mobile, larger on desktop
+      const scrollThreshold = window.innerWidth < 768 ? 200 : 700;
+      
+      if (window.scrollY < scrollThreshold) {
         // User scrolled back to near the top, close the project
         if (showProjectOne) {
           expandButtonRefs.current[0].textContent = 'Expand';
@@ -215,7 +218,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
                 </div>
                 <button
                   ref={el => expandButtonRefs.current[0] = el}
-                  onClick={() => toggleExpand(1)}
+                  // onClick={() => toggleExpand(1)}
                   id='expand-button-one'
                   className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#888888] rounded-full text-white text-md xl:text-xl hover:bg-[#888888] transition-colors duration-200 ease-in-out"
                 >
