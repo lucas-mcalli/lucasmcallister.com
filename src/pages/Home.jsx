@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar.jsx"
 import Hero from "../components/Hero.jsx"
 import GGProject from "../components/GGProject.jsx"
 import CarullaProject from "../components/CarullaProject.jsx"
+import ASCIIRain from '../components/ASCIIText.jsx';
 
 export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroLoad }) {
 
@@ -83,6 +84,28 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
       return graphics[key].light;
     }
   }
+
+  // Auto-close project if user scrolls back to top
+  useEffect(() => {
+    if (!showProjectOne && !showProjectTwo) return;
+
+    const handleScroll = () => {
+      if (window.scrollY < 700) {
+        // User scrolled back to near the top, close the project
+        if (showProjectOne) {
+          expandButtonRefs.current[0].textContent = 'Expand';
+          setShowProjectOne(false);
+        }
+        if (showProjectTwo) {
+          expandButtonRefs.current[1].textContent = 'Expand';
+          setShowProjectTwo(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showProjectOne, showProjectTwo]);
 
   // Expand button hover animations
   useEffect(() => {
@@ -165,6 +188,12 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
 
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
+      <ASCIIRain 
+        fontSize={30}
+        isDark={isDark}
+        updateInterval={1}      // How often chars change (ms)
+        isVisible={!showProjectOne && !showProjectTwo}
+      />
       <div className="mx-6 md:mx-15 2xl:mx-auto max-w-[1600px]">
         <div id='landing-page' className="landing-page-container h-[80vh] lg:h-screen flex flex-col">
           <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
@@ -174,7 +203,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
       <section id="projects-section" className="pt-0 lg:pt-[7%] mb-[10%] flex flex-col justify-start items-center">
         <ul>
           <li id='projects-section-text' className="scroll-mt-[30px] mb-15">
-            <div className="projects-section-text flex w-full justify-start text-xs xl:text-base mb-[4%] md:mb-[2%]">// PROJECTS</div>
+            <div className="projects-section-text flex w-full justify-start text-xs xl:text-base mb-[4%] md:mb-[2%] z-20 relative">// PROJECTS</div>
             <li id='project-one-container' className="relative">
               <div id='project-one-section' className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] overflow-hidden">
                 <img src="/carulla_wireframe_cropped.webp" alt="Carulla wireframe" className="object-cover w-full h-full" />
@@ -186,7 +215,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
                 </div>
                 <button
                   ref={el => expandButtonRefs.current[0] = el}
-                  // onClick={() => toggleExpand(1)}
+                  onClick={() => toggleExpand(1)}
                   id='expand-button-one'
                   className="expand-button w-20 xl:w-30 h-8 xl:h-12 bg-[#888888] rounded-full text-white text-md xl:text-xl hover:bg-[#888888] transition-colors duration-200 ease-in-out"
                 >
@@ -208,7 +237,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
             </li>
           </li>
           <li id='project-two-container' className="relative">
-            <div id="project-two-scroll-anchor" className="absolute -top-10 left-0"></div> 
+            <div id="project-two-scroll-anchor" className="absolute -top-10 left-0 2xl:scroll-mt-12"></div> 
             <div id='project-two-section' className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] overflow-hidden">
               <img src="/gatorgaming_cover.webp" alt="Gator Gaming Cover" className="object-cover w-full h-full" />
             </div>

@@ -3,6 +3,7 @@ import { animate, motion, stagger } from 'motion/react';
 import '../input.css';
 
 import Navbar from "../components/Navbar.jsx"
+import ASCIIRain from '../components/ASCIIText.jsx';
 
 export default function About({isDark, toggleDarkMode, isFirstLoad}){
 
@@ -27,6 +28,13 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
 
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
+      <ASCIIRain 
+        fontSize={30}
+        textColor="#f5f5f5ff"      // Light mode color
+        darkTextColor="#1c1c1cff"   // Dark mode color
+        isDark={isDark}
+        updateInterval={1}      // How often chars change (ms)
+      />
       <div className="mx-6 md:mx-15 2xl:mx-auto max-w-[1600px]">
         <div id='landing-page' className="landing-page-container flex flex-col">
           <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
