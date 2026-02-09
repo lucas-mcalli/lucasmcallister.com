@@ -192,7 +192,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
       <ASCIIRain 
-        fontSize={30}
+        fontSize={24}
         isDark={isDark}
         updateInterval={1}      // How often chars change (ms)
         isVisible={!showProjectOne && !showProjectTwo}

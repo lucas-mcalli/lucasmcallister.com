@@ -29,7 +29,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
       <ASCIIRain 
-        fontSize={30}
+        fontSize={24}
         textColor="#f5f5f5ff"      // Light mode color
         darkTextColor="#1c1c1cff"   // Dark mode color
         isDark={isDark}
