@@ -1,97 +1,41 @@
-import { animate, stagger, motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
-
+import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { useProjectAnimation } from '../helpers/useProjectAnimation';
+import { useActiveSection } from '../helpers/useActiveSection';
 import Timeline from "./Timeline.jsx"
 
-const CarullaProject = ({getGraphic, projectOneElementsRef, showProjectOne}) => {
+const CarullaProject = ({getGraphic, projectElementsRef, isExpanded, projectId}) => {
 
   const contextRef = useRef(null)
   const problemRef = useRef(null)
   const researchRef = useRef(null)
   const designRef = useRef(null)
-  const handoffRef = useRef(null)
+  const reflectionRef = useRef(null)
 
-  const [activeSection, setActiveSection] = useState(null)
+  const sections = [
+    { id: 'context', ref: contextRef },
+    { id: 'problem', ref: problemRef },
+    { id: 'research', ref: researchRef },
+    { id: 'design', ref: designRef },
+    { id: 'reflection', ref: reflectionRef },
+  ];
 
-  // Determine which section is most prominently in view
-  useEffect(() => {
-    const determineActiveSection = () => {
-      const sections = [
-        { ref: contextRef, id: 'context' },
-        { ref: problemRef, id: 'problem' },
-        { ref: researchRef, id: 'research' },
-        { ref: designRef, id: 'design' },
-        { ref: handoffRef, id: 'handoff' }
-      ]
+  // Use custom hook to track active section
+  const activeSection = useActiveSection(sections, isExpanded);
 
-      // Reference point: 35% from top of viewport (slightly above timeline for better UX)
-      const referencePoint = window.innerHeight * 0.35
-      let closestSection = null
-      let closestDistance = Infinity
-
-      sections.forEach(({ ref, id }) => {
-        if (ref.current) {
-          const rect = ref.current.getBoundingClientRect()
-          // Check if section is in viewport
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            // Calculate distance from reference point to section's top
-            const distance = Math.abs(rect.top - referencePoint)
-            if (distance < closestDistance) {
-              closestDistance = distance
-              closestSection = id
-            }
-          }
-        }
-      })
-
-      setActiveSection(closestSection)
-    }
-
-    // Throttle resize handler to prevent excessive calls
-    let resizeRAF = null
-    const handleResize = () => {
-      if (resizeRAF) return
-      resizeRAF = requestAnimationFrame(() => {
-        determineActiveSection()
-        resizeRAF = null
-      })
-    }
-
-    // Check on mount and scroll
-    determineActiveSection()
-    window.addEventListener('scroll', determineActiveSection, { passive: true })
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('scroll', determineActiveSection)
-      window.removeEventListener('resize', handleResize)
-      if (resizeRAF) {
-        cancelAnimationFrame(resizeRAF)
-      }
-    }
-  }, [showProjectOne])
-
-    // Project one element animation
-  useEffect(() => {
-    const elements = projectOneElementsRef.current.filter(el => el !== null);
-    if (elements.length === 0) return;
-
-    animate(
-      elements,
-      {y: [15, 0], opacity: [0,100], filter:["blur(6px)", "blur(0px)"]},
-      {delay: stagger(0.15, { startDelay: 0.1 }), duration: 0.3, easing: "ease-out"}
-    );
-  }, [showProjectOne])
+  // Use custom hook for element animations
+  useProjectAnimation(projectElementsRef, isExpanded)
 
   return (
     <>
       <Timeline 
-        ref={el => projectOneElementsRef.current[2] = el} 
+        ref={el => projectElementsRef.current[2] = el} 
+        sections={sections}
         activeSection={activeSection}
       />
-      <div className="project-one flex gap-7 2xl:gap-10 flex-col relative pointer-events-none">
+      <div className={`project-${projectId} flex gap-7 2xl:gap-10 flex-col relative pointer-events-none`}>
       <section id="CONTEXT-ONE" className="scroll-mt-45" ref={el => {
-        projectOneElementsRef.current[0] = el;
+        projectElementsRef.current[0] = el;
         contextRef.current = el;
       }
       }>
@@ -115,7 +59,7 @@ const CarullaProject = ({getGraphic, projectOneElementsRef, showProjectOne}) => 
         </div>
       </section>
       <section id="PROBLEM-ONE" className="scroll-mt-15" ref={el => {
-        projectOneElementsRef.current[1] = el;
+        projectElementsRef.current[1] = el;
         problemRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
@@ -128,7 +72,7 @@ const CarullaProject = ({getGraphic, projectOneElementsRef, showProjectOne}) => 
         </div>
       </section>
       <section id="RESEARCH-ONE" className="scroll-mt-15" ref={el => {
-        projectOneElementsRef.current[3] = el;
+        projectElementsRef.current[3] = el;
         researchRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7" >
@@ -158,7 +102,7 @@ const CarullaProject = ({getGraphic, projectOneElementsRef, showProjectOne}) => 
         </div>
       </section>
       <section id="DESIGN-ONE" className="scroll-mt-15" ref={el => {
-        projectOneElementsRef.current[4] = el;
+        projectElementsRef.current[4] = el;
         designRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
@@ -180,8 +124,8 @@ const CarullaProject = ({getGraphic, projectOneElementsRef, showProjectOne}) => 
         </div>
       </section>
       <section id="REFLECTION-ONE" className="scroll-mt-15" ref={el => {
-        projectOneElementsRef.current[5] = el;
-        handoffRef.current = el;
+        projectElementsRef.current[5] = el;
+        reflectionRef.current = el;
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
           <p className="mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm">REFLECTION</p>
