@@ -3,6 +3,10 @@ const graphics = {
     light: "/6_graphic.webp",
     dark: "/6_graphic_dark.webp"
   },
+  three: {
+    light: "/3_graphic.webp",
+    dark: "3_graphic_dark.webp"
+  },
   timeline: {
     light: "/timeline.png",
     dark: "/timeline_dark.png"
@@ -50,6 +54,22 @@ const graphics = {
   group_reflections: {
     light: "/group_reflections.webp",
     dark: "/group_reflections_dark.webp"
+  },
+  atrium_objectives: {
+    light: "/atrium_objectives.webp",
+    dark: "/atrium_objectives_dark.webp"
+  },
+  atrium_colors: {
+    light: "/atrium_colors.avif",
+    dark: "/atrium_colors_dark.avif"
+  },
+  atrium_brand: {
+    light: "/atrium_brand.webp",
+    dark: "/atrium_brand_dark.webp"
+  },
+  atrium_reflections: {
+    light: "/atrium_reflections.webp",
+    dark: "/atrium_reflections_dark.webp"
   }
 };
 

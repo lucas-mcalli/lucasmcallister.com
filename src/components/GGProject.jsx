@@ -4,7 +4,7 @@ import { useProjectAnimation } from '../helpers/useProjectAnimation';
 import { useActiveSection } from '../helpers/useActiveSection';
 import Timeline from "./Timeline.jsx"
 
-const GGProject = ({getGraphic, projectElementsRef, isExpanded, projectId}) => {
+const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
 
   const contextRef = useRef(null)
   const problemRef = useRef(null)
@@ -33,7 +33,7 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded, projectId}) => {
         sections={sections}
         activeSection={activeSection}
       />
-      <div className={`project-${projectId} flex gap-7 2xl:gap-10 flex-col relative pointer-events-none`}>
+      <div className="flex gap-7 2xl:gap-10 flex-col relative pointer-events-none">
       <section id="CONTEXT" className="scroll-mt-45" ref={el => {
         projectElementsRef.current[0] = el;
         contextRef.current = el;

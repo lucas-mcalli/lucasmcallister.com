@@ -64,7 +64,7 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
   return (
     <li className="relative mb-15 scroll-mt-15" data-project-card={project.id}>
       <div data-project-id={project.id}>
-        <div className="box relative w-full max-w-full aspect-[16/9] sm:aspect-[5/2] overflow-hidden">
+        <div className="box relative w-full max-w-full sm:aspect-[5/2] overflow-hidden">
         {project.media.endsWith('.mp4') ? (
           <video src={project.media} autoPlay muted loop className="w-full h-full object-contain" />
         ) : (
@@ -120,7 +120,6 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
             getGraphic={getGraphic}
             projectElementsRef={projectElementsRef}
             isExpanded={isExpanded}
-            projectId={project.id}
           />
         </motion.div>
       )}

@@ -7,17 +7,9 @@ export const projectsData = [
     id: 'atrium',
     title: 'Atrium',
     subtitle: 'event hosting web-app',
-    media: '/atrium_cover.png',
+    media: '/atrium_cover.webp',
     component: AtriumProject,
-    disabled: true,
-  },
-  {
-    id: 'carulla',
-    title: 'Carulla - Case Study',
-    subtitle: 'mobile app design',
-    media: '/carulla_wireframe_cropped.webp',
-    component: CarullaProject,
-    disabled: true,
+    disabled: false,
   },
   {
     id: 'gator gaming',
@@ -27,5 +19,13 @@ export const projectsData = [
     media: '/gatorgaming_cover.webp',
     component: GGProject,
     disabled: false,
+  },
+  {
+    id: 'carulla',
+    title: 'Carulla - Case Study',
+    subtitle: 'mobile app design',
+    media: '/carulla_wireframe_cropped.webp',
+    component: CarullaProject,
+    disabled: true,
   },
 ];
