@@ -33,7 +33,7 @@ const AtriumProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         sections={sections}
         activeSection={activeSection}
       />
-      <div className="flex gap-7 2xl:gap-10 flex-col relative pointer-events-none">
+      <div className="flex gap-7 2xl:gap-10 flex-col relative pointer-events-none md:-mt-110"> {/* This md:-mt-110 margin is needed to offset the height of TIMELINE. If not using TIMELINE, remove. */}
       <section id="CONTEXT" className="scroll-mt-45" ref={el => {
         projectElementsRef.current[0] = el;
         contextRef.current = el;
@@ -43,7 +43,7 @@ const AtriumProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
           <div className="flex items-center w-full gap-6 xl:gap-8 lg:w-[90%] 2xl:w-[70%]">
             <p className="font-serif mt-2 sm:text-xl lg:text-2xl xl:text-3xl xl:w-[60%] 2xl:w-[70%]">This project was submitted to SwampHacks XI, the University of Florida’s flagship 36 hour hackathon.</p>
-            <img className="w-1/10 h-1/10 max-w-[100px] max-h-[100px] min-w-[80px] max-w-[80px] rotate-[17.45deg] rounded-full shadow-[0px_0px_21.399999618530273px_12px_rgba(0,0,0,0.25)] dark:shadow-[0px_0px_21.4px_12px_rgba(255,255,255,0.25)] outline outline-1 outline-black" src="/swamphacks_logo.jpg" alt="SwampHacks logo" />
+            <img className="w-1/10 h-1/10 max-w-[100px] max-h-[100px] min-w-[70px] min-w-[70px] rotate-[17.45deg] rounded-full md:shadow-[0px_0px_21.399999618530273px_12px_rgba(0,0,0,0.25)] md:dark:shadow-[0px_0px_21.4px_12px_rgba(255,255,255,0.25)] md:outline md:outline-1 md:outline-black" src="/swamphacks_logo.jpg" alt="SwampHacks logo" />
           </div>   
           <div className='flex items-center w-full gap-6 xl:gap-10 xl:w-[80%] 2xl:w-[70%]'>
             <div className="flex flex-col ml-3 xl:ml-4 gap-2 items-center max-w-[100px] w-[20%]">

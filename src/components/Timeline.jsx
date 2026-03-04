@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 const Timeline = forwardRef(({sections, activeSection}, ref) => {
   const lineHeight = sections.length * 36.3;
   return (
-    <div ref={ref} className="w-full h-auto sticky top-2/5 hidden xl:block">
+    <div ref={ref} className="w-full h-110 sticky top-2/5 hidden xl:block"> {/* h-110 so timeline adequately stops sticking BEFORE projects end. */}
       <div className="absolute right-25">
         <div className="w-14 left-9 top-0 absolute inline-flex flex-col justify-center items-end gap-8 pointer-events-auto">
           {sections.map(({ id, ref }, index) => {

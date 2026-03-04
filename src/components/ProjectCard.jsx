@@ -99,7 +99,7 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
           ref={expandButtonRef}
           onClick={handleToggle}
           disabled={project.disabled}
-          className={`expand-button w-20 xl:w-30 h-8 xl:h-12 rounded-full text-white text-md xl:text-xl transition-colors duration-200 ease-in-out ${
+          className={`expand-button w-20 lg:w-30 h-8 lg:h-12 rounded-full text-white text-sm md:text-base lg:text-xl transition-colors duration-200 ease-in-out ${
             project.disabled ? 'bg-[#888888] cursor-not-allowed' : 'bg-[#007AFF] hover:bg-[#0060C0]'
           }`}
         >

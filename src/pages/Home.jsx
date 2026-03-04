@@ -19,7 +19,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
 
     const handleScroll = () => {
       // Use responsive threshold: smaller on mobile, larger on desktop
-      const scrollThreshold = window.innerWidth < 768 ? 200 : 700;
+      const scrollThreshold = window.innerWidth < 768 ? 200 : 400;
       
       if (window.scrollY < scrollThreshold) {
         // User scrolled back to near the top, close the project
