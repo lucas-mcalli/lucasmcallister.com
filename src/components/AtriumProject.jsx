@@ -33,7 +33,7 @@ const AtriumProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         sections={sections}
         activeSection={activeSection}
       />
-      <div className="flex gap-7 2xl:gap-10 flex-col relative pointer-events-none md:-mt-110"> {/* This md:-mt-110 margin is needed to offset the height of TIMELINE. If not using TIMELINE, remove. */}
+      <div className="flex gap-7 2xl:gap-10 flex-col relative pointer-events-none xl:-mt-110"> {/* This xl:-mt-110 margin is needed to offset the height of TIMELINE. If not using TIMELINE, remove. */}
       <section id="CONTEXT" className="scroll-mt-45" ref={el => {
         projectElementsRef.current[0] = el;
         contextRef.current = el;
