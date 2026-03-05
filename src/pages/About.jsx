@@ -3,6 +3,7 @@ import { animate, motion, stagger } from 'motion/react';
 import '../input.css';
 
 import Navbar from "../components/Navbar.jsx"
+import Footer from "../components/Footer.jsx"
 import ASCIIRain from '../components/ASCIIText.jsx';
 
 export default function About({isDark, toggleDarkMode, isFirstLoad}){
@@ -90,9 +91,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
             </div>
           </div>
         </div>
-        <footer className="w-full flex flex-start mt-20">
-        <a href="#landing-page" className="hidden sm:inline-block text-xs lg:text-md mb-4 underline">Back to top</a>
-      </footer>
+        <Footer />
       </div>
     </div>
     

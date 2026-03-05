@@ -4,6 +4,7 @@ import '../input.css';
 import Navbar from "../components/Navbar.jsx"
 import Hero from "../components/Hero.jsx"
 import ProjectCard from "../components/ProjectCard.jsx"
+import Footer from "../components/Footer.jsx"
 import ASCIIRain from '../components/ASCIIText.jsx';
 import { projectsData } from '../data/projectsData';
 import { getGraphic } from '../helpers/getGraphic';
@@ -69,9 +70,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
           </li>
         </ul>
       </section>
-      <footer className="w-full flex flex-start">
-        <a href="#landing-page" className="hidden sm:inline-block text-xs lg:text-md mb-4 underline">Back to top</a>
-      </footer>
+      <Footer />
       </div>
     </div>
   );
