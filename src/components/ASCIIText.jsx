@@ -26,8 +26,8 @@ const ASCIIRain = ({
     const charWidth = fontSize * 0.6;
     const charHeight = fontSize * 1.2;
     
-    const cols = Math.ceil(window.innerWidth / charWidth) + 10;
-    const rows = Math.ceil(window.innerHeight / charHeight) + 10;
+    const cols = Math.ceil(window.innerWidth / charWidth) + 30;
+    const rows = Math.ceil(window.innerHeight / charHeight) + 30;
     
     dimsRef.current = { rows, cols, charWidth, charHeight };
     
