@@ -22,12 +22,20 @@ const ASCIIRain = ({
   const colorGridRef = useRef([]);
   const dimsRef = useRef({ rows: 0, cols: 0, charWidth: 0, charHeight: 0 });
 
+  const measureCharDimensions = () => {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.font = `${fontSize}px monospace`; // match your font-code CSS font
+  const charWidth = ctx.measureText('M').width;
+  const charHeight = fontSize * 1.2;
+  return { charWidth, charHeight };
+  };
+
   useEffect(() => {
-    const charWidth = fontSize * 0.6;
-    const charHeight = fontSize * 1.2;
+    const { charWidth, charHeight } = measureCharDimensions();
     
-    const cols = Math.ceil(window.innerWidth / charWidth) + 30;
-    const rows = Math.ceil(window.innerHeight / charHeight) + 30;
+    const cols = Math.ceil(window.innerWidth / charWidth) + 5;
+    const rows = Math.ceil(window.innerHeight / charHeight) + 5;
     
     dimsRef.current = { rows, cols, charWidth, charHeight };
     
