@@ -5,11 +5,13 @@ const ASCIIRain = ({
   textColor="#f6f6f6ff", 
   darkTextColor="#1b1b1bff", 
   isDark = false,
-  updateInterval = 50,
-  charsPerUpdate = 20,
-  characters = '0123456789ABCLMQXYZ@#$%^&*()_+-=[]{}%&;:,.<>?/',
+  updateInterval = 1,
+  charsPerUpdate = 50,
+  characters = '0123456789ABCDELMQXYZ@#$%^&*()_+-=[]{}%&;:,.<>?/',
   isVisible = true,
-  mouseEffectRadius = 10
+  mouseEffectRadius = 1,
+  affectedCharColor = null,
+  safeRadius = 3
 }) => {
   const [grid, setGrid] = useState([]);
   const [colorGrid, setColorGrid] = useState([]);
@@ -137,21 +139,70 @@ const ASCIIRain = ({
 
   const backgroundColor = isDark ? '#171717' : '#ffffff';
 
+  // Build a single string per row with inline styles for efficiency
+  const renderRow = (row, rowIndex) => {
+    const { charWidth, charHeight } = dimsRef.current;
+    const mouseGridCol = Math.floor(mousePos.x / charWidth);
+    const mouseGridRow = Math.floor(mousePos.y / charHeight);
+    const safeRadiusInChars = Math.ceil(safeRadius / charWidth);
+
+    let elements = [];
+    let currentColor_ = currentColor;
+    let currentSpanText = '';
+
+    row.forEach((char, colIndex) => {
+      const isAffected = colorGrid[rowIndex]?.[colIndex];
+      
+      // Check if character is within safe radius of cursor
+      const distanceToCursor = Math.sqrt((colIndex - mouseGridCol) ** 2 + (rowIndex - mouseGridRow) ** 2);
+      const isInSafeRadius = distanceToCursor <= safeRadiusInChars;
+      
+      // Only apply color if affected AND not in safe radius
+      const charColor = (isAffected && !isInSafeRadius && affectedCharColor) ? affectedCharColor : currentColor;
+      
+      if (charColor === currentColor_) {
+        // Same color as current span, accumulate text
+        currentSpanText += char;
+      } else {
+        // Color changed, create span for accumulated text
+        if (currentSpanText) {
+          elements.push(
+            <span key={elements.length} style={{ color: currentColor_ }}>
+              {currentSpanText}
+            </span>
+          );
+        }
+        currentSpanText = char;
+        currentColor_ = charColor;
+      }
+    });
+
+    // Push final span
+    if (currentSpanText) {
+      elements.push(
+        <span key={elements.length} style={{ color: currentColor_ }}>
+          {currentSpanText}
+        </span>
+      );
+    }
+
+    return elements;
+  };
+
   return (
     <div 
       ref={containerRef}
       className="fixed inset-0 pointer-events-none overflow-hidden whitespace-pre select-none z-0 font-code"
       style={{
         fontSize: `${fontSize}px`,
-        color: currentColor,
         lineHeight: '1.2',
         letterSpacing: '0',
         backgroundColor: backgroundColor
       }}
     >
       {grid.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          {row.join('')}
+        <div key={rowIndex} style={{ color: currentColor }}>
+          {renderRow(row, rowIndex)}
         </div>
       ))}
     </div>
