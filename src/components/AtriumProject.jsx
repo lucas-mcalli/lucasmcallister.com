@@ -66,7 +66,7 @@ const AtriumProject = ({getGraphic, projectElementsRef, isExpanded}) => {
             <p className="mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm">PROBLEM</p>
             <p className="font-serif sm:text-xl lg:text-2xl xl:text-3xl xl:w-[70%] 2xl:w-[70%]">How might we make club meeting attendance feel like the beginning of a relationship rather than a transaction, expanding the ways clubs and members meaningfully connect? </p>
           </div>
-          <img src="/atrium_demo_1.webp" className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Image showing desktop frame" />
+          <img src="/atrium_demo.avif" className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Image showing desktop frame" />
           <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">College students are pulled in more directions than ever: juggling classes, jobs, and a roster of clubs they care about. But between GroupMe chats, Google Drive folders, and QR codes flashed at GBMs, keeping up starts to become costly. There's no central place to track what orgs they're a part of, and meetings meant to bring them community end up demanding more attention and focus than they can spare.</p>
           <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">For club owners, there's often no reliable way to track who keeps showing up, no mechanism to reward committed members, and no easy way to present resources without interrupting the flow of a meeting. The result: a disconnect between the community they work tirelessly to build and the data that backs it.</p>
         </div>
