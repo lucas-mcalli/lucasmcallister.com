@@ -9,7 +9,7 @@ export const useActiveSection = (sections, isExpanded) => {
   useEffect(() => {
     const determineActiveSection = () => {
         
-      // Reference point: 35% from top of viewport (slightly above timeline for better UX)
+      // Reference point: 35% from top of viewport (slightly above timeline)
       const referencePoint = window.innerHeight * 0.35;
       let closestSection = null;
       let closestDistance = Infinity;

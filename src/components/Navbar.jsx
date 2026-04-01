@@ -16,7 +16,7 @@ const Navbar = ({isDark, toggleDarkMode, isFirstLoad}) => {
       animate(
         elements,
         { y: [-20, 0], opacity: [0, 100] },
-        { delay: stagger(0.1) }
+        { delay: stagger(0.1, { startDelay: 0.3 }) }
       );
       isFirstLoad.current = false;
       console.log("False now!");

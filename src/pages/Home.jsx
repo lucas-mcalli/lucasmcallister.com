@@ -21,7 +21,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
     const elements = heroElementsRef.current.filter(el => el !== null);
     if (elements.length === 0) return;
     
-    const elementDelay = isFirst ? 0.7 : 0.1;
+    const elementDelay = isFirst ? 1 : 0.1;
     
     animate(
       elements,
