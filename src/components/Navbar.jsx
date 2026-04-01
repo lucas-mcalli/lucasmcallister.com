@@ -1,63 +1,228 @@
-import { useEffect, useRef } from "react";
-import { Link } from "react-router"
-import { animate, stagger, press } from "motion";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router";
 
-const Navbar = ({isDark, toggleDarkMode, isFirstLoad}) => {
+// Windows 2000–style Taskbar
+const Navbar = ({ isDark, toggleDarkMode }) => {
+  const [time, setTime] = useState('');
+  const [startOpen, setStartOpen] = useState(false);
+  const location = useLocation();
 
-  const darkModeButtonRef = useRef(null);
-  const navElementsRef = useRef([]);
-
-  // Nav elements animation
+  // Live clock
   useEffect(() => {
-    if (isFirstLoad.current){
-      const elements = navElementsRef.current.filter(el => el !== null);
-      if (elements.length === 0) return;
-
-      animate(
-        elements,
-        { y: [-20, 0], opacity: [0, 100] },
-        { delay: stagger(0.1) }
-      );
-      isFirstLoad.current = false;
-      console.log("False now!");
-    }
+    const tick = () => {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, '0');
+      const m = now.getMinutes().toString().padStart(2, '0');
+      setTime(`${h}:${m}`);
+    };
+    tick();
+    const id = setInterval(tick, 10000);
+    return () => clearInterval(id);
   }, []);
 
-   // Dark mode button animations
+  // Close start menu on outside click
   useEffect(() => {
-    if (!darkModeButtonRef.current) return;
-    
-    const cleanup = press(darkModeButtonRef.current, (element) => {
-      animate(element, { scale: 0.9 }, { type: "spring", stiffness: 1000 });
-      return () => {
-        animate(element, { scale: 1.0 }, { type: "spring", stiffness: 500 });
-      };
-    });
+    if (!startOpen) return;
+    const close = () => setStartOpen(false);
+    window.addEventListener('click', close);
+    return () => window.removeEventListener('click', close);
+  }, [startOpen]);
 
-    return cleanup;
-  }, []);
-  
+  const isHome = location.pathname === '/';
+  const isAbout = location.pathname === '/about';
+
   return (
-    <nav id="main-nav" className="flex flex-wrap flex-row pt-12 md:mb-0 items-center justify-between z-10">
-      <Link to="/"><div id="nav-logo" className='flex gap-6 items-center'>
-        <img ref={el => navElementsRef.current[0] = el} src='/THUMBNAIL.png' className='w-8 h-8'/>
-        <p ref={el => navElementsRef.current[1] = el} className="nav-element hidden md:block sm:text-xl lg:text-2xl">lucas mcallister</p>
-      </div></Link>
-      <div id="nav-links" className="flex gap-8 lg:gap-12 items-center">
-        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" ref={el => navElementsRef.current[2] = el} className='nav-element inline-block md:hidden transform scale-200 mr-2'><i className="fa-brands fa-linkedin"></i></a>
-        <Link to="/about" ref={el => navElementsRef.current[3] = el} className='nav-element hidden md:inline-block text-lg mt-[20px] md:mt-[6px] underline md:no-underline z-2'>ABOUT</Link>
-        <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" ref={el => navElementsRef.current[4] = el} className='nav-element hidden md:inline-block text-lg mt-[20px] md:mt-[6px] underline md:no-underline z-2'>LINKEDIN</a>
-        <div 
-          ref={el => { 
-            darkModeButtonRef.current = el;
-            navElementsRef.current[5] = el;
-          }}
-          onClick={toggleDarkMode}
-          id='dark-mode-button' 
-          className={`will-change-transform cursor-pointer hidden md:inline-block w-[48px] lg:w-[56px] h-[48px] lg:h-[56px] bg-[#D9D9D9] rounded-full dark:border-white border mt-[6px] ${isDark ? "drop-shadow-[0_0_20px_#ffffff]" : "drop-shadow-[0_0_20px_rgba(0,0,0,0.5)]"} nav-element`}
-        ></div>
+    <nav
+      id="main-nav"
+      className="fixed bottom-0 left-0 right-0 z-50"
+      style={{
+        height: '40px',
+        background: '#C0C0C0',
+        borderTop: '2px solid #FFFFFF',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px',
+        padding: '0 4px',
+        boxShadow: '0 -1px 0 #808080',
+      }}
+    >
+      {/* Start button */}
+      <div style={{ position: 'relative' }}>
+        <button
+          className="win-start-btn"
+          onClick={(e) => { e.stopPropagation(); setStartOpen(v => !v); }}
+          style={{ fontWeight: 'bold', letterSpacing: '0.5px' }}
+        >
+          <img
+            src="/THUMBNAIL.png"
+            alt=""
+            style={{ width: '18px', height: '18px', imageRendering: 'pixelated' }}
+          />
+          Start
+        </button>
+
+        {/* Start menu popup */}
+        {startOpen && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '40px',
+              left: 0,
+              width: '200px',
+              background: '#C0C0C0',
+              borderTop: '2px solid #FFFFFF',
+              borderLeft: '2px solid #FFFFFF',
+              borderRight: '2px solid #808080',
+              borderBottom: '2px solid #808080',
+              outline: '1px solid #000',
+              zIndex: 100,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Sidebar strip */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flex: 1,
+            }}>
+              <div style={{
+                width: '24px',
+                background: 'linear-gradient(to top, #000080, #1084D0)',
+                display: 'flex',
+                alignItems: 'flex-end',
+                justifyContent: 'center',
+                padding: '4px 0',
+                writingMode: 'vertical-rl',
+                transform: 'rotate(180deg)',
+                color: '#FFFFFF',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                letterSpacing: '2px',
+                fontFamily: "'VT323', sans-serif",
+                flexShrink: 0,
+              }}>
+                lucas mcallister
+              </div>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '4px 0' }}>
+                <Link
+                  to="/"
+                  className="win-menu-item"
+                  onClick={() => setStartOpen(false)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '4px 8px' }}
+                >
+                  <span style={{ fontSize: '20px' }}>🏠</span>
+                  <span>Home</span>
+                </Link>
+                <Link
+                  to="/about"
+                  className="win-menu-item"
+                  onClick={() => setStartOpen(false)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '4px 8px' }}
+                >
+                  <span style={{ fontSize: '20px' }}>📄</span>
+                  <span>About Me</span>
+                </Link>
+                <a
+                  href="https://www.linkedin.com/in/lucas-mcallister-29a794289/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="win-menu-item"
+                  onClick={() => setStartOpen(false)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '4px 8px' }}
+                >
+                  <span style={{ fontSize: '20px' }}>🔗</span>
+                  <span>LinkedIn</span>
+                </a>
+                <div style={{
+                  borderTop: '1px solid #808080',
+                  borderBottom: '1px solid #FFFFFF',
+                  margin: '2px 0',
+                }} />
+                <button
+                  className="win-menu-item"
+                  onClick={() => { toggleDarkMode(); setStartOpen(false); }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '4px 8px',
+                    background: 'none',
+                    border: 'none',
+                    width: '100%',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    fontFamily: "'VT323', sans-serif",
+                    fontSize: '18px',
+                  }}
+                >
+                  <span style={{ fontSize: '20px' }}>{isDark ? '☀️' : '🌙'}</span>
+                  <span>{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Divider */}
+      <div style={{
+        width: '1px',
+        height: '28px',
+        borderLeft: '1px solid #808080',
+        borderRight: '1px solid #FFFFFF',
+        margin: '0 2px',
+      }} />
+
+      {/* Open window buttons */}
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <button className={`win-taskbar-btn ${isHome ? 'active' : ''}`}>
+          <img
+            src="/THUMBNAIL.png"
+            alt=""
+            style={{ width: '14px', height: '14px', imageRendering: 'pixelated', flexShrink: 0 }}
+          />
+          lucas.exe
+        </button>
+      </Link>
+
+      {isAbout && (
+        <Link to="/about" style={{ textDecoration: 'none' }}>
+          <button className="win-taskbar-btn active">
+            📄 About
+          </button>
+        </Link>
+      )}
+
+      {/* Spacer */}
+      <div style={{ flex: 1 }} />
+
+      {/* System tray */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          padding: '2px 6px',
+          borderTop: '1px solid #808080',
+          borderLeft: '1px solid #808080',
+          borderRight: '1px solid #FFFFFF',
+          borderBottom: '1px solid #FFFFFF',
+          background: '#C0C0C0',
+          height: '28px',
+          fontSize: '16px',
+          fontFamily: "'VT323', sans-serif",
+        }}
+      >
+        <span style={{ fontSize: '16px' }}>🔊</span>
+        <span style={{ fontSize: '16px' }}>🌐</span>
+        <span style={{ borderLeft: '1px solid #808080', paddingLeft: '6px', fontSize: '16px' }}>
+          {time}
+        </span>
       </div>
     </nav>
-)}
+  );
+};
 
 export default Navbar;

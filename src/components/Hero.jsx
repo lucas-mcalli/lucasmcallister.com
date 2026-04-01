@@ -1,62 +1,192 @@
-import { useEffect, useRef } from "react";
-import { animate, stagger } from "motion";
+import { useEffect, useRef, useState } from "react";
 
+// Win2K-style "Welcome" dialog / hero window
 const Hero = ({ isFirstHeroLoad }) => {
+  const [visible, setVisible] = useState(false);
+  const [pos, setPos] = useState({ x: 80, y: 60 });
+  const [dragging, setDragging] = useState(false);
+  const dragOffset = useRef({ x: 0, y: 0 });
+  const windowRef = useRef(null);
 
-  const homeArrowRef = useRef(null);
-  const heroElementsRef = useRef([]);
-  const isFirst = isFirstHeroLoad.current;
-
-  // Home arrow animation
   useEffect(() => {
-    if (!homeArrowRef.current) return;
-    
-    const arrowDelay = isFirst ? 0.5 : 0.2;
-    
-    animate(
-      homeArrowRef.current,
-      { y: [0, 30] },
-      {
-        delay: arrowDelay,
-        duration: 3,
-        ease: 'easeInOut',
-        repeat: Infinity,
-        repeatType: 'reverse'
-      }
-    );
+    // Small delay before showing, like a dialog box appearing
+    const t = setTimeout(() => setVisible(true), isFirstHeroLoad.current ? 400 : 80);
+    isFirstHeroLoad.current = false;
+    return () => clearTimeout(t);
   }, []);
 
-  // Hero elements animation
+  // Draggable title bar
+  const onMouseDown = (e) => {
+    setDragging(true);
+    dragOffset.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
+  };
+
   useEffect(() => {
-    const elements = heroElementsRef.current.filter(el => el !== null);
-    if (elements.length === 0) return;
-    
-    const elementDelay = isFirst ? 0.7 : 0.1;
-    
-    animate(
-      elements,
-      { y: [-20, 0], opacity: [0, 100], filter: ["blur(6px)", "blur(0px)"] },
-      { delay: stagger(0.3, { startDelay: elementDelay }), duration: 0.6 }
-    );
-    
-    isFirstHeroLoad.current = false;
-    }, []);
-    
+    if (!dragging) return;
+    const onMove = (e) => {
+      setPos({ x: e.clientX - dragOffset.current.x, y: e.clientY - dragOffset.current.y });
+    };
+    const onUp = () => setDragging(false);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+    };
+  }, [dragging]);
+
+  if (!visible) return null;
 
   return (
-    <section id='hero' className='flex flex-col flex-grow justify-center items-center mt-0 md:items-start md:mt-16'>
-        <p ref={el => heroElementsRef.current[0] = el} className='hero-element font-grotesk text-justify w-full text-[42px]/12 text-wrap mb-[16vh] md:text-5xl/16 lg:text-6xl/17 lg:text-left 2xl:text-7xl/20 3xl:text-8xl/20 lg:w-[95%] xl:w-[75%] 2xl:w-[70%] relative z-10'>
-          I'm Lucas, a Computer Science undergraduate at UF focused on User Experience and front-end programming.
-        </p>
-        <div ref={el => heroElementsRef.current[1] = el} className="hero-element arrow-div hidden mt-0 lg:-mt-15 2xl:mt-0 lg:inline-block sm:mb-[15%] justify-start relative z-10">
-          <a href='#projects-section-text'>
-            <svg ref={homeArrowRef} id="home-arrow" xmlns="http://www.w3.org/2000/svg" width="49" height="154" viewBox="0 0 49 154" fill="none" className="stroke-black dark:stroke-white">
-              <path d="M24.5 0V152.5M24.5 152.5L48 129M24.5 152.5L1 129" strokeWidth="2"/>
-            </svg>
-          </a>  
+    <div
+      ref={windowRef}
+      className="win-window"
+      style={{
+        position: 'absolute',
+        top: `${pos.y}px`,
+        left: `${pos.x}px`,
+        width: 'min(580px, calc(100vw - 32px))',
+        display: 'flex',
+        flexDirection: 'column',
+        zIndex: 10,
+        boxShadow: '3px 3px 0 #000000',
+      }}
+    >
+      {/* Title bar */}
+      <div
+        className="win-titlebar"
+        onMouseDown={onMouseDown}
+        style={{ cursor: dragging ? 'grabbing' : 'move', userSelect: 'none' }}
+      >
+        <img
+          src="/THUMBNAIL.png"
+          alt=""
+          style={{ width: '14px', height: '14px', imageRendering: 'pixelated', flexShrink: 0 }}
+        />
+        <span style={{ flex: 1 }}>Welcome — lucas mcallister</span>
+        <div style={{ display: 'flex', gap: '2px', marginLeft: 'auto' }}>
+          <button className="win-chrome-btn" aria-label="Minimize">_</button>
+          <button className="win-chrome-btn" aria-label="Maximize">□</button>
+          <button
+            className="win-chrome-btn"
+            aria-label="Close"
+            onClick={() => setVisible(false)}
+            style={{ fontWeight: 'bold' }}
+          >
+            ✕
+          </button>
         </div>
-    </section>
-  )
-}
+      </div>
+
+      {/* Menu bar */}
+      <div style={{
+        display: 'flex',
+        borderBottom: '1px solid #808080',
+        padding: '1px 2px',
+        background: '#D4D0C8',
+      }}>
+        <span className="win-menu-item">File</span>
+        <span className="win-menu-item">Edit</span>
+        <span className="win-menu-item">View</span>
+        <span className="win-menu-item">Help</span>
+      </div>
+
+      {/* Content */}
+      <div style={{ padding: '16px', background: '#FFFFFF' }}>
+        {/* Info rows like a Properties dialog */}
+        <div style={{
+          display: 'flex',
+          gap: '12px',
+          marginBottom: '16px',
+          alignItems: 'flex-start',
+        }}>
+          {/* Big icon */}
+          <div style={{ flexShrink: 0 }}>
+            <img
+              src="/THUMBNAIL.png"
+              alt="avatar"
+              style={{ width: '48px', height: '48px', imageRendering: 'pixelated' }}
+            />
+          </div>
+          <div style={{ flex: 1 }}>
+            <p style={{
+              fontFamily: "'VT323', sans-serif",
+              fontSize: '28px',
+              lineHeight: 1.1,
+              color: '#000000',
+              marginBottom: '6px',
+            }}>
+              Hi, I&apos;m Lucas McAllister
+            </p>
+            <p style={{
+              fontFamily: "'VT323', sans-serif",
+              fontSize: '20px',
+              color: '#444444',
+              lineHeight: 1.3,
+            }}>
+              Computer Science undergraduate at UF<br />
+              focused on User Experience &amp; front-end programming.
+            </p>
+          </div>
+        </div>
+
+        {/* Horizontal rule */}
+        <div style={{ borderTop: '1px solid #808080', borderBottom: '1px solid #FFFFFF', marginBottom: '12px' }} />
+
+        {/* Status-bar style property rows */}
+        {[
+          { label: 'Degree', value: 'B.S. Computer Science — University of Florida' },
+          { label: 'Focus',  value: 'UX/UI Design, Front-End Engineering' },
+          { label: 'Status', value: 'Available for internships & collaborations' },
+        ].map(({ label, value }) => (
+          <div key={label} style={{ display: 'flex', gap: '8px', marginBottom: '4px', alignItems: 'flex-start' }}>
+            <span style={{
+              fontFamily: "'VT323', sans-serif",
+              fontSize: '18px',
+              color: '#000000',
+              fontWeight: 'bold',
+              width: '80px',
+              flexShrink: 0,
+            }}>{label}:</span>
+            <span style={{
+              fontFamily: "'VT323', sans-serif",
+              fontSize: '18px',
+              color: '#000080',
+            }}>{value}</span>
+          </div>
+        ))}
+
+        {/* Separator */}
+        <div style={{ borderTop: '1px solid #808080', borderBottom: '1px solid #FFFFFF', margin: '12px 0' }} />
+
+        {/* Buttons */}
+        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+          <a
+            href="#projects-section-text"
+            className="win-btn"
+            style={{ textDecoration: 'none' }}
+          >
+            View Projects
+          </a>
+          <a
+            href="https://www.linkedin.com/in/lucas-mcallister-29a794289/"
+            target="_blank"
+            rel="noreferrer"
+            className="win-btn"
+            style={{ textDecoration: 'none' }}
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      {/* Status bar */}
+      <div className="win-statusbar">
+        <div className="win-statusbar-panel" style={{ flex: 1 }}>Ready</div>
+        <div className="win-statusbar-panel">Portfolio v2.0</div>
+      </div>
+    </div>
+  );
+};
 
 export default Hero;

@@ -1,69 +1,367 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+/* ── Windows 2000 design tokens ── */
+:root {
+  /* Core palette */
+  --color-desktop:        #008080;   /* classic teal desktop */
+  --color-silver:         #C0C0C0;   /* window face / button face */
+  --color-silver-dark:    #808080;   /* window shadow edge */
+  --color-silver-light:   #FFFFFF;   /* window highlight edge */
+  --color-titlebar-start: #000080;   /* classic Win2K title bar blue */
+  --color-titlebar-end:   #1084D0;
+  --color-titlebar-text:  #FFFFFF;
+  --color-window-bg:      #FFFFFF;
+  --color-control-face:   #D4D0C8;   /* lighter button face */
+  --color-text:           #000000;
+  --color-text-muted:     #444444;
+  --color-link:           #0000EE;
+  --color-link-visited:   #551A8B;
+  --color-select-bg:      #000080;
+  --color-select-text:    #FFFFFF;
+  --color-taskbar:        #C0C0C0;
+  --color-taskbar-border: #FFFFFF;
+  --color-inset-dark:     #808080;
+  --color-inset-light:    #FFFFFF;
+  --color-scrollbar:      #C0C0C0;
+
+  /* Radius: none in Win2K */
+  --radius: 0px;
+}
+
+/* ── Reset / base ── */
 @layer base {
-    html, body {
-      font-family: 'Space Mono', monospace;  
-      scroll-behavior: smooth;
-    }
-    
-    ::selection {
-      background-color: #eec12e;
-    }
-    
-    ::-moz-selection {
-      background-color: #eec12e;
-    }
+  html, body {
+    font-family: 'VT323', 'Fixedsys', 'Terminal', 'MS Sans Serif', 'Arial', sans-serif;
+    font-size: 16px;
+    background-color: var(--color-desktop);
+    color: var(--color-text);
+    scroll-behavior: auto;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  ::selection {
+    background-color: var(--color-select-bg);
+    color: var(--color-select-text);
+  }
+
+  ::-moz-selection {
+    background-color: var(--color-select-bg);
+    color: var(--color-select-text);
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  a:visited {
+    color: var(--color-link-visited);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 16px; }
+  ::-webkit-scrollbar-track { background: var(--color-silver); }
+  ::-webkit-scrollbar-thumb { 
+    background: var(--color-control-face);
+    border-top: 1px solid var(--color-silver-light);
+    border-left: 1px solid var(--color-silver-light);
+    border-right: 1px solid var(--color-silver-dark);
+    border-bottom: 1px solid var(--color-silver-dark);
+  }
 }
 
-@font-face {
-  font-family: "Untitled Sans";
-  src: url("/public/TestUntitledSans-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Untitled Sans";
-  src: url("/public/TestUntitledSans-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
-  font-weight: 300 700;
-  font-display: swap;
+/* ── Win2K Component Primitives ── */
+/* Expand animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @layer utilities {
-  .font-serif {
-    font-family: 'Source Serif 4', serif;
-    font-weight: 400;
-    font-optical-sizing: auto;
-    @apply leading-normal;
+
+  /* Raised bevel (button / window chrome) */
+  .win-raised {
+    border-top: 2px solid var(--color-silver-light);
+    border-left: 2px solid var(--color-silver-light);
+    border-right: 2px solid var(--color-silver-dark);
+    border-bottom: 2px solid var(--color-silver-dark);
+    background-color: var(--color-control-face);
+  }
+
+  /* Sunken bevel (inset / field) */
+  .win-sunken {
+    border-top: 2px solid var(--color-silver-dark);
+    border-left: 2px solid var(--color-silver-dark);
+    border-right: 2px solid var(--color-silver-light);
+    border-bottom: 2px solid var(--color-silver-light);
+    background-color: var(--color-window-bg);
+  }
+
+  /* Window outer frame */
+  .win-window {
+    background-color: var(--color-control-face);
+    border-top: 2px solid var(--color-silver-light);
+    border-left: 2px solid var(--color-silver-light);
+    border-right: 2px solid var(--color-silver-dark);
+    border-bottom: 2px solid var(--color-silver-dark);
+    outline: 1px solid #000000;
+  }
+
+  /* Classic title bar */
+  .win-titlebar {
+    background: linear-gradient(to right, var(--color-titlebar-start), var(--color-titlebar-end));
+    color: var(--color-titlebar-text);
+    padding: 3px 4px 3px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'VT323', 'MS Sans Serif', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  /* Title bar chrome buttons (–, □, ✕) */
+  .win-chrome-btn {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    flex-shrink: 0;
+    color: #000;
+    font-family: 'VT323', monospace;
+    border-top: 2px solid var(--color-silver-light);
+    border-left: 2px solid var(--color-silver-light);
+    border-right: 2px solid var(--color-silver-dark);
+    border-bottom: 2px solid var(--color-silver-dark);
+    background-color: var(--color-control-face);
+    cursor: pointer;
+    outline: 1px solid #000;
+  }
+
+  .win-chrome-btn:active {
+    border-top: 2px solid var(--color-silver-dark);
+    border-left: 2px solid var(--color-silver-dark);
+    border-right: 2px solid var(--color-silver-light);
+    border-bottom: 2px solid var(--color-silver-light);
+  }
+
+  /* Standard Win2K push button */
+  .win-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 12px;
+    font-family: 'VT323', 'MS Sans Serif', sans-serif;
+    font-size: 18px;
+    color: var(--color-text);
+    background-color: var(--color-control-face);
+    border-top: 2px solid var(--color-silver-light);
+    border-left: 2px solid var(--color-silver-light);
+    border-right: 2px solid var(--color-silver-dark);
+    border-bottom: 2px solid var(--color-silver-dark);
+    outline: 1px solid #000;
+    cursor: pointer;
+    min-width: 75px;
+    min-height: 26px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .win-btn:hover {
+    background-color: #d8d4cc;
+  }
+
+  .win-btn:active,
+  .win-btn.pressed {
+    border-top: 2px solid var(--color-silver-dark);
+    border-left: 2px solid var(--color-silver-dark);
+    border-right: 2px solid var(--color-silver-light);
+    border-bottom: 2px solid var(--color-silver-light);
+    padding-top: 3px;
+    padding-left: 13px;
+  }
+
+  .win-btn:disabled {
+    color: var(--color-silver-dark);
+    text-shadow: 1px 1px 0 var(--color-silver-light);
+    cursor: not-allowed;
+  }
+
+  /* Start button */
+  .win-start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-family: 'VT323', 'MS Sans Serif', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-text);
+    background-color: var(--color-control-face);
+    border-top: 2px solid var(--color-silver-light);
+    border-left: 2px solid var(--color-silver-light);
+    border-right: 2px solid var(--color-silver-dark);
+    border-bottom: 2px solid var(--color-silver-dark);
+    outline: 1px solid #000;
+    cursor: pointer;
+    height: 32px;
+    text-decoration: none;
+  }
+
+  /* Taskbar button */
+  .win-taskbar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-family: 'VT323', 'MS Sans Serif', sans-serif;
+    font-size: 18px;
+    color: var(--color-text);
+    background-color: var(--color-control-face);
+    border-top: 2px solid var(--color-silver-light);
+    border-left: 2px solid var(--color-silver-light);
+    border-right: 2px solid var(--color-silver-dark);
+    border-bottom: 2px solid var(--color-silver-dark);
+    outline: 1px solid #000;
+    cursor: pointer;
+    height: 28px;
+    min-width: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+  }
+
+  .win-taskbar-btn.active {
+    border-top: 2px solid var(--color-silver-dark);
+    border-left: 2px solid var(--color-silver-dark);
+    border-right: 2px solid var(--color-silver-light);
+    border-bottom: 2px solid var(--color-silver-light);
+    background-color: #b8b4ac;
+  }
+
+  /* Menu bar link */
+  .win-menu-item {
+    font-family: 'VT323', sans-serif;
+    font-size: 18px;
+    color: var(--color-text);
+    padding: 1px 6px;
+    text-decoration: underline;
+    text-underline-offset: 1px;
+    cursor: pointer;
+  }
+
+  .win-menu-item:hover {
+    background-color: var(--color-select-bg);
+    color: var(--color-select-text);
+  }
+
+  /* Status bar */
+  .win-statusbar {
+    border-top: 1px solid var(--color-silver-dark);
+    padding: 2px 4px;
+    font-family: 'VT323', sans-serif;
+    font-size: 16px;
+    color: var(--color-text);
+    background-color: var(--color-control-face);
+    display: flex;
+    gap: 4px;
+  }
+
+  .win-statusbar-panel {
+    border-top: 1px solid var(--color-silver-dark);
+    border-left: 1px solid var(--color-silver-dark);
+    border-right: 1px solid var(--color-silver-light);
+    border-bottom: 1px solid var(--color-silver-light);
+    padding: 0 4px;
+  }
+
+  /* Desktop icon */
+  .win-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    width: 72px;
+    padding: 4px;
+    cursor: pointer;
+    font-family: 'VT323', sans-serif;
+    font-size: 15px;
+    color: var(--color-silver-light);
+    text-align: center;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  .win-icon:hover .win-icon-label {
+    background-color: var(--color-select-bg);
+    color: var(--color-select-text);
+    text-shadow: none;
+  }
+
+  .win-icon img, .win-icon .win-icon-img {
+    image-rendering: pixelated;
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.5));
+  }
+
+  /* Scrollable window content area */
+  .win-content {
+    background-color: var(--color-window-bg);
+    overflow: auto;
+    flex: 1;
+  }
+
+  /* Progress bar */
+  .win-progress-track {
+    background-color: var(--color-window-bg);
+    border-top: 1px solid var(--color-silver-dark);
+    border-left: 1px solid var(--color-silver-dark);
+    height: 18px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .win-progress-fill {
+    background-color: var(--color-select-bg);
+    height: 100%;
+    width: 60%;
+  }
+
+  /* Font utilities */
+  .font-win {
+    font-family: 'VT323', 'MS Sans Serif', 'Arial', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'VT323', 'MS Sans Serif', 'Arial', sans-serif;
   }
 
   .font-mono {
-    font-family: 'Space Mono', monospace;
+    font-family: 'VT323', 'Fixedsys', 'Courier New', monospace;
   }
-  
-  .font-sans {
-    font-family: "Untitled Sans", sans-serif;
+
+  .font-serif {
+    font-family: 'VT323', 'Times New Roman', serif;
   }
 
   .font-grotesk {
-    font-family: 'Space Grotesk';
+    font-family: 'VT323', 'MS Sans Serif', sans-serif;
     font-weight: 400;
   }
 
   .font-code {
-    font-family: 'Menlo', 'Consolas', 'Cascadia Mono';
+    font-family: 'VT323', 'Fixedsys', 'Courier New', monospace;
   }
 }
-
-@custom-variant dark (&:where(.dark, .dark *));
