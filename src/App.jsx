@@ -15,13 +15,11 @@ export default function App() {
   // Toggle dark mode
   const toggleDarkMode = () => {
     const html = document.documentElement;
-    
     if (!isDark) {
       html.classList.add('dark');
     } else {
       html.classList.remove('dark');
     }
-    
     setIsDark(!isDark);
   };
 

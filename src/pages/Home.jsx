@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import '../input.css';
 import { animate, stagger } from "motion";
-
+import { motion } from "motion/react"
 import Navbar from "../components/Navbar.jsx"
 import ProjectCard from "../components/ProjectCard.jsx"
 import Footer from "../components/Footer.jsx"
-import ASCIIRain from '../components/ASCIIText.jsx';
+import Waves from '../components/Waves.jsx';
 import { projectsData } from '../data/projectsData';
 import { getGraphic } from '../helpers/getGraphic';
 
@@ -17,7 +17,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
   const isFirst = isFirstHeroLoad.current;
 
   // Hero elements animation
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = heroElementsRef.current.filter(el => el !== null);
     if (elements.length === 0) return;
     
@@ -50,32 +50,216 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
     return () => window.removeEventListener('scroll', handleScroll);
   }, [expandedProjectId]);
 
-  
+  // // Font randomizer for name in hero section
+  //   const fonts = [
+  //   'font-otto',
+  //   'font-publisher',
+  //   'font-antique',
+  //   'font-gambarino',
+  //   'font-luara',
+  //   'font-pencerio',
+  //   'font-sans',
+  //   'Inter'
+  //   // add more custom fonts here
+  // ]
+
+  // const [currentFont, setCurrentFont] = useState(fonts[0])
+
+  // useEffect(() => {
+  //   const shuffled = [...fonts].sort(() => Math.random() - 0.5)
+  //   let count = 0
+
+  //   const interval = setInterval(() => {
+  //     setCurrentFont(shuffled[count])
+  //     count++
+  //     if (count >= shuffled.length) {
+  //       clearInterval(interval)
+  //     }
+  //   }, 150)
+
+  //   return () => clearInterval(interval)
+  // }, [])
 
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
-      <ASCIIRain 
-        fontSize={16}
-        isDark={isDark}
-        isVisible={!expandedProjectId}
-        affectedCharColor={isDark ? "#332501ff" : "#f6de8fff"}
-        mouseEffectRadius={1}
+    <div className="fixed inset-0 z-0">
+      <Waves
+        lineColor={isDark ? "#1f1f1f" : "#F5F5F5"}
+        backgroundColor={isDark ? "rgba(0,0,0,0)" : "rgba(255, 255, 255, 0)"}
+        waveSpeedX={0}
+        waveSpeedY={0.04}
+        waveAmpX={15}
+        waveAmpY={25}
+        friction={0.75}
+        tension={0.001}
+        maxCursorMove={20}
+        xGap={12}
+        yGap={36}
       />
-      <div className="mx-6 md:mx-15 2xl:mx-auto max-w-[1600px]">
-        <div id='landing-page' className="landing-page-container h-[80vh] lg:h-[70vh] flex flex-col">
-          <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
-          <section id='hero' className='flex flex-col flex-grow justify-center items-center mt-0 md:items-start md:mt-16'>
-            <p ref={el => heroElementsRef.current[0] = el} className='hero-element font-grotesk text-justify w-full text-[42px]/12 text-wrap mb-[16vh] md:text-5xl/16 lg:text-6xl/17 lg:text-left 2xl:text-7xl/20 3xl:text-8xl/20 lg:w-[95%] xl:w-[75%] 2xl:w-[70%] relative z-10'>
-              I'm Lucas, a Computer Science undergraduate at UF focused on User Experience and front-end programming.
-            </p>
-          </section>
-        </div>
+    </div>
+    <div className="px-6 lg:px-15 max-w-[1750px] mx-auto relative z-10">
+      <div id='landing-page' className="landing-page-container h-full lg:h-[80vh] 2xl:h-[75vh] flex flex-col">
+        <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
+        {/* Grid */}
+        <div
+          className="
+            flex flex-col
+            lg:grid lg:grid-cols-2
+            gap-10 lg:gap-[5%]
+            h-full
+            max-h-none lg:max-h-[1000px]
+            justify-items-center
+          "
+        >
+          {/* Left col */}
+          <div
+            ref={el => heroElementsRef.current[0] = el}
+            className="
+              flex flex-col justify-end gap-6
+              order-2 lg:order-1
+              w-full
+            "
+          >
+            <img
+              src="/laptop.webp"
+              className="
+                w-full
+                h-72
+                lg:h-auto
+                max-h-[60%]
+                min-h-0
+                object-cover
+              "
+            />
 
-      <section id="projects-section" className="pt-0 lg:pt-[7%] mb-[10%] flex flex-col justify-start items-center">
+            <h1 className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-otto tracking-tight">
+              Lucas McAllister
+            </h1>
+          </div>
+
+          {/* Right col */}
+          <div
+            ref={el => heroElementsRef.current[1] = el}
+            className="
+              flex flex-col justify-start
+              w-full lg:w-[80%] 2xl:w-[75%]
+              pt-2 lg:pt-15
+              order-1 lg:order-2
+            "
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-[-0.05em] mb-2 lg:mb-4 pt-12 lg:pt-0">
+              Welcome!
+            </h2>
+
+            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-4 lg:mb-8 text-left lg:text-justify w-full sm:w-[80%] md:w-[65%] lg:w-full">
+              I am a product designer and Computer Science undergraduate at the
+              University of Florida. Inspired by industrial design, architecture,
+              and computer hardware design, I am passionate about how design serves
+              as a profound tool for expression.
+            </p>
+
+            <h3 className="font-semibold mb-4 hidden lg:block">
+              My experience:
+            </h3>
+
+            <ul className="hidden lg:flex flex-col gap-4">
+              <li className="flex items-center gap-3 ml-2 lg:ml-6">
+                <a
+                  href="https://theagency.jou.ufl.edu/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <motion.img
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    src="/the_agency.jpg"
+                    className="w-9 h-9 lg:w-8 lg:h-8 rounded object-cover shrink-0"
+                  />
+                </a>
+
+                <span className="text-gray-500 text-sm">
+                  Visual/Graphic Designer
+                </span>
+
+                <span className="text-gray-400 text-xs ml-auto">
+                  Mar 2026 -
+                </span>
+              </li>
+
+              <li className="flex items-center gap-3 ml-2 lg:ml-6">
+                <a
+                  href="https://gatoruserdesign.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <motion.img
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    src="/gator_user_design_logo.jpeg"
+                    className="w-9 h-9 lg:w-8 lg:h-8 rounded object-cover shrink-0"
+                  />
+                </a>
+
+                <span className="text-gray-500 text-sm">
+                  First Year Design Team Lead
+                </span>
+
+                <span className="text-gray-400 text-xs ml-auto">
+                  Jan 2026 -
+                </span>
+              </li>
+
+              <li className="flex items-center gap-3 ml-2 lg:ml-6">
+                <a
+                  href="https://ufsec.org/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <motion.img
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    src="/ufsec.png"
+                    className="w-9 h-9 lg:w-8 lg:h-8 rounded shrink-0"
+                  />
+                </a>
+
+                <span className="text-gray-500 text-sm">
+                  Web UX/UI Designer
+                </span>
+
+                <span className="text-gray-400 text-xs ml-auto">
+                  Aug 2025 – Nov 2025
+                </span>
+              </li>
+
+              <li className="flex items-center gap-3 ml-2 lg:ml-6">
+                <a
+                  href="https://gatorgaminguf.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <motion.img
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    src="/gg_icon.jpg"
+                    className="w-9 h-9 lg:w-8 lg:h-8 rounded shrink-0"
+                  />
+                </a>
+
+                <span className="text-gray-500 text-sm">
+                  Web UX/UI Designer
+                </span>
+
+                <span className="text-gray-400 text-xs ml-auto">
+                  Jan 2025 – Apr 2025
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <section id="projects-section" className="pt-24 mb-[10%] flex flex-col justify-start items-center">
         <ul>
           <li id='projects-section-text' className="scroll-mt-[30px] mb-15">
-            <div ref={el => heroElementsRef.current[1] = el} className="projects-section-text flex w-full justify-start text-xs xl:text-base mb-[4%] md:mb-[2%] z-20 relative">// PROJECTS</div>
-            <div ref={el => heroElementsRef.current[2] = el}>
+            <div ref={el => heroElementsRef.current[2]= el} className="projects-section-text flex w-full justify-start text-xs xl:text-base font-departure mb-[4%] lg:mb-[2%] z-20 relative">// PROJECTS</div>
+            <div ref={el => heroElementsRef.current[3] = el}>
               {projectsData.map(project => (
               <ProjectCard
                 key={project.id}
@@ -97,6 +281,14 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
       </section>
       <Footer />
       </div>
+        <div className="fixed bottom-4 left-4 z-50 bg-black text-white text-xs px-2 py-1 rounded">
+          <span className="sm:hidden">xs</span>
+          <span className="hidden sm:block md:hidden">sm</span>
+          <span className="hidden md:block lg:hidden">md</span>
+          <span className="hidden lg:block xl:hidden">lg</span>
+          <span className="hidden xl:block 2xl:hidden">xl</span>
+          <span className="hidden 2xl:block">2xl</span>
+        </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ export const projectsData = [
   {
     id: 'atrium',
     title: 'Atrium',
-    subtitle: 'event hosting web-app',
+    subtitle: 'Event hosting web-app',
     media: '/atrium_cover.webp',
     component: AtriumProject,
     disabled: false,
@@ -15,7 +15,7 @@ export const projectsData = [
     id: 'gator gaming',
     title: 'Gator Gaming - Design Team',
     titleMobile: 'Gator Gaming',
-    subtitle: 'website redesign',
+    subtitle: 'Website redesign',
     media: '/gatorgaming_cover.webp',
     component: GGProject,
     disabled: false,
@@ -23,7 +23,7 @@ export const projectsData = [
   {
     id: 'carulla',
     title: 'Carulla - Case Study',
-    subtitle: 'mobile app design',
+    subtitle: 'Mobile app design',
     media: '/carulla_wireframe_cropped.webp',
     component: CarullaProject,
     disabled: true,

@@ -39,11 +39,11 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         contextRef.current = el;
       }
       }>
-        <p className="text-xs sm:text-sm">CONTEXT</p>
-        <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
+        <p className="text-xs sm:text-sm font-departure">CONTEXT</p>
+        <div className="flex flex-col gap-3 lg:gap-5 2xl:gap-7">
           <div className="flex items-center w-full gap-6 xl:gap-10 xl:w-[90%] 2xl:w-[70%]">
             <p className="font-serif mt-2 sm:text-xl lg:text-2xl xl:text-3xl xl:w-[75%] 2xl:w-[70%]">This project was completed as part of a Gator User Design initiative to give members experience in research-driven design serving other on-campus organizations.</p>
-            <img className="w-1/10 h-1/10 max-w-[100px] max-h-[100px] min-w-[70px] min-w-[70px] rotate-[17.45deg] rounded-full md:shadow-[0px_0px_21.399999618530273px_12px_rgba(0,0,0,0.25)] md:dark:shadow-[0px_0px_21.4px_12px_rgba(255,255,255,0.25)] md:outline md:outline-1 md:outline-black" src="/gator_user_design_logo.jpeg" alt="Gator User Design logo" />
+            <img className="w-1/10 h-1/10 max-w-[100px] max-h-[100px] min-w-[70px] min-w-[70px] rotate-[17.45deg] rounded-full lg:shadow-[0px_0px_21.399999618530273px_12px_rgba(0,0,0,0.25)] lg:dark:shadow-[0px_0px_21.4px_12px_rgba(255,255,255,0.25)] lg:outline lg:outline-1 lg:outline-black" src="/gator_user_design_logo.jpeg" alt="Gator User Design logo" />
           </div>   
           <div className='flex items-start xl:items-center w-full gap-6 xl:gap-10 xl:w-[80%] 2xl:w-[70%]'>
             <div className="flex flex-col ml-3 xl:ml-4 gap-2 xl:gap-5 items-center max-w-[100px] w-[20%]">
@@ -51,7 +51,7 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
               <p className=" font-sans text-xs lg:text-sm xl:text-base whitespace-nowrap">Team Members</p>
             </div>
             <div className='flex flex-col gap-2 2xl:gap-4 items-center'>
-              <p className=" font-sans text-xs md:text-base lg:text-lg">Gator Gaming is a student org at UF founded in 2010 focused on building community through video games. They host tournaments, social events, and GatorLAN, a signature in-person gaming event for the greater North/Central Florida community. We were tasked with redesigning their website, which should act as a recruitment tool as well as provide continuous info for existing members.</p>
+              <p className=" font-sans text-xs lg:text-base xl:text-lg">Gator Gaming is a student org at UF founded in 2010 focused on building community through video games. They host tournaments, social events, and GatorLAN, a signature in-person gaming event for the greater North/Central Florida community. We were tasked with redesigning their website, which should act as a recruitment tool as well as provide continuous info for existing members.</p>
               <img src={getGraphic("timeline")} className="hidden sm:block" alt="Project timeline showing key milestones" />
             </div>
           </div>
@@ -64,7 +64,7 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
       }}>
         <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
           <div className='flex flex-col gap-2 2xl:gap-3'>
-            <p className="mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm">PROBLEM</p>
+            <p className="mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm font-departure">PROBLEM</p>
             <p className="font-serif sm:text-xl lg:text-2xl xl:text-3xl xl:w-[70%] 2xl:w-[70%]">How might we communicate value to prospective members while serving as a central hub for existing ones? How can we memorably distinguish ourselves from others?</p>
           </div>
           <img src="/problem_image.jpg" className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Image showing final mobile prototypes" />
@@ -75,29 +75,29 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         projectElementsRef.current[3] = el;
         researchRef.current = el;
       }}>
-        <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7" >
+        <div className="flex flex-col gap-3 lg:gap-5 2xl:gap-7" >
           <div className="flex flex-col gap-2 2xl:gap-3">
-            <p className=" mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm">RESEARCH</p>
+            <p className=" mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm font-departure">RESEARCH</p>
             <p className=" font-serif sm:text-xl lg:text-2xl xl:text-3xl xl:w-[70%] 2xl:w-[70%]">Understanding what our product would be used for, who it will serve, and the opportunities it may bring for the club.</p>
           </div>
           <div className="flex flex-col gap-6 2xl:gap-8">
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">After interviewing club executives and understanding what their priorities and expectations are for a website redesign, each group member created a user persona. Together, we identified 4 key user groups that our redesign needed to support.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">After interviewing club executives and understanding what their priorities and expectations are for a website redesign, each group member created a user persona. Together, we identified 4 key user groups that our redesign needed to support.</p>
             <img src={getGraphic("key_users")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Four key user personas for Gator Gaming website" />
             <p className=" font-serif mt-2 2xl:mt-4 sm:text-xl lg:text-2xl xl:text-3xl xl:w-[80%] 2xl:w-[70%]">Next, we defined what constitutes a successful design in our case.</p>
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">First, we quickly wrote down ways the current website fails to deliver on the goals of our key user groups. </p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">First, we quickly wrote down ways the current website fails to deliver on the goals of our key user groups. </p>
             <img src={getGraphic("notes")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Research notes on current website failures" />
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">Next, we evaluated the websites of comparable clubs using the opportunities identified in our original site analysis as criteria. This helped us find gaps that could guide our strategy in the redesign.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">Next, we evaluated the websites of comparable clubs using the opportunities identified in our original site analysis as criteria. This helped us find gaps that could guide our strategy in the redesign.</p>
             <img src={getGraphic("comp_analysis")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Competitive analysis of similar club websites" />
             <img src={getGraphic("gaps")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Identified gaps and opportunities in competitive analysis" />
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">We then surveyed existing members to better understand the role the website should play for Gator Gaming and to learn from their joining experience and sustained membership. From the results, we identified three major insights that would shape our design for prospective members.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">We then surveyed existing members to better understand the role the website should play for Gator Gaming and to learn from their joining experience and sustained membership. From the results, we identified three major insights that would shape our design for prospective members.</p>
             <div className='flex justify-center xl:w-[80%] 2xl:w-[70%]'>
               <img src={getGraphic("survey_insights")} className="xl:w-[85%] 2xl:w-[80%] h-auto" alt="Three major insights from member survey results" />
             </div>
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">Finally, compiling all of our research, we created a list of 3 core goals, each with actionable objectives for our redesign.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">Finally, compiling all of our research, we created a list of 3 core goals, each with actionable objectives for our redesign.</p>
             <div className='flex justify-center xl:w-[80%] 2xl:w-[70%]'>
               <img src={getGraphic("requirements")} className="xl:w-[90%] 2xl:w-[80%] h-auto" alt="Three core goals with actionable objectives for redesign" />
             </div>
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">Considering these objectives and expectations established during our initial meeting with club executives, we determined that the most straightforward layout consisted of five pages: Home, About, Team, Events, and Gallery.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">Considering these objectives and expectations established during our initial meeting with club executives, we determined that the most straightforward layout consisted of five pages: Home, About, Team, Events, and Gallery.</p>
           </div>
         </div>
       </section>
@@ -105,20 +105,20 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         projectElementsRef.current[4] = el;
         designRef.current = el;
       }}>
-        <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
+        <div className="flex flex-col gap-3 lg:gap-5 2xl:gap-7">
           <div className='flex flex-col gap-2 2xl:gap-3'>
-            <p className=" mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm">DESIGN</p>
+            <p className=" mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm font-departure">DESIGN</p>
             <p className="font-serif sm:text-xl lg:text-2xl xl:text-3xl xl:w-[80%] 2xl:w-[70%]">Finding frictionless ways for users to get to what they need.</p>
           </div>
           <div className="flex flex-col gap-6 2xl:gap-8">
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">Once the site's layout was defined, the next step was to find the best way of organizing content to meet the objectives in a way users would understand. After analyzing sites from our competitive analysis and elsewhere, we created a conceptual sitemap.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">Once the site's layout was defined, the next step was to find the best way of organizing content to meet the objectives in a way users would understand. After analyzing sites from our competitive analysis and elsewhere, we created a conceptual sitemap.</p>
             <div className="flex justify-center xl:w-[80%] 2xl:w-[70%]">
               <img src={getGraphic("sitemap")} className="xl:w-[90%] 2xl:w-[70%] h-auto" alt="Conceptual sitemap for Gator Gaming website" />
             </div>
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">We then tested our initial user personas against the sitemap, ensuring that each one of their goals could be achieved intuitively and quickly using this structure.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">We then tested our initial user personas against the sitemap, ensuring that each one of their goals could be achieved intuitively and quickly using this structure.</p>
             <img src={getGraphic("user_persona_analysis")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="User persona analysis against sitemap structure" />
             <p className="font-serif sm:text-xl lg:text-2xl xl:text-3xl xl:w-[80%] 2xl:w-[70%]">Validating our high-fidelity designs with defined requirements.</p>
-            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] md:text-base lg:text-lg">Informed by the sitemap and defined requirements, each team member initially explored different layout and design approaches. These were then progressively refined into a cohesive design system, which informed the final high-fidelity prototype.</p>
+            <p className=" font-sans text-xs xl:w-[80%] 2xl:w-[70%] lg:text-base xl:text-lg">Informed by the sitemap and defined requirements, each team member initially explored different layout and design approaches. These were then progressively refined into a cohesive design system, which informed the final high-fidelity prototype.</p>
             <img src={getGraphic("hifis")} className="xl:w-[70%] 2xl:w-[65%] h-auto " alt="High-fidelity design prototypes for Gator Gaming website" />
           </div>
         </div>
@@ -127,8 +127,8 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         projectElementsRef.current[5] = el;
         reflectionRef.current = el;
       }}>
-        <div className="flex flex-col gap-3 md:gap-5 2xl:gap-7">
-          <p className="mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm">REFLECTION</p>
+        <div className="flex flex-col gap-3 lg:gap-5 2xl:gap-7">
+          <p className="mt-8 lg:mt-14 2xl:mt-20 text-xs sm:text-sm font-departure">REFLECTION</p>
           <div className="flex flex-col gap-6 2xl:gap-8">
             <img src={getGraphic("reflections")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Individual reflections"/>
             <img src={getGraphic("group_reflections")} className="xl:w-[75%] 2xl:w-[65%] h-auto mb-10" alt="Group reflections"/>
@@ -136,18 +136,18 @@ const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
         </div>
       </section>
       <section id="FINISHED PRODUCT">
-      <div className="w-full xl:w-[80%] 2xl:w-[70%] h-auto flex flex-col justify-center items-center -mt-12 md:-mt-4">
+      <div className="w-full xl:w-[80%] 2xl:w-[70%] h-auto flex flex-col justify-center items-center -mt-12 lg:-mt-4">
           <motion.a href="https://www.gatorgaminguf.com/" whileHover={{scale: 1.03}} target="_blank" rel="noopener noreferrer" className="inline-flex pointer-events-auto">
           <div>
-            <img src="/gg_logo.webp" className="w-10 h-auto translate-y-5 -translate-x-3 md:w-16 md:translate-y-7 md:-translate-x-4"/>
-            <div className="w-60 h-10 px-6 py-1 md:w-80 md:h-14 md:px-10 md:py-2 rounded-lg outline outline-1 outline-offset-[-1px] outline-zinc-300 inline-flex justify-center items-center gap-2.5">
-              <div className="justify-start text-lg md:text-2xl font-sans leading-9">
+            <img src="/gg_logo.webp" className="w-10 h-auto translate-y-5 -translate-x-3 lg:w-16 lg:translate-y-7 lg:-translate-x-4"/>
+            <div className="w-60 h-10 px-6 py-1 lg:w-80 lg:h-14 lg:px-10 lg:py-2 rounded-lg outline outline-1 outline-offset-[-1px] outline-zinc-300 inline-flex justify-center items-center gap-2.5">
+              <div className="justify-start text-lg lg:text-2xl font-sans leading-9">
                 gatorgaminguf.com
               </div>
             </div>
           </div>
           </motion.a>
-          <p className="text-xs md:text-sm font-sans mt-3 md:mt-5 -translate-x-1">View the finished product via the link above!</p>
+          <p className="text-xs lg:text-sm font-sans mt-3 lg:mt-5 -translate-x-1">View the finished product via the link above!</p>
         </div>
       </section>
     </div>

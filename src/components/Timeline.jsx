@@ -13,7 +13,7 @@ const Timeline = forwardRef(({sections, activeSection}, ref) => {
               <div key={id}>
                 <div className="entry flex gap-x-5 items-center">
                   <motion.a 
-                    className="h-4 text-right text-black dark:text-white text-[10px]" 
+                    className="h-4 text-right text-black dark:text-white text-xs font-departure" 
                     href={`#${label}`}
                     whileHover={{ scale: 1.05, color: "#808080" }}
                   >

@@ -78,19 +78,19 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
         <div className="container-text flex flex-col align-start">
           {project.titleMobile ? (
             <>
-              <p className="hidden md:inline text-lg xl:text-2xl text-wrap">
+              <p className="hidden lg:inline text-lg xl:text-2xl text-wrap font-semibold tracking-tighter">
                 {project.title}
               </p>
-              <p className="md:hidden text-lg text-wrap">
+              <p className="lg:hidden text-lg text-wrap">
                 {project.titleMobile}
               </p>
             </>
           ) : (
-            <p className="text-lg xl:text-2xl text-wrap">
+            <p className="text-lg xl:text-2xl text-wrap font-semibold tracking-tighter">
               {project.title}
             </p>
           )}
-          <p className="text-sm xl:text-lg text-wrap text-[#777777]">
+          <p className="text-sm xl:text-lg text-wrap text-gray-500">
             {project.subtitle}
           </p>
         </div>
@@ -99,7 +99,7 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
           ref={expandButtonRef}
           onClick={handleToggle}
           disabled={project.disabled}
-          className={`expand-button w-20 lg:w-30 h-8 lg:h-12 rounded-full text-white text-sm md:text-base lg:text-xl transition-colors duration-200 ease-in-out ${
+          className={`expand-button w-20 lg:w-30 h-8 lg:h-12 rounded-full text-white text-sm lg:text-base xl:text-xl transition-colors duration-200 ease-in-out ${
             project.disabled ? 'bg-[#888888] cursor-not-allowed' : 'bg-[#007AFF] hover:bg-[#0060C0]'
           }`}
         >
@@ -115,7 +115,7 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.4 }}
         >
-          <div id={`project-${project.id}-border`} className="mb-10 md:mb-12 lg:mb-18"></div> 
+          <div id={`project-${project.id}-border`} className="mb-10 lg:mb-12 xl:mb-18"></div> 
           <ProjectComponent
             getGraphic={getGraphic}
             projectElementsRef={projectElementsRef}
