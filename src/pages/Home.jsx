@@ -98,7 +98,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
       />
     </div>
     <div className="px-6 lg:px-15 max-w-[1750px] mx-auto relative z-10">
-      <div id='landing-page' className="landing-page-container h-full lg:h-[80vh] 2xl:h-[75vh] flex flex-col">
+      <div id='landing-page' className="landing-page-container h-full lg:h-[80vh] 2xl:h-[80vh] flex flex-col">
         <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
         {/* Grid */}
         <div
@@ -132,7 +132,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
               "
             />
 
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-otto tracking-tight">
+            <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-otto tracking-tight">
               Lucas McAllister
             </h1>
           </div>
@@ -147,11 +147,11 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
               order-1 lg:order-2
             "
           >
-            <h2 className="text-3xl lg:text-4xl font-bold tracking-[-0.05em] mb-2 lg:mb-4 pt-12 lg:pt-0">
+            <h2 className="text-3xl 2xl:text-4xl font-bold tracking-[-0.05em] mb-2 2xl:mb-4 pt-12 lg:pt-0">
               Welcome!
             </h2>
 
-            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-4 lg:mb-8 text-left lg:text-justify w-full sm:w-[80%] md:w-[65%] lg:w-full">
+            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-4 2xl:mb-8 text-left w-full sm:w-[80%] md:w-[65%] lg:w-full">
               I am a product designer and Computer Science undergraduate at the
               University of Florida. Inspired by industrial design, architecture,
               and computer hardware design, I am passionate about how design serves

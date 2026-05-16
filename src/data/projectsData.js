@@ -4,10 +4,20 @@ import AtriumProject from '../components/AtriumProject';
 
 export const projectsData = [
   {
+    id: 'carulla',
+    title: 'Carulla - Case Study',
+    subtitle: 'Mobile app design',
+    media: 'https://cdn.lucasmcallister.com/videos/carulla_hero.mp4',
+    mediaType: 'video',
+    component: CarullaProject,
+    disabled: true,
+  },
+  {
     id: 'atrium',
     title: 'Atrium',
     subtitle: 'Event hosting web-app',
     media: '/atrium_cover.webp',
+    mediaType: 'image',
     component: AtriumProject,
     disabled: false,
   },
@@ -17,15 +27,8 @@ export const projectsData = [
     titleMobile: 'Gator Gaming',
     subtitle: 'Website redesign',
     media: '/gatorgaming_cover.webp',
+    mediaType: 'image',
     component: GGProject,
     disabled: false,
-  },
-  {
-    id: 'carulla',
-    title: 'Carulla - Case Study',
-    subtitle: 'Mobile app design',
-    media: '/carulla_wireframe_cropped.webp',
-    component: CarullaProject,
-    disabled: true,
-  },
+  }
 ];

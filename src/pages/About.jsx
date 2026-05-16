@@ -4,7 +4,6 @@ import '../input.css';
 
 import Navbar from "../components/Navbar.jsx"
 import Footer from "../components/Footer.jsx"
-import ASCIIRain from '../components/ASCIIText.jsx';
 import Waves from '../components/Waves.jsx';
 
 export default function About({isDark, toggleDarkMode, isFirstLoad}){
@@ -29,7 +28,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
       }, []);
 
   return (
-    <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
+    <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black min-h-screen flex flex-col">
       {/* <ASCIIRain 
         fontSize={16}
         isDark={isDark}
@@ -48,12 +47,12 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
         xGap={12}
         yGap={36}
       />
-      <div className="px-6 lg:px-15 max-w-[1750px] mx-auto relative z-10">
-        <div id='landing-page' className="landing-page-container flex flex-col">
+      <div className="px-6 lg:px-15 max-w-[1750px] mx-auto relative z-10 flex flex-col flex-1">
+        <div id='landing-page' className="landing-page-container flex flex-col flex-1">
           <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
           <div className="flex-1 flex flex-col gap-y-24 pt-8 lg:pt-20">
 
-            <div className='flex flex-col lg:flex-row justify-between items-start gap-8 mr-8'>
+            <div className='flex flex-col lg:flex-row justify-between items-start gap-8'>
               <div className='flex flex-col gap-y-8 lg:max-w-[50%]'>
                 <p ref={el => aboutElementsRef.current[0] = el} className='font-sans text-2xl xl:text-3xl'>About me</p>
                 <div className='flex flex-col gap-y-3'>
@@ -67,7 +66,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
               <img ref={el => aboutElementsRef.current[3] = el} src="/its_me.webp" className='lg:min-w-[285px] lg:w-[45%] max-w-[400px] h-auto object-contain'></img>
             </div>
 
-            <div className='flex flex-col lg:flex-row justify-between items-start gap-8 mr-5'>
+            <div className='flex flex-col lg:flex-row justify-between items-start gap-8'>
               <div className='flex flex-col gap-y-2 lg:max-w-[50%]'>
                 <p ref={el => aboutElementsRef.current[4] = el} className='font-sans text-xl xl:text-2xl'>Balance</p>
                 <div className='flex flex-col gap-y-8'>
