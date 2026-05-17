@@ -53,26 +53,26 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
           <div className="flex-1 flex flex-col gap-y-24 pt-8 lg:pt-20">
 
             <div className='flex flex-col lg:flex-row justify-between items-start gap-8'>
-              <div className='flex flex-col gap-y-8 lg:max-w-[50%]'>
-                <p ref={el => aboutElementsRef.current[0] = el} className='font-sans text-2xl xl:text-3xl'>About me</p>
+              <div className='flex flex-col gap-y-5 lg:max-w-[50%]'>
+                <p ref={el => aboutElementsRef.current[0] = el} className='text-3xl 2xl:text-4xl font-semibold tracking-[-0.03em]'>About me</p>
                 <div className='flex flex-col gap-y-3'>
                   <div ref={el => aboutElementsRef.current[1] = el} className='flex gap-x-3'>
                     <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/ku8iVd2gLbUgPKLQ8" target='_blank'><img src="/col_flag.png" className='w-8'></img></motion.a>
                     <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/Q3Jy6qwokZYKBfLz6" target='_blank'><img src='/usa_flag.png' className='w-8'></img></motion.a>
                   </div>
-                  <p ref={el => aboutElementsRef.current[2] =el} className='font-sans text-base lg:text-base xl:text-xl w-full text-[#777777]'>My name is Lucas McAllister, and I'm a Computer Science undergrad at the University of Florida from Miami Beach. My passions for design and digital media/computers led me to UX/UI design in my freshman year, where I started designing in teams building websites for clubs I was interested in. I love seeing how thoughtful design makes an impact on people - from the way my campus architecture inspires pride to the way digital experiences shape someone's impression of a product or idea.</p>
+                  <p ref={el => aboutElementsRef.current[2] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>My name is Lucas McAllister, and I'm a Computer Science undergrad at the University of Florida from Miami Beach. My passions for design and digital media/computers led me to UX/UI design in my freshman year, where I started designing in teams building websites for clubs I was interested in. I love seeing how thoughtful design makes an impact on people - from the way my campus architecture inspires pride to the way digital experiences shape someone's impression of a product or idea.</p>
                 </div>
               </div>
               <img ref={el => aboutElementsRef.current[3] = el} src="/its_me.webp" className='lg:min-w-[285px] lg:w-[45%] max-w-[400px] h-auto object-contain'></img>
             </div>
 
             <div className='flex flex-col lg:flex-row justify-between items-start gap-8'>
-              <div className='flex flex-col gap-y-2 lg:max-w-[50%]'>
-                <p ref={el => aboutElementsRef.current[4] = el} className='font-sans text-xl xl:text-2xl'>Balance</p>
-                <div className='flex flex-col gap-y-8'>
-                  <p ref={el => aboutElementsRef.current[5] =el} className='font-sans text-base lg:text-base xl:text-xl w-full text-[#777777]'>Outside of design, I enjoy cooking and creating my own recipes, playing beach volleyball, building computers and working with PC hardware, reselling and collecting sneakers and fashion items, and learning more about sewing and pattern making.</p>
-                  <p ref={el => aboutElementsRef.current[6] =el} className='font-sans text-base lg:text-base xl:text-xl w-full text-[#777777]'>Some interesting personal stuff I've been up to recently:</p>
-                  <p ref={el => aboutElementsRef.current[7] =el} className='font-sans text-base lg:text-base xl:text-xl w-full text-[#777777]'>-Ranking every restaurant I've been to<br/>-Sewing a <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsHoodieHovering(true)} onHoverEnd={() => setIsHoodieHovering(false)}>hoodie</motion.a> from a pattern I drafted<br/>-Perfecting my <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsSauceHovering(true)} onHoverEnd={() => setIsSauceHovering(false)}>vodka sauce</motion.a> recipe</p>
+              <div className='flex flex-col gap-y-2 2xl:gap-y-4 lg:max-w-[50%]'>
+                <p ref={el => aboutElementsRef.current[4] = el} className='font-sans text-xl xl:text-2xl 2xl:text-3xl font-semibold'>Balance</p>
+                <div className='flex flex-col gap-y-5'>
+                  <p ref={el => aboutElementsRef.current[5] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Outside of design, I enjoy cooking and creating my own recipes, playing beach volleyball, building computers and working with PC hardware, reselling and collecting sneakers and fashion items, and learning more about sewing and pattern making.</p>
+                  <p ref={el => aboutElementsRef.current[6] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Some interesting personal stuff I've been up to recently:</p>
+                  <p ref={el => aboutElementsRef.current[7] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>-Ranking every restaurant I've been to<br/>-Sewing a <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsHoodieHovering(true)} onHoverEnd={() => setIsHoodieHovering(false)}>hoodie</motion.a> from a pattern I drafted<br/>-Perfecting my <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsSauceHovering(true)} onHoverEnd={() => setIsSauceHovering(false)}>vodka sauce</motion.a> recipe</p>
                 </div>
               </div>
               <div className="w-full lg:w-[45%] max-w-[571px] relative overflow-hidden aspect-[571/612]">

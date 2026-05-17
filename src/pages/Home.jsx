@@ -98,7 +98,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
       />
     </div>
     <div className="px-6 lg:px-15 max-w-[1750px] mx-auto relative z-10">
-      <div id='landing-page' className="landing-page-container h-full lg:h-[80vh] 2xl:h-[80vh] flex flex-col">
+      <div id='landing-page' className="landing-page-container h-full lg:h-[95vh] 2xl:h-[80vh] flex flex-col">
         <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
         {/* Grid */}
         <div
@@ -107,7 +107,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
             lg:grid lg:grid-cols-2
             gap-10 lg:gap-[5%]
             h-full
-            max-h-none lg:max-h-[1000px]
+            max-h-none lg:max-h-[1200px]
             justify-items-center
           "
         >

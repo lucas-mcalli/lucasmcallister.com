@@ -78,7 +78,7 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
         <div className="container-text flex flex-col align-start">
           {project.titleMobile ? (
             <>
-              <p className="hidden lg:inline text-lg xl:text-2xl text-wrap font-semibold tracking-tighter">
+              <p className="hidden lg:inline text-lg xl:text-xl 2xl:text-2xl text-wrap font-semibold tracking-tighter">
                 {project.title}
               </p>
               <p className="lg:hidden text-lg text-wrap">
@@ -86,11 +86,11 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
               </p>
             </>
           ) : (
-            <p className="text-lg xl:text-2xl text-wrap font-semibold tracking-tighter">
+            <p className="text-lg xl:text-xl 2xl:text-2xl text-wrap font-semibold tracking-tighter">
               {project.title}
             </p>
           )}
-          <p className="text-sm xl:text-lg text-wrap text-gray-500">
+          <p className="text-sm xl:text-base 2xl:text-lg text-wrap text-gray-500">
             {project.subtitle}
           </p>
         </div>
@@ -99,7 +99,7 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
           ref={expandButtonRef}
           onClick={handleToggle}
           disabled={project.disabled}
-          className={`expand-button w-20 lg:w-30 h-8 lg:h-12 rounded-full text-white text-sm lg:text-base xl:text-xl transition-colors duration-200 ease-in-out ${
+          className={`expand-button w-20 xl:w-24 2xl:w-30 h-8 xl:h-10 2xl:h-12 rounded-full text-white text-sm xl:text-lg 2xl:text-xl transition-colors duration-200 ease-in-out ${
             project.disabled ? 'bg-[#888888] cursor-not-allowed' : 'bg-[#007AFF] hover:bg-[#0060C0]'
           }`}
         >
