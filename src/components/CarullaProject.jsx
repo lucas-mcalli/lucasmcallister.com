@@ -20,8 +20,8 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
         </div>
       </div>
       <div className='w-full flex gap-6 lg:gap-12 xl:gap-24 justify-center py-5'>
-        <img src="https://cdn.lucasmcallister.com/photos/shipt_sample.webp" className="w-50 md:w-60 xl:w-72" alt="Shipt screenshot illustrating the current standard" />
-        <img src="https://cdn.lucasmcallister.com/photos/gopuff_sample.webp" className=" w-50 md:w-60 xl:w-72" alt="Gopuff screenshot illustrating the current standard" />
+        <img src="https://cdn.lucasmcallister.com/photos/shipt_sample.webp" className="w-40 md:w-60 xl:w-72" alt="Shipt screenshot illustrating the current standard" />
+        <img src="https://cdn.lucasmcallister.com/photos/gopuff_sample.webp" className=" w-40 md:w-60 xl:w-72" alt="Gopuff screenshot illustrating the current standard" />
         <img src="https://cdn.lucasmcallister.com/photos/instacart_sample.webp" className="hidden md:block w-50 md:w-60 xl:w-72" alt="Instacart screenshot illustrating the current standard" />
       </div>
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-72 justify-between lg:justify-start'>
@@ -31,9 +31,9 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
           <p className='font-sans text-xs lg:text-base text-gray-500 w-full 2xl:max-w-[80%]'></p>
         </div>
       </div>
-      <div className='grid grid-cols-2 gap-4 lg:gap-8 w-full mx-auto items-start'>
+      <div className='grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start'>
         <div className='flex flex-col items-start gap-2'>
-          <video src='https://cdn.lucasmcallister.com/videos/nutrition_breakdown_closeup.mp4' className='block w-full h-auto' autoPlay muted loop playsInline/>
+          <video src='https://cdn.lucasmcallister.com/videos/nutrition_breakdown_closeup.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Nutrition score and breakdown demonstration'/>
           <p className='font-semibold text-xs lg:text-sm w-full'>
             Nutrition Score & Breakdown
           </p>
@@ -41,7 +41,20 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
             For a quick glance or a deeper dive on every product
           </p>
         </div>
-        <img src='https://cdn.lucasmcallister.com/photos/items_sample.avif' className='block w-full h-auto'/>
+        <img src='https://cdn.lucasmcallister.com/photos/items_sample.avif' className='block w-full h-auto' alt='Image of items with nutrition scores in cart'/>
+      </div>
+      <div className='grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start lg:-mt-10'>
+        <img src='https://cdn.lucasmcallister.com/photos/suggested_recipes.avif' className='block w-full h-auto' alt='Image of suggested recipes'
+        />
+        <div className='flex flex-col items-start gap-2'>
+          <video src='https://cdn.lucasmcallister.com/videos/Recipe.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Recipe page demonstration'/>
+          <p className='font-semibold text-xs lg:text-sm w-full'>
+            Recipes w/ Nutritional Context
+          </p>
+          <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
+            Buying healthy is only half the equation
+          </p>
+        </div>
       </div>
     </section>
   </div>
