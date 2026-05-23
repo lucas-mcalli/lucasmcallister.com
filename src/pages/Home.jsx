@@ -50,36 +50,6 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
     return () => window.removeEventListener('scroll', handleScroll);
   }, [expandedProjectId]);
 
-  // // Font randomizer for name in hero section
-  //   const fonts = [
-  //   'font-otto',
-  //   'font-publisher',
-  //   'font-antique',
-  //   'font-gambarino',
-  //   'font-luara',
-  //   'font-pencerio',
-  //   'font-sans',
-  //   'Inter'
-  //   // add more custom fonts here
-  // ]
-
-  // const [currentFont, setCurrentFont] = useState(fonts[0])
-
-  // useEffect(() => {
-  //   const shuffled = [...fonts].sort(() => Math.random() - 0.5)
-  //   let count = 0
-
-  //   const interval = setInterval(() => {
-  //     setCurrentFont(shuffled[count])
-  //     count++
-  //     if (count >= shuffled.length) {
-  //       clearInterval(interval)
-  //     }
-  //   }, 150)
-
-  //   return () => clearInterval(interval)
-  // }, [])
-
   return (
     <div className="dark:text-gray-100 dark:bg-neutral-900 bg-white text-black">
     <div className="fixed inset-0 z-0">

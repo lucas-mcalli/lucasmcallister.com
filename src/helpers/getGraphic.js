@@ -70,6 +70,10 @@ const graphics = {
   atrium_reflections: {
     light: "/atrium_reflections.webp",
     dark: "/atrium_reflections_dark.webp"
+  },
+  user_flows: {
+    light: "https://cdn.lucasmcallister.com/photos/user_flows.avif",
+    dark: "https://cdn.lucasmcallister.com/photos/user_flows_dark.avif"
   }
 };
 
