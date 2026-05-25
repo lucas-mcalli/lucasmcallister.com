@@ -170,7 +170,7 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
           <div className='subsectionContainer flex flex-col sm:flex-row lg:gap-24 xl:gap-28 2xl:gap-35 justify-between lg:justify-start w-full'>
             <h2 className='text-2xl w-70 xl:w-80 font-otto xl:text-4xl font-semibold tracking-tighter'>Visual Design</h2>
           </div>
-          <div className='subsectionList flex flex-col gap-12 mt-10 lg:mt-15 w-full'>
+          <div className='subsectionList flex flex-col gap-12 mt-8 lg:mt-15 w-full'>
 
             <div className='listItemGroup flex flex-col gap-5'>
               <div className='flex gap-4 items-center'>
@@ -191,7 +191,7 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
               </div>
               <div className='flex flex-col gap-4 w-full'>
                 <video src='https://cdn.lucasmcallister.com/videos/carulla_details.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Checkout and arrival experience video'/>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+                <div className="grid grid-cols-2 gap-4 w-full">
                   <img src='https://cdn.lucasmcallister.com/photos/filters_detail.avif' className='block w-full h-auto rounded' alt='Image of filters detail'/>
                   <img src='https://cdn.lucasmcallister.com/photos/confirmation.avif' className='block w-full h-auto rounded' alt='Image of confirmation detail'/>
                 </div>
@@ -200,9 +200,25 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
             </div>
           </div>
         </section>
-        <section className='w-full flex flex-col gap-4 lg:gap-8 xl:gap-12'>
+        <section className='w-full flex flex-col gap-8 xl:gap-12 mb-30'>
           <div className='subsectionContainer flex flex-col sm:flex-row lg:gap-24 xl:gap-28 2xl:gap-35 justify-between lg:justify-start w-full'>
             <h2 className='text-2xl w-70 xl:w-80 font-otto xl:text-4xl font-semibold tracking-tighter'>Reflections</h2>
+          </div>
+          <div className='grid grid-cols-1 lg:grid-cols-2 mx-auto gap-10 xl:gap-30'>
+            <div className='reflections flex flex-col gap-4 md:gap-5'>
+              <div className='flex gap-4 items-center'>
+                <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
+                <h4 className='text-lg xl:text-xl w-full'>Balancing efficiency with nutrition insights</h4>
+              </div>
+              <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>The hardest part of this project was undoubtedly deciding how much information was enough. Every addition risked slowing down an experience that users valued for its speed. The presentation of the health score was the clearest example of this: a single number is fast but reductive, and a full breakdown is accurate but demands more time and attention. Catering to users with differing objectives meant designing an interface flexible enough to support both without forcing a choice.</p>
+            </div>
+            <div className='reflections flex flex-col gap-4 md:gap-5'>
+            <div className='flex gap-4 items-center'>
+              <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
+              <h4 className='text-lg xl:text-xl w-full'>Reflection 2</h4>
+            </div>
+            <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>Collaboration was originally tucked into the cart as an icon in the header, which proved easy to miss and unintuitive. Moving it to the home screen's profile avatar was an natural way to make shared shopping visible throughout, making it part of the experience from the start, rather than something configured mid-order.</p>
+            </div>
           </div>
         </section>
     </section>
