@@ -169,7 +169,6 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
         <section className='w-full flex flex-col gap-4 lg:gap-8 xl:gap-12'>
           <div className='subsectionContainer flex flex-col sm:flex-row lg:gap-24 xl:gap-28 2xl:gap-35 justify-between lg:justify-start w-full'>
             <h2 className='text-2xl w-70 xl:w-80 font-otto xl:text-4xl font-semibold tracking-tighter'>Visual Design</h2>
-              <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full'>Not sure if I should fill this in or not.</h3>
           </div>
           <div className='subsectionList flex flex-col gap-12 mt-10 lg:mt-15 w-full'>
 
@@ -185,6 +184,25 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
               <p className='text-xs lg:text-base text-gray-500 w-full'>Adapted from shadcn/ui, the design system featured custom typography, color styles, 16 original components, and variables enabling consistent iteration of new designs across every screen.  </p>
             </div>
 
+            <div className='listItemGroup flex flex-col gap-5'>
+              <div className='flex gap-4 items-center'>
+                <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
+                <h4 className='text-lg xl:text-xl w-full'>Details</h4>
+              </div>
+              <div className='flex flex-col gap-4 w-full'>
+                <video src='https://cdn.lucasmcallister.com/videos/carulla_details.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Checkout and arrival experience video'/>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+                  <img src='https://cdn.lucasmcallister.com/photos/filters_detail.avif' className='block w-full h-auto rounded' alt='Image of filters detail'/>
+                  <img src='https://cdn.lucasmcallister.com/photos/confirmation.avif' className='block w-full h-auto rounded' alt='Image of confirmation detail'/>
+                </div>
+                <img src='https://cdn.lucasmcallister.com/photos/billboard.avif' className='block w-full h-auto rounded' alt='Billboard mockup graphic' />              
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className='w-full flex flex-col gap-4 lg:gap-8 xl:gap-12'>
+          <div className='subsectionContainer flex flex-col sm:flex-row lg:gap-24 xl:gap-28 2xl:gap-35 justify-between lg:justify-start w-full'>
+            <h2 className='text-2xl w-70 xl:w-80 font-otto xl:text-4xl font-semibold tracking-tighter'>Reflections</h2>
           </div>
         </section>
     </section>
