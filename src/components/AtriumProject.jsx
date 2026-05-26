@@ -114,11 +114,10 @@ const AtriumProject = ({getGraphic, projectElementsRef, isExpanded}) => {
           <div className="flex flex-col gap-6 2xl:gap-8">
             <img src={getGraphic("atrium_reflections")} className="xl:w-[80%] 2xl:w-[70%] h-auto" alt="Individual reflections"/>
           </div>
-          <p className="font-sans text-xs xl:w-[80%] lg:text-base xl:text-lg">Ultimately for me, Atrium reinforced that a project’s technical success is inseparable from the team’s ability to move as a single unit toward a shared vision, and time spent communicating and understanding who that vision is for is time saved from problems down the road.</p>
           <div className='lg:flex items-center w-full lg:w-[80%]'>
             <div className="flex flex-col justify-center w-full">
               <img src="/atrium_flick.webp" className="lg:mt-2 2xl:mt-5 lg:mb-2 2xl:mb-5 w-full xl:w-[70%] h-auto" alt="Group photo"/>
-              <p className="mt-1 mb-12 font-sans text-xs xl:w-[70%] lg:text-base xl:text-lg text-center">A special thanks to <motion.a href="https://www.linkedin.com/in/adrianestevezv/" target="_blank" rel="noopener noreferrer" className="underline pointer-events-auto" whileHover={{ color: '#eec12e' }}>Adrian Estevez</motion.a> and <motion.a href="https://www.linkedin.com/in/mateomcallister/" target="_blank" rel="noopener noreferrer" className="underline pointer-events-auto" whileHover={{ color: '#eec12e' }}>Mateo McAllister</motion.a> for being exceptional teammates and motivators throughout.</p>
+              <p className="mt-1 mb-12 font-sans text-xs xl:w-[70%] lg:text-base xl:text-lg text-center">A special thanks to my teammates <motion.a href="https://www.linkedin.com/in/adrianestevezv/" target="_blank" rel="noopener noreferrer" className="underline pointer-events-auto" whileHover={{ color: '#eec12e' }}>Adrian Estevez</motion.a> and <motion.a href="https://www.linkedin.com/in/mateomcallister/" target="_blank" rel="noopener noreferrer" className="underline pointer-events-auto" whileHover={{ color: '#eec12e' }}>Mateo McAllister</motion.a>.</p>
             </div>
             <motion.a href="https://atrium.ink" target="_blank" rel="noopener noreferrer" className="inline-flex pointer-events-auto flex-shrink-0 relative group">
               <div className="flex flex-col items-center gap-2">

@@ -215,9 +215,9 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
             <div className='reflections flex flex-col gap-4 md:gap-5'>
             <div className='flex gap-4 items-center'>
               <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
-              <h4 className='text-lg xl:text-xl w-full'>Reflection 2</h4>
+              <h4 className='text-lg xl:text-xl w-full'>Convenience & routine as a priority</h4>
             </div>
-            <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>Collaboration was originally tucked into the cart as an icon in the header, which proved easy to miss and unintuitive. Moving it to the home screen's profile avatar was an natural way to make shared shopping visible throughout, making it part of the experience from the start, rather than something configured mid-order.</p>
+            <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>Initially, I believed that the health score would be enough to give users a push towards a confident decision, but through conversations with potential users and thinking about my own experiences grocery shopping, I found that most users' shopping is based on habit and routine. The recipe feature was conceptualized to work with this behavior, giving users a clear way to incorporate new products into their shopping habits, creating new routines.</p>
             </div>
           </div>
         </section>

@@ -10,7 +10,7 @@ export const projectsData = [
     media: 'https://cdn.lucasmcallister.com/videos/carulla_hero.mp4',
     mediaType: 'video',
     component: CarullaProject,
-    disabled: true,
+    disabled: false,
   },
   {
     id: 'atrium',
