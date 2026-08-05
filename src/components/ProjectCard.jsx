@@ -95,16 +95,27 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
           </p>
         </div>
 
-        <button
-          ref={expandButtonRef}
-          onClick={handleToggle}
-          disabled={project.disabled}
-          className={`expand-button w-20 xl:w-24 2xl:w-30 h-8 xl:h-10 2xl:h-12 rounded-full text-white text-sm xl:text-lg 2xl:text-xl transition-colors duration-200 ease-in-out ${
-            project.disabled ? 'bg-[#888888] cursor-not-allowed' : 'bg-[#007AFF] hover:bg-[#0060C0]'
-          }`}
-        >
-          {project.disabled ? 'Soon' : isExpanded ? 'Close' : 'Expand'}
-        </button>
+        <div className="flex items-center justify-center space-x-10">
+          {project.extra && (
+            <a
+              href={project.extra.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:block text-sm xl:text-base hover:text-gray-500 transition-colors duration-100 ease-in-out"
+            >
+              {project.extra.info}
+            </a>
+          )}
+
+          <button
+            onClick={handleToggle}
+            className={`expand-button w-20 xl:w-24 2xl:w-30 h-8 xl:h-10 2xl:h-12 rounded-full text-white text-sm xl:text-lg 2xl:text-xl transition-colors duration-200 ease-in-out ${
+              project.disabled ? 'bg-[#888888] cursor-not-allowed' : 'bg-[#007AFF] hover:bg-[#0060C0]'
+            }`}
+          >
+            {project.disabled ? 'Soon' : isExpanded ? 'Close' : 'Expand'}
+          </button>
+        </div>
       </div>
 
       {isExpanded && (

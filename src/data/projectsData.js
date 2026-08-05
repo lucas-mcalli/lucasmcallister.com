@@ -11,6 +11,7 @@ export const projectsData = [
     mediaType: 'video',
     component: CarullaProject,
     disabled: false,
+    extra: null
   },
   {
     id: 'atrium',
@@ -20,6 +21,7 @@ export const projectsData = [
     mediaType: 'image',
     component: AtriumProject,
     disabled: false,
+    extra: null
   },
   {
     id: 'gator gaming',
@@ -30,5 +32,19 @@ export const projectsData = [
     mediaType: 'image',
     component: GGProject,
     disabled: false,
-  }
+    extra: null
+  },
+  {
+    id: 'trajectory',
+    title: 'Trajectory',
+    subtitle: 'Travel planning Chrome extension',
+    media: 'https://cdn.lucasmcallister.com/photos/trajectory_cover.webp',
+    mediaType: 'image',
+    component: null,
+    disabled: true,
+    extra: {
+      info: 'View the live extension',
+      link: 'https://chromewebstore.google.com/detail/checafmdbhhjpgibeihemgiafnoleooe?utm_source=item-share-cb'
+    } 
+  },
 ];
