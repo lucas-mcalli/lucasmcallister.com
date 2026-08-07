@@ -97,14 +97,15 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
 
         <div className="flex items-center justify-center space-x-10">
           {project.extra && (
-            <a
+            <motion.a
               href={project.extra.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:block text-sm xl:text-base hover:text-gray-500 transition-colors duration-100 ease-in-out"
+              className="hidden md:block text-sm xl:text-base dark:text-white" 
+              whileHover={{ color: '#6B7280' }}
             >
               {project.extra.info}
-            </a>
+            </motion.a>
           )}
 
           <button

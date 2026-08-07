@@ -43,7 +43,7 @@ export const projectsData = [
     component: null,
     disabled: true,
     extra: {
-      info: 'View the live extension',
+      info: 'Get the extension',
       link: 'https://chromewebstore.google.com/detail/checafmdbhhjpgibeihemgiafnoleooe?utm_source=item-share-cb'
     } 
   },

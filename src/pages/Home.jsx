@@ -75,7 +75,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
           className="
             flex flex-col
             lg:grid lg:grid-cols-2
-            gap-10 lg:gap-[5%]
+            gap-10 lg:gap-[5%] lg:pb-10
             h-full
             max-h-none lg:max-h-[1200px]
             justify-items-center
@@ -123,12 +123,10 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
 
             <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-4 2xl:mb-8 text-left w-full sm:w-[80%] md:w-[65%] lg:w-full">
               I am a product designer and Computer Science undergraduate at the
-              University of Florida. Inspired by industrial design, architecture,
-              and computer hardware design, I am passionate about how design serves
-              as a profound tool for expression.
+              University of Florida. Whether it was through PC building, configuring bots for sneaker releases, or patterning and prototyping clothing designs for my job at a tailor, my passions always sat at the intersection between design and technology, which made my introduction to product design feel natural. 
             </p>
 
-            <h3 className="font-semibold mb-4 hidden lg:block">
+            <h3 className="mb-4 hidden lg:block">
               My experience:
             </h3>
 

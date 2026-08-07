@@ -70,7 +70,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
               <div className='flex flex-col gap-y-2 2xl:gap-y-4 lg:max-w-[50%]'>
                 <p ref={el => aboutElementsRef.current[4] = el} className='font-sans text-xl xl:text-2xl 2xl:text-3xl font-semibold'>Balance</p>
                 <div className='flex flex-col gap-y-5'>
-                  <p ref={el => aboutElementsRef.current[5] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Outside of design, I enjoy cooking and creating my own recipes, playing beach volleyball, building computers and working with PC hardware, reselling and collecting sneakers and fashion items, and learning more about sewing and pattern making.</p>
+                  <p ref={el => aboutElementsRef.current[5] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Outside of design, I enjoy cooking and creating my own recipes, playing beach volleyball, building computers and working with PC hardware, reselling and collecting sneakers and fashion items, and traveling, having been to 10 countries so far.</p>
                   <p ref={el => aboutElementsRef.current[6] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Some interesting personal stuff I've been up to recently:</p>
                   <p ref={el => aboutElementsRef.current[7] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>-Ranking every restaurant I've been to<br/>-Sewing a <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsHoodieHovering(true)} onHoverEnd={() => setIsHoodieHovering(false)}>hoodie</motion.a> from a pattern I drafted<br/>-Perfecting my <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsSauceHovering(true)} onHoverEnd={() => setIsSauceHovering(false)}>vodka sauce</motion.a> recipe</p>
                 </div>
@@ -83,13 +83,13 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
                 />
                 <img 
                   ref={el => aboutElementsRef.current[9] =el}
-                  className="absolute w-[55%] h-auto left-[43%] top-[3%]" 
-                  src="/laptop.webp" 
+                  className="absolute w-[55%] h-auto left-[43%] top-[1%]" 
+                  src="/canal.avif" 
                 />
                 <motion.img 
                   ref={el => aboutElementsRef.current[10] =el}
                   animate={{scale: isHoodieHovering ? 1.05 : 1}}
-                  className="absolute w-[39%] h-auto left-0 top-[38%] object-cover -translate-y-3 -translate-x-2" 
+                  className="absolute w-[40%] h-auto left-0 top-[38%] object-cover -translate-y-3 -translate-x-2" 
                   src="/hoodie.webp" 
                 />
                 <motion.img
