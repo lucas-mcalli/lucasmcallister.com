@@ -47,7 +47,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
         xGap={12}
         yGap={36}
       />
-      <div className="px-6 lg:px-15 max-w-[1750px] mx-auto relative z-10 flex flex-col flex-1">
+      <div className="px-6 lg:px-15 max-w-[2000px] mx-auto relative z-10 flex flex-col flex-1">
         <div id='landing-page' className="landing-page-container flex flex-col flex-1">
           <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
           <div className="flex-1 flex flex-col gap-y-24 pt-8 lg:pt-20">

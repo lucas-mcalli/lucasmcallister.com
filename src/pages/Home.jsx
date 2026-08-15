@@ -67,7 +67,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
         yGap={36}
       />
     </div>
-    <div className="px-6 lg:px-15 max-w-[1750px] mx-auto relative z-10">
+    <div className="px-6 lg:px-15 max-w-[2000px] mx-auto relative z-10">
       <div id='landing-page' className="landing-page-container h-full lg:h-[95vh] 2xl:h-[80vh] flex flex-col">
         <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
         {/* Grid */}

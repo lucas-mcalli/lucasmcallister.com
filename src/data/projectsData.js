@@ -1,6 +1,7 @@
 import CarullaProject from '../components/CarullaProject';
 import GGProject from '../components/GGProject';
 import AtriumProject from '../components/AtriumProject';
+import TrajectoryProject from '../components/TrajectoryProject';
 
 export const projectsData = [
   {
@@ -40,7 +41,7 @@ export const projectsData = [
     subtitle: 'Travel planning Chrome extension',
     media: 'https://cdn.lucasmcallister.com/photos/trajectory_cover.webp',
     mediaType: 'image',
-    component: null,
+    component: TrajectoryProject,
     disabled: true,
     extra: {
       info: 'Get the extension',
