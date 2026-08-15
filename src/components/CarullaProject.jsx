@@ -97,21 +97,21 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
                   <img src='https://cdn.lucasmcallister.com/photos/naomi.avif' className='lg:w-20 lg:h-20 w-16 h-16 shrink-0 rounded-full object-cover object-top' alt='Naomi Abrams' />
                   <div className='flex flex-col gap-1'>
                     <p className='font-semibold text-xs lg:text-sm'>Naomi Abrams</p>
-                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%]'>Naomi's strict gluten free dietary restrictions and packed schedule shaped the filtering system and nutrition score, as she needed to know at a glance whether a product would work for her.</p>
+                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%] 2xl:w-[55%]'>Naomi's strict gluten free dietary restrictions and packed schedule shaped the filtering system and nutrition score, as she needed to know at a glance whether a product would work for her.</p>
                   </div>
                 </div>
                 <div className='flex gap-4 items-start'>
                   <img src='https://cdn.lucasmcallister.com/photos/sergio.avif' className='lg:w-20 lg:h-20 w-16 h-16 shrink-0 rounded-full object-cover' alt='Sergio José Suarez' />
                   <div className='flex flex-col gap-1'>
                     <p className='font-semibold text-xs lg:text-sm'>Sergio José Suarez</p>
-                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%]'>Sergio's experience shopping for a large family and concern for what his kids eat made the case for collaborative carts and nutritional transparency at the cart-level, ensuring the household's order is accounted for nutritionally and logistically.</p>
+                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%] 2xl:w-[55%]'>Sergio's experience shopping for a large family and concern for what his kids eat made the case for collaborative carts and nutritional transparency at the cart-level, ensuring the household's order is accounted for nutritionally and logistically.</p>
                   </div>
                 </div>
                 <div className='flex gap-4 items-start'>
                   <img src='https://cdn.lucasmcallister.com/photos/haoran.avif' className='lg:w-20 lg:h-20 w-16 h-16 shrink-0 rounded-full object-cover' alt='Haoran Liu' />
                   <div className='flex flex-col gap-1'>
                     <p className='font-semibold text-xs lg:text-sm'>Haoran Liu</p>
-                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%]'>As a college student shopping after the gym, Haoran's focus on budget and macros highlighted the tension between eating well and spending carefully. His persona pushed for savings visibility and nutritional specificity to coexist.</p>
+                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%] 2xl:w-[55%]'>As a college student shopping after the gym, Haoran's focus on budget and macros highlighted the tension between eating well and spending carefully. His persona pushed for savings visibility and nutritional specificity to coexist.</p>
                   </div>
                 </div>
               </div>
@@ -120,7 +120,7 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
               <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">3</div>
               <h4 className='text-lg xl:text-xl w-full'>Defining each persona's flow</h4>
             </div>
-            <img src={getGraphic("user_flows")} className='w-full lg:w-[80%] h-auto -mt-8' alt='User flow diagrams for each persona' />
+            <img src={getGraphic("user_flows")} className='w-full lg:w-[80%] 2xl:w-[60%] h-auto -mt-8' alt='User flow diagrams for each persona' />
           </div>
         </div>
       </div>
