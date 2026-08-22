@@ -1,20 +1,15 @@
-import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
-import { useProjectAnimation } from '../helpers/useProjectAnimation';
 
-export default function TrajectoryProject({getGraphic, projectElementsRef, isExpanded}) {
+export default function TrajectoryProject({getGraphic}) {
 
   return (
     <div className='w-full mx-auto'>
-    <section className='flex flex-col gap-8 lg:gap-16 scroll-mt-25 lg:scroll-mt-15'>
-      {/* <img src="https://cdn.lucasmcallister.com/photos/carulla_cooking_mockup.webp" className="h-auto" alt="Image of cooking mockup" /> */}
+    <section className='flex flex-col gap-8 lg:gap-16 scroll-mt-30 md:scroll-mt-40'>
       <div className='subsectionContainer w-[90%] flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-center'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Problem</h2>
         <div className='flex flex-col gap-4'>
-          <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold'>Planning a trip should bring peace of mind, not stress you out further.</h3>
+          <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold'>You can book a flight in five minutes. Finding out if your trip actually holds together takes a lot longer.</h3>
           <p className='font-sans text-xs lg:text-base text-gray-500 w-full 2xl:max-w-[90%]'>
-            In a world where a multi-leg trip might consist of flights from many different airlines, hotels booked on different apps, and the possibility for an infinite number of other intermediaries like daytrips, train tickets, etc, it is easy to quickly become overwhelmed when trying to assemble a plan for it all.</p>
+            In a world where a multi-leg trip consists of flights from many different airlines, hotels booked on different apps, and the possibility for an infinite number of other intermediaries like daytrips, train tickets, etc, it is easy to quickly become overwhelmed when trying to assemble a plan for it all.</p>
           <p className='font-sans text-xs lg:text-base text-gray-500 w-full 2xl:max-w-[90%]'>
             Existing tools tend to work against the user rather than for them: calendars that don't clearly visualize how trip legs fit in with each other and don’t communicate long gaps, or at the low-tech extreme, some revert back to a stack of confirmation printouts stapled together.</p>
         </div>
@@ -44,96 +39,67 @@ export default function TrajectoryProject({getGraphic, projectElementsRef, isExp
       </div>
       <div className='grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start'>
         <div className='flex flex-col items-start gap-2'>
-          <video src='https://cdn.lucasmcallister.com/videos/log_scale_video.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Nutrition score and breakdown demonstration'/>
+          <video src='https://cdn.lucasmcallister.com/videos/log_scale_video.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Timeline gap visualization using logarithmic spacing'/>
           <p className='font-semibold text-xs lg:text-sm w-full'>
             Automatic Gap Generation
           </p>
           <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
-            Using a logarithmic scale that visualizes actionable gaps while preventing layout blowout.
+            Using a logarithmic scale that visualizes actionable gaps while preventing layout blowout
           </p>
         </div>
-        <video src='https://cdn.lucasmcallister.com/videos/gap_ui.mp4' className='block w-full h-auto'className='block w-full h-auto' autoPlay muted loop playsInline alt='Image of items with nutrition scores in cart'/>
+        <video src='https://cdn.lucasmcallister.com/videos/gap_ui.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Trajectory timeline showing generated gaps between travel events'/>
       </div>
       <div className='grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start lg:-mt-10'>
-        <img src='https://cdn.lucasmcallister.com/photos/grouping_graphic.avif' className='block w-full h-auto' alt='Image of suggested recipes'
+        <img src='https://cdn.lucasmcallister.com/photos/grouping_graphic.avif' className='block w-full h-auto' alt='Event grouping concept graphic for one trip leg'
         />
         <div className='flex flex-col items-start gap-2'>
-          <video src='https://cdn.lucasmcallister.com/videos/grouping_live.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Recipe page demonstration'/>
+          <video src='https://cdn.lucasmcallister.com/videos/grouping_live.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Live demo of grouped events in the timeline'/>
           <p className='font-semibold text-xs lg:text-sm w-full'>
             Event Grouping
           </p>
           <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
-            Know which events belong together at a glance.
+            Know which events belong together at a glance
           </p>
         </div>
-      </div>
-      <div className='flex flex-col items-start gap-2'>
-        <img src='https://cdn.lucasmcallister.com/photos/filters_graphic.avif' className='block w-full h-auto lg:-mt-10' alt='Image of items with nutrition scores in cart'/>
-        <p className='font-semibold text-xs lg:text-sm w-full'>
-          Filtering & Item Icons
-        </p>
-        <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
-          Groceries that work for everyone's plate
-        </p>
       </div>
       <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Research</h2>
-        <div className='flex flex-col w-full 2xl:max-w-[90%]'>
-          <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full'>Researching the every day frictions and opportunities of grocery shopping...</h3>
+        <div className='flex flex-col w-full min-w-0 2xl:max-w-[90%]'>
+          <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full'>Identifying the problem and researching user travel behavior...</h3>
           <div className='researchList flex flex-col gap-15 mt-10 lg:mt-15'>
             <div className='researchGroup flex flex-col gap-5'>
               <div className='flex gap-4 items-center'>
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
-                <h4 className='text-lg xl:text-xl w-full'>General grocery experience survey</h4>
+                <h4 className='text-lg xl:text-xl w-full'>Desk research & observation</h4>
               </div>
-              <div className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 flex flex-col gap-2">
-                <h5 className="font-semibold text-sm lg:text-base">Users identify with nutritional goals & efficiency</h5>
-                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">61% of respondants indicated that they identified with a nutritional goal or dietary restriction, and 46% indicated a desire to get groceries done as fast as possible. The overlap between the two defined the core design challenge: nutritional awareness shouldn't come at the cost of speed. Serving these users best meant creating a solution that quickly assesses nutritional value while remaining honest about how that value is determined.</p>
+              <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 flex flex-col gap-2">
+                <h5 className="font-semibold text-sm lg:text-base">The inspiration</h5>
+                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">The catalyst for this project came from my own observations of how my family plans and keeps records of trip information and structure. I noticed that planning and organizing a trip often consisted of dozens of scrambled browser tabs, handwritten notes, and once everything was sorted, an unwieldy and clunky sttack of papers with reservations, check in information, flight boarding passes, train tickets, and everything in between.</p>
               </div>
-              <div className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
-                <h5 className="font-semibold text-sm lg:text-base">Shopping for many</h5>
-                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">50% of respondants indicated that they regularly shop for multiple people, and 31% cite coordination with others as a point of stress in their experience. Adding support for household shopping means providing visibility into what others are adding, and confidence that the final cart suits everyone.</p>
+              <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
+                <h5 className="font-semibold text-sm lg:text-base">The intrinsic nature of unplanned gaps</h5>
+                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">Tourism research has shown that travelers do not often plan and rigidly execute on an itinerary, and increasingly with the nature of constant internet access do travelers evaluate and change their plans continually. Emphasizing gaps in a user's trip worked to capture these moments of spontaneity and make them part of the planning experience while also reducing unwanted gaps by surfacing them, like those resulting from late check-ins.</p>
+                <h5 className=" mt-2 font-semibold text-xs lg:text-sm">[Mieli, 2024]</h5>
               </div>
-              <div className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
-                <h5 className="font-semibold text-sm lg:text-base">Savings emphasis</h5>
-                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">50% of respondents cited budget constraints as a source of difficulty, and 46% plan their shopping around deals and sales entirely. A successful design gives these users a way to find the best value and make it present throughout their experience.</p>
+              <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
+                <h5 className="font-semibold text-sm lg:text-base">Information overload</h5>
+                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">Research on booking behavior shows that information overload is common and is significantly shaped by the presentation of information, so it was important for my design to present information using low-effort visual cues that rely on instinct (like shorter stays being visually smaller on the timeline) to avoid information overload when planning/assembling a trip.</p>
+                <h5 className=" mt-2 font-semibold text-xs lg:text-sm">[Yin & Hwang, 2024]</h5>
               </div>
             </div>
             <div className='researchGroup flex flex-col gap-5'>
               <div className='flex gap-4 items-center'>
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
-                <h4 className='text-lg xl:text-xl w-full'>Synthesizing insights into user personas</h4>
+                <h4 className='text-lg xl:text-xl w-full'>Defining primary use cases for the extension</h4>
               </div>
-              <div className='personas flex flex-col gap-8 mt-3'>
-                <div className='flex gap-4 items-start'>
-                  <img src='https://cdn.lucasmcallister.com/photos/naomi.avif' className='lg:w-20 lg:h-20 w-16 h-16 shrink-0 rounded-full object-cover object-top' alt='Naomi Abrams' />
-                  <div className='flex flex-col gap-1'>
-                    <p className='font-semibold text-xs lg:text-sm'>Naomi Abrams</p>
-                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%]'>Naomi's strict gluten free dietary restrictions and packed schedule shaped the filtering system and nutrition score, as she needed to know at a glance whether a product would work for her.</p>
-                  </div>
-                </div>
-                <div className='flex gap-4 items-start'>
-                  <img src='https://cdn.lucasmcallister.com/photos/sergio.avif' className='lg:w-20 lg:h-20 w-16 h-16 shrink-0 rounded-full object-cover' alt='Sergio José Suarez' />
-                  <div className='flex flex-col gap-1'>
-                    <p className='font-semibold text-xs lg:text-sm'>Sergio José Suarez</p>
-                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%]'>Sergio's experience shopping for a large family and concern for what his kids eat made the case for collaborative carts and nutritional transparency at the cart-level, ensuring the household's order is accounted for nutritionally and logistically.</p>
-                  </div>
-                </div>
-                <div className='flex gap-4 items-start'>
-                  <img src='https://cdn.lucasmcallister.com/photos/haoran.avif' className='lg:w-20 lg:h-20 w-16 h-16 shrink-0 rounded-full object-cover' alt='Haoran Liu' />
-                  <div className='flex flex-col gap-1'>
-                    <p className='font-semibold text-xs lg:text-sm'>Haoran Liu</p>
-                    <p className='text-xs lg:text-sm text-gray-500 w-full md:w-[80%]'>As a college student shopping after the gym, Haoran's focus on budget and macros highlighted the tension between eating well and spending carefully. His persona pushed for savings visibility and nutritional specificity to coexist.</p>
-                  </div>
-                </div>
-              </div>
+              <img src={getGraphic("situations")} className='w-full lg:w-[80%] 2xl:w-[75%] h-auto' alt='The two use cases for Trajectory: planning trips, and executing them' />
             </div>
             <div className='flex gap-4 items-center'>
               <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">3</div>
-              <h4 className='text-lg xl:text-xl w-full'>Defining each persona's flow</h4>
+              <h4 className='text-lg xl:text-xl w-full'>Where existing tools fail</h4>
             </div>
-            <img src={getGraphic("user_flows")} className='w-full lg:w-[80%] h-auto -mt-8' alt='User flow diagrams for each persona' />
+            <img src={getGraphic("differentiation")} className='w-full lg:w-[80%] 2xl:w-[75%] h-auto -mt-8' alt='User flow diagrams for each persona' />
           </div>
         </div>
       </div>
@@ -141,12 +107,8 @@ export default function TrajectoryProject({getGraphic, projectElementsRef, isExp
         <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
         <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-28 md:gap-36 lg:gap-54 2xl:gap-66 justify-between lg:justify-start w-full'>
           <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Process</h2>
-          <div className='flex flex-col w-full 2xl:max-w-[90%]'>
-            <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full'>Designing for all types of successful grocery trips.</h3>
-            <div className='flex gap-4 w-full'>
-              <ArrowRight className='mt-3 shrink-0 text-gray-500' size={30} strokeWidth={1.5} />
-              <p className='font-sans text-xs lg:text-base text-gray-500 mt-3.5 2xl:w-[85%]'>With a clear understanding of the needs of each persona, it was time to design a solution that keeps the experience focused on nutrition, but retains the efficiency and convenience that brings users to grocery apps in the first place.</p>
-            </div>
+          <div className='flex flex-col w-full min-w-0 2xl:max-w-[90%]'>
+            <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full'>Refining the design to meet defined user goals.</h3>
           </div>
         </div>
         <div className='flex flex-col w-full'>
@@ -155,89 +117,67 @@ export default function TrajectoryProject({getGraphic, projectElementsRef, isExp
             <div className='listItemGroup flex flex-col gap-5'>
               <div className='flex gap-4 items-center'>
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
-                <h4 className='text-lg xl:text-xl w-full'>Unified nutrition score</h4>
+                <h4 className='text-lg xl:text-xl w-full'>Chrome extension format</h4>
               </div>
-              <img src='https://cdn.lucasmcallister.com/photos/score_progression.avif' className='block w-full h-auto rounded' alt='Score progression graphic' />
-              <p className='text-xs lg:text-base text-gray-500 w-full'>In initial wireframes, I explored a nutrition score that shows key macronutrients like calories, protein, and fat, with multiple gauges on each product. In low-fidelity prototypes, this proved to be crowded, overwhelming, and didn't solve the problem of giving users a clearer option. It was clear that a single score was necessary to give users a more clear decision point, optionally leading them to the more detailed breakdown.</p>
+              <video src='https://cdn.lucasmcallister.com/videos/extension_format_animation.mp4' className='block  w-full xl:w-[90%] h-auto shadow-xl' autoPlay muted loop playsInline alt='Chrome extension format demonstration for Trajectory'/>
+              <p className='text-xs lg:text-base text-gray-500 w-full xl:w-[90%]'>One of the clearest pain points established in travel decision making research is information overload, which, in this case, manifests as comparing stay/flight options across dozens of browser tabs before committing. Ensuring that Trajectory worked against this stress meant that it couldn't live in a separate app the user has to context-switch to; it needed to be present in the browser itself, accessible without disrupting the user's current action. That requirement led to the Chrome extension format. </p>
             </div>
 
             <div className='listItemGroup flex flex-col gap-5'>
               <div className='flex gap-4 items-center'>
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
-                <h4 className='text-lg xl:text-xl w-full'>Recipes that complement shopping with intention</h4>
+                <h4 className='text-lg xl:text-xl w-full'>Timeline elements</h4>
               </div>
-              <img src='https://cdn.lucasmcallister.com/photos/recipe_progression.avif' className='block w-full h-auto rounded' alt='Recipe progression graphic' />
-              <p className='text-xs lg:text-base text-gray-500 w-full'>Early designs treated recipes like products, displaying a name, a time, and a single score. But a recipe is a planning decision, not a browsing one. Macro-level detail moved to the card itself, where a user who already committed to considering a full meal could weigh relevant macronutrients without an extra tap. Additionally, the recipe page allows users to act on their decision immediately, with built in ingredient prices and add to cart links.</p>
+              <img src='https://cdn.lucasmcallister.com/photos/trajectory_components.avif' className='block w-full xl:w-[90%] h-auto rounded' alt='Trajectory timeline component system graphic' />
+              <p className='text-xs lg:text-base text-gray-500 w-full xl:w-[90%]'>To ensure the design holds up with load, each component had to be easily recognizable. Rather than relying on text labels, each event type carries its own icon. Stay events go further, using a destination splash image and a linear scale by number of nights to make each leg of a user's journey visually distinct. The result is a timeline that communicates dense travel plans with clarity and without ambiguity.</p>
             </div>
 
             <div className='listItemGroup flex flex-col gap-5'>
               <div className='flex gap-4 items-center'>
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">3</div>
-                <h4 className='text-lg xl:text-xl w-full'>Bringing collaboration to the surface</h4>
+                <h4 className='text-lg xl:text-xl w-full'>AI Autofill</h4>
               </div>
-              <img src='https://cdn.lucasmcallister.com/photos/collaboration_progression.avif' className='block w-full h-auto rounded' alt='Collaboration progress graphic' />
-              <p className='text-xs lg:text-base text-gray-500 w-full'>Collaboration was originally tucked into the cart as an icon in the header, which proved easy to miss and unintuitive. Moving it to the home screen's profile avatar was an natural way to make shared shopping visible throughout, making it part of the experience from the start, rather than something configured mid-order.</p>
+              <video src='https://cdn.lucasmcallister.com/videos/autofill_vid.mp4' className='block w-full xl:w-[90%] h-auto [clip-path:inset(0px_0px_166px_0px)] mb-[-166px]' autoPlay muted loop playsInline alt='AI Autofill demonstration' />
+
+              <p className='text-xs lg:text-base text-gray-500 w-full xl:w-[90%]'>Manual entry proved to be a significant barrier to using the extension to plan trips. Adding a single flight or stay out of the dozens a user was deciding from meant filling out a form with details that already had to be on the browser tab the user opened the extension from. For a large and complex trip, this becomes exactly the kind of tedious and error-prone process that Trajectory sought to eliminate. AI Autofill was built directly in response, using a content script that calls Gemini and returns a structured JSON matching the form schema for flights and stays, bringing down form entry from 20+ seconds to less than 5.</p>
             </div>
           </div>
         </div>
       </section>
-        <section className='w-full flex flex-col gap-4 lg:gap-8 xl:gap-12'>
-          <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
-          <div className='subsectionContainer flex flex-col sm:flex-row lg:gap-24 xl:gap-28 2xl:gap-35 justify-between lg:justify-start w-full'>
-            <h2 className='text-2xl w-70 xl:w-80 font-otto xl:text-4xl font-semibold tracking-tighter'>Visual Design</h2>
-          </div>
-          <div className='subsectionList flex flex-col gap-12 mt-8 lg:mt-15 w-full'>
-
-            <div className='listItemGroup flex flex-col gap-5'>
-              <div className='flex gap-4 items-center'>
-                <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
-                <h4 className='text-lg xl:text-xl w-full'>Design system</h4>
-              </div>
-              <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 w-full'>
-                <img src='https://cdn.lucasmcallister.com/photos/design_system.avif' className='block w-full h-auto rounded' alt='Design system graphic' />
-                <img src='https://cdn.lucasmcallister.com/photos/components.avif' className='block w-full h-auto rounded' alt='Original components graphic' />
-              </div>
-              <p className='text-xs lg:text-base text-gray-500 w-full'>Adapted from shadcn/ui, the design system featured custom typography, color styles, 16 original components, and variables enabling consistent iteration of new designs across every screen.  </p>
-            </div>
-
-            <div className='listItemGroup flex flex-col gap-5'>
-              <div className='flex gap-4 items-center'>
-                <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
-                <h4 className='text-lg xl:text-xl w-full'>Details</h4>
-              </div>
-              <div className='flex flex-col gap-4 w-full'>
-                <video src='https://cdn.lucasmcallister.com/videos/carulla_details.mp4' className='block w-full h-auto' autoPlay muted loop playsInline alt='Checkout and arrival experience video'/>
-                <div className="grid grid-cols-2 gap-4 w-full">
-                  <img src='https://cdn.lucasmcallister.com/photos/filters_detail.avif' className='block w-full h-auto rounded' alt='Image of filters detail'/>
-                  <img src='https://cdn.lucasmcallister.com/photos/confirmation.avif' className='block w-full h-auto rounded' alt='Image of confirmation detail'/>
-                </div>
-                <img src='https://cdn.lucasmcallister.com/photos/billboard.avif' className='block w-full h-auto rounded' alt='Billboard mockup graphic' />              
-              </div>
-            </div>
-          </div>
-        </section>
         <section className='w-full flex flex-col gap-8 xl:gap-12 mb-30'>
           <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
           <div className='subsectionContainer flex flex-col sm:flex-row lg:gap-24 xl:gap-28 2xl:gap-35 justify-between lg:justify-start w-full'>
             <h2 className='text-2xl w-70 xl:w-80 font-otto xl:text-4xl font-semibold tracking-tighter'>Reflections</h2>
           </div>
-          <div className='grid grid-cols-1 lg:grid-cols-2 mx-auto gap-10 xl:gap-30'>
+          <div className='flex flex-col w-full gap-6 lg:gap-16 xl:gap-24'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 mx-auto gap-8'>
+              <div className='listItemGroup flex flex-col gap-5'>
+                <div className='flex gap-4 items-center'>
+                  <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
+                  <h4 className='text-lg xl:text-xl w-full'>Next steps: App format</h4>
+                </div>
+                <img src='https://cdn.lucasmcallister.com/photos/mobile_mock.avif' className='block w-full h-auto rounded' alt='Trajectory mobile app mockup' />
+                <p className='text-xs lg:text-base text-gray-500 w-full'>To best serve users using Trajectory to execute on already built plans, the most natural next step would be to extend the infrastructure to a native mobile app format. Beyond giving users access to their timelines and important trip links on the fly, a mobile app enables real time utility like sending push notifications for upcoming departures or sending time-sensitive live activities for executing on stacked travel days.</p>
+              </div>
+              <div className='reflections flex flex-col gap-4 md:gap-5'>
+                <div className='flex gap-4 items-center'>
+                  <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
+                  <h4 className='text-lg xl:text-xl w-full'>Next steps: Budgeting expansion</h4>
+                </div>
+                <img src='https://cdn.lucasmcallister.com/photos/budgeting_image.avif' className='block w-full h-auto rounded' alt='Trajectory budgeting graphic based on trip legs' />
+                <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>A natural extension to future development is budgeting. Since the content script that the autofill pipeline uses already parses price information from pages it uses to extract place and date data, implementing cost data would require no new technical capability. And since prices can be attributed to each user event this way, they could be surfaced as color coded chart representing each trip leg in addition to a simple running count.</p>
+              </div>
+            </div>
             <div className='reflections flex flex-col gap-4 md:gap-5'>
               <div className='flex gap-4 items-center'>
-                <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
-                <h4 className='text-lg xl:text-xl w-full'>Balancing efficiency with nutrition insights</h4>
+                <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">3</div>
+                <h4 className='text-lg xl:text-xl w-full'>Working within the user's context</h4>
               </div>
-              <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>The hardest part of this project was undoubtedly deciding how much information was enough. Every addition risked slowing down an experience that users valued for its speed. The presentation of the health score was the clearest example of this: a single number is fast but reductive, and a full breakdown is accurate but demands more time and attention. Catering to users with differing objectives meant designing an interface flexible enough to support both without forcing a choice.</p>
-            </div>
-            <div className='reflections flex flex-col gap-4 md:gap-5'>
-            <div className='flex gap-4 items-center'>
-              <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">2</div>
-              <h4 className='text-lg xl:text-xl w-full'>Convenience & routine as a priority</h4>
-            </div>
-            <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>Initially, I believed that the health score would be enough to give users a push towards a confident decision, but through conversations with potential users and thinking about my own experiences grocery shopping, I found that most users' shopping is based on habit and routine. The recipe feature was conceptualized to work with this behavior, giving users a clear way to incorporate new products into their shopping habits, creating new routines.</p>
+              <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>This project taught me that good design meets users where they already are. While observing how friends and family planned trips, I noticed how often the "solution" was whatever was closest at hand in the moment: a pen and paper, a half-used note on a phone, or a browser tab left open as a placeholder. None of these were chosen because they were optimal for the situation, but because they were the first instinct. That observation brought upon the central trade-off of the project: the Chrome extension format. It came with real constraints: limited screen space, no ability to click off the extension without closing it, and limited development resources. Even so, it meant the tool lived in the exact context where trip planning actually happens, allowing the user's instinct to shift from the pen or a blank note to the extension that is equally always present on their screen.</p>
             </div>
           </div>
         </section>
+        <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
     </section>
   </div>
   )

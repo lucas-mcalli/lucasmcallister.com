@@ -14,6 +14,19 @@ export const projectsData = [
     disabled: false,
     extra: null
   },
+    {
+    id: 'trajectory',
+    title: 'Trajectory',
+    subtitle: 'Travel planning Chrome extension',
+    media: 'https://cdn.lucasmcallister.com/photos/trajectory_cover.webp',
+    mediaType: 'image',
+    component: TrajectoryProject,
+    disabled: false,
+    extra: {
+      info: 'Get the extension',
+      link: 'https://chromewebstore.google.com/detail/checafmdbhhjpgibeihemgiafnoleooe?utm_source=item-share-cb'
+    } 
+  },
   {
     id: 'atrium',
     title: 'Atrium',
@@ -34,18 +47,5 @@ export const projectsData = [
     component: GGProject,
     disabled: false,
     extra: null
-  },
-  {
-    id: 'trajectory',
-    title: 'Trajectory',
-    subtitle: 'Travel planning Chrome extension',
-    media: 'https://cdn.lucasmcallister.com/photos/trajectory_cover.webp',
-    mediaType: 'image',
-    component: TrajectoryProject,
-    disabled: true,
-    extra: {
-      info: 'Get the extension',
-      link: 'https://chromewebstore.google.com/detail/checafmdbhhjpgibeihemgiafnoleooe?utm_source=item-share-cb'
-    } 
-  },
+  }
 ];

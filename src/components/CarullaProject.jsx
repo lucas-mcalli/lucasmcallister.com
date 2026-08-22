@@ -1,9 +1,6 @@
-import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
-import { useProjectAnimation } from '../helpers/useProjectAnimation';
 
-export default function CarullaProject({getGraphic, projectElementsRef, isExpanded}) {
+export default function CarullaProject({getGraphic}) {
 
   return (
     <div className='w-full mx-auto'>
@@ -13,9 +10,9 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Problem</h2>
         <div className='flex flex-col gap-4'>
           <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold'>People put thought into what they eat. Their grocery app should too.</h3>
-          <p className='font-sans text-xs lg:text-base text-gray-500 w-full 2xl:max-w-[90%]'>
+          <p className='font-sans text-xs lg:text-base text-gray-500 w-full 2xl:max-w-[80%]'>
             In a world where people are increasingly concerned about personal health, traditional grocery apps haven't made that easy to act on. Nutrition labels may be a tap away, but surfacing information doesn't make it useful. A nutrition label might tell you there are 18 grams of fat, but not how that might fit into your nutritional goals, or how it comes together in a meal worth making.</p>
-          <p className='font-sans text-xs lg:text-base text-gray-500 w-full 2xl:max-w-[91%]'>
+          <p className='font-sans text-xs lg:text-base text-gray-500 w-full 2xl:max-w-[80%]'>
             For an experience depending on users who are willing to pay a premium for efficiency and convenience, this is an oversight. An app positioned as a luxury should be able to support users in making choices most aligned with their goals from the shelf to the table.</p>
         </div>
       </div>
@@ -27,7 +24,7 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
       <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Solution</h2>
-        <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full 2xl:w-250'>Nutrition, understood. A score & breakdown that tells you what your food actually means, plus the recipes to actually make use of your choice.</h3>
+        <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full 2xl:w-270'>Nutrition, understood. A score & breakdown that tells you what your food actually means, plus the recipes to actually make use of your choice.</h3>
       </div>
       <div className='grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start'>
         <div className='flex flex-col items-start gap-2'>
@@ -66,7 +63,7 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
       <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Research</h2>
-        <div className='flex flex-col w-full 2xl:max-w-[90%]'>
+        <div className='flex flex-col w-full min-w-0 2xl:max-w-[90%]'>
           <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full'>Researching the every day frictions and opportunities of grocery shopping...</h3>
           <div className='researchList flex flex-col gap-15 mt-10 lg:mt-15'>
             <div className='researchGroup flex flex-col gap-5'>
@@ -74,15 +71,15 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
                 <h4 className='text-lg xl:text-xl w-full'>General grocery experience survey</h4>
               </div>
-              <div className="w-full xl:w-260 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 flex flex-col gap-2">
+              <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">Users identify with nutritional goals & efficiency</h5>
                 <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">61% of respondants indicated that they identified with a nutritional goal or dietary restriction, and 46% indicated a desire to get groceries done as fast as possible. The overlap between the two defined the core design challenge: nutritional awareness shouldn't come at the cost of speed. Serving these users best meant creating a solution that quickly assesses nutritional value while remaining honest about how that value is determined.</p>
               </div>
-              <div className="w-full xl:w-260 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
+              <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">Shopping for many</h5>
                 <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">50% of respondants indicated that they regularly shop for multiple people, and 31% cite coordination with others as a point of stress in their experience. Adding support for household shopping means providing visibility into what others are adding, and confidence that the final cart suits everyone.</p>
               </div>
-              <div className="w-full xl:w-260 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
+              <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">Savings emphasis</h5>
                 <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">50% of respondents cited budget constraints as a source of difficulty, and 46% plan their shopping around deals and sales entirely. A successful design gives these users a way to find the best value and make it present throughout their experience.</p>
               </div>
@@ -128,7 +125,7 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
       <section className='w-full flex flex-col gap-4 lg:gap-8 xl:gap-12'>
         <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-28 md:gap-36 lg:gap-54 2xl:gap-66 justify-between lg:justify-start w-full'>
           <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Process</h2>
-          <div className='flex flex-col w-full 2xl:w-270'>
+          <div className='flex flex-col w-full min-w-0 2xl:max-w-[68rem]'>
             <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full'>Designing for all types of successful grocery trips.</h3>
             <div className='flex gap-4 w-full'>
               <ArrowRight className='mt-3 shrink-0 text-gray-500' size={30} strokeWidth={1.5} />
@@ -225,6 +222,7 @@ export default function CarullaProject({getGraphic, projectElementsRef, isExpand
             </div>
           </div>
         </section>
+        <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
     </section>
   </div>
   )

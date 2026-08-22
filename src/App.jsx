@@ -47,9 +47,9 @@ export default function App() {
 
   return (
     <>
-      <div className="fixed bottom-3 left-3 z-[9999] rounded-full border border-black/10 bg-white/80 px-2 py-1 font-[Inter] text-[10px] font-medium tracking-[0.16em] text-black shadow-sm backdrop-blur-sm">
+      {/* <div className="fixed bottom-3 left-3 z-[9999] rounded-full border border-black/10 bg-white/80 px-2 py-1 font-[Inter] text-[10px] font-medium tracking-[0.16em] text-black shadow-sm backdrop-blur-sm">
         {breakpoint}
-      </div>
+      </div> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad} isFirstHeroLoad={isFirstHeroLoad} />} />

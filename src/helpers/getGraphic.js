@@ -74,6 +74,14 @@ const graphics = {
   user_flows: {
     light: "https://cdn.lucasmcallister.com/photos/user_flows.avif",
     dark: "https://cdn.lucasmcallister.com/photos/user_flows_dark.avif"
+  },
+  situations: {
+    light: "https://cdn.lucasmcallister.com/photos/situations_light.avif",
+    dark: "https://cdn.lucasmcallister.com/photos/situations_dark.avif"
+  },
+  differentiation: {
+    light: "https://cdn.lucasmcallister.com/photos/differentiation_light.avif",
+    dark: "https://cdn.lucasmcallister.com/photos/differentiation_dark.avif"
   }
 };
 
