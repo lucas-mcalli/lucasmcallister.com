@@ -73,11 +73,11 @@ export default function CarullaProject({getGraphic}) {
               </div>
               <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">Users identify with nutritional goals & efficiency</h5>
-                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">61% of respondants indicated that they identified with a nutritional goal or dietary restriction, and 46% indicated a desire to get groceries done as fast as possible. The overlap between the two defined the core design challenge: nutritional awareness shouldn't come at the cost of speed. Serving these users best meant creating a solution that quickly assesses nutritional value while remaining honest about how that value is determined.</p>
+                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">61% of respondents indicated that they identified with a nutritional goal or dietary restriction, and 46% indicated a desire to get groceries done as fast as possible. The overlap between the two defined the core design challenge: nutritional awareness shouldn't come at the cost of speed. Serving these users best meant creating a solution that quickly assesses nutritional value while remaining honest about how that value is determined.</p>
               </div>
               <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">Shopping for many</h5>
-                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">50% of respondants indicated that they regularly shop for multiple people, and 31% cite coordination with others as a point of stress in their experience. Adding support for household shopping means providing visibility into what others are adding, and confidence that the final cart suits everyone.</p>
+                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">50% of respondents indicated that they regularly shop for multiple people, and 31% cite coordination with others as a point of stress in their experience. Adding support for household shopping means providing visibility into what others are adding, and confidence that the final cart suits everyone.</p>
               </div>
               <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">Savings emphasis</h5>
@@ -160,7 +160,7 @@ export default function CarullaProject({getGraphic}) {
                 <h4 className='text-lg xl:text-xl w-full'>Bringing collaboration to the surface</h4>
               </div>
               <img src='https://cdn.lucasmcallister.com/photos/collaboration_progression.avif' className='block w-full h-auto rounded' alt='Collaboration progress graphic' />
-              <p className='text-xs lg:text-base text-gray-500 w-full'>Collaboration was originally tucked into the cart as an icon in the header, which proved easy to miss and unintuitive. Moving it to the home screen's profile avatar was an natural way to make shared shopping visible throughout, making it part of the experience from the start, rather than something configured mid-order.</p>
+              <p className='text-xs lg:text-base text-gray-500 w-full'>Collaboration was originally tucked into the cart as an icon in the header, which proved easy to miss and unintuitive. Moving it to the home screen's profile avatar was a natural way to make shared shopping visible throughout, making it part of the experience from the start, rather than something configured mid-order.</p>
             </div>
           </div>
         </div>

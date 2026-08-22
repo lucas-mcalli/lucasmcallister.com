@@ -75,7 +75,7 @@ export default function TrajectoryProject({getGraphic}) {
               </div>
               <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-3 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">The inspiration</h5>
-                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">The catalyst for this project came from my own observations of how my family plans and keeps records of trip information and structure. I noticed that planning and organizing a trip often consisted of dozens of scrambled browser tabs, handwritten notes, and once everything was sorted, an unwieldy and clunky sttack of papers with reservations, check in information, flight boarding passes, train tickets, and everything in between.</p>
+                <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-300">The catalyst for this project came from my own observations of how my family plans and keeps records of trip information and structure. I noticed that planning and organizing a trip often consisted of dozens of scrambled browser tabs, handwritten notes, and once everything was sorted, an unwieldy and clunky stack of papers with reservations, check-in information, flight boarding passes, train tickets, and everything in between.</p>
               </div>
               <div className="w-full xl:max-w-[65rem] bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded p-4 flex flex-col gap-2">
                 <h5 className="font-semibold text-sm lg:text-base">The intrinsic nature of unplanned gaps</h5>
@@ -119,7 +119,7 @@ export default function TrajectoryProject({getGraphic}) {
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">1</div>
                 <h4 className='text-lg xl:text-xl w-full'>Chrome extension format</h4>
               </div>
-              <video src='https://cdn.lucasmcallister.com/videos/extension_format_animation.mp4' className='block  w-full xl:w-[90%] h-auto shadow-xl' autoPlay muted loop playsInline alt='Chrome extension format demonstration for Trajectory'/>
+              <video src='https://cdn.lucasmcallister.com/videos/extension_format_animation.mp4' className='block  w-full xl:w-[90%] h-auto shadow-md' autoPlay muted loop playsInline alt='Chrome extension format demonstration for Trajectory'/>
               <p className='text-xs lg:text-base text-gray-500 w-full xl:w-[90%]'>One of the clearest pain points established in travel decision making research is information overload, which, in this case, manifests as comparing stay/flight options across dozens of browser tabs before committing. Ensuring that Trajectory worked against this stress meant that it couldn't live in a separate app the user has to context-switch to; it needed to be present in the browser itself, accessible without disrupting the user's current action. That requirement led to the Chrome extension format. </p>
             </div>
 
@@ -137,7 +137,9 @@ export default function TrajectoryProject({getGraphic}) {
                 <div className="w-7 h-7 rounded-lg border-2 border-green-600 flex items-center justify-center font-semibold text-lg">3</div>
                 <h4 className='text-lg xl:text-xl w-full'>AI Autofill</h4>
               </div>
-              <video src='https://cdn.lucasmcallister.com/videos/autofill_vid.mp4' className='block w-full xl:w-[90%] h-auto [clip-path:inset(0px_0px_166px_0px)] mb-[-166px]' autoPlay muted loop playsInline alt='AI Autofill demonstration' />
+              <div className='w-full xl:w-[90%] shadow-md'>
+                <video src='https://cdn.lucasmcallister.com/videos/autofill_vid.mp4' className='block w-full h-auto [clip-path:inset(0px_0px_166px_0px)] mb-[-166px]' autoPlay muted loop playsInline alt='AI Autofill demonstration' />
+              </div>
 
               <p className='text-xs lg:text-base text-gray-500 w-full xl:w-[90%]'>Manual entry proved to be a significant barrier to using the extension to plan trips. Adding a single flight or stay out of the dozens a user was deciding from meant filling out a form with details that already had to be on the browser tab the user opened the extension from. For a large and complex trip, this becomes exactly the kind of tedious and error-prone process that Trajectory sought to eliminate. AI Autofill was built directly in response, using a content script that calls Gemini and returns a structured JSON matching the form schema for flights and stays, bringing down form entry from 20+ seconds to less than 5.</p>
             </div>
@@ -165,7 +167,7 @@ export default function TrajectoryProject({getGraphic}) {
                   <h4 className='text-lg xl:text-xl w-full'>Next steps: Budgeting expansion</h4>
                 </div>
                 <img src='https://cdn.lucasmcallister.com/photos/budgeting_image.avif' className='block w-full h-auto rounded' alt='Trajectory budgeting graphic based on trip legs' />
-                <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>A natural extension to future development is budgeting. Since the content script that the autofill pipeline uses already parses price information from pages it uses to extract place and date data, implementing cost data would require no new technical capability. And since prices can be attributed to each user event this way, they could be surfaced as color coded chart representing each trip leg in addition to a simple running count.</p>
+                <p className='text-xs lg:text-base text-gray-500 w-full md:w-[80%] lg:w-full'>A natural extension to future development is budgeting. Since the content script that the autofill pipeline uses already parses price information from pages it uses to extract place and date data, implementing cost data would require no new technical capability. And since prices can be attributed to each user event this way, they could be surfaced as a color-coded chart representing each trip leg in addition to a simple running count.</p>
               </div>
             </div>
             <div className='reflections flex flex-col gap-4 md:gap-5'>
