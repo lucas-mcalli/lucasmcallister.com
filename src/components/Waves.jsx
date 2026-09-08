@@ -283,15 +283,29 @@ const Waves = ({
 
     setSize();
     setLines();
-    frameIdRef.current = requestAnimationFrame(tick);
+    movePoints(0);
+    drawLines();
+
+    let started = false;
+    let timeoutId = null;
+    const startTick = () => {
+      if (started) return;
+      started = true;
+      frameIdRef.current = requestAnimationFrame(tick);
+    };
+    window.addEventListener('hero-animation-complete', startTick, { once: true });
+    timeoutId = setTimeout(startTick, 3000);
+
     window.addEventListener('resize', onResize);
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('touchmove', onTouchMove, { passive: false });
 
     return () => {
+      window.removeEventListener('hero-animation-complete', startTick);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('touchmove', onTouchMove);
+      clearTimeout(timeoutId);
       cancelAnimationFrame(frameIdRef.current);
     };
   }, []);

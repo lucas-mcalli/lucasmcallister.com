@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion, animate, hover } from 'motion/react';
+import { motion, animate, hover, AnimatePresence } from 'motion/react';
 
-const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
+const ProjectCard = ({ project, getGraphic, isExpanded, isRetiring, onToggle, onOpenSettled }) => {
   const expandButtonRef = useRef(null);
   const projectElementsRef = useRef([]);
   const projectContainerRef = useRef(null);
@@ -27,17 +27,40 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
     if (!isExpanded) {
       // Opening the project - scroll to first <section>.
       onToggle(project.id, true);
-      
-      // Scroll to the first content section after project renders
+
+      // The project this one is replacing (if any) stays mounted as
+      // "retiring" (see Home.jsx) until onOpenSettled fires below. Removing
+      // it any earlier - while still at least partly in the viewport -
+      // causes a jarring reflow that fights this scroll. We don't trust the
+      // first 'scrollend' blindly, since that event fires for ANY scroll
+      // coming to rest (including stray momentum from the user's own
+      // gesture right as they clicked) - only once we've actually arrived
+      // near the target do we call onOpenSettled and let it unmount.
       setTimeout(() => {
-        // Try to find the first section element within the project
         const projectElement = document.querySelector(`[data-project-id="${project.id}"]`);
-        if (projectElement) {
-          const firstSection = projectElement.querySelector('section');
-          if (firstSection) {
-            firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+        const firstSection = projectElement?.querySelector('section');
+        if (!firstSection) {
+          onOpenSettled?.();
+          return;
         }
+        let settled = false;
+        let retries = 0;
+        const markSettled = () => {
+          if (settled) return;
+          const { top } = firstSection.getBoundingClientRect();
+          if (Math.abs(top) > 200 && retries < 4) {
+            retries++;
+            firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(markSettled, 800);
+            return;
+          }
+          settled = true;
+          window.removeEventListener('scrollend', markSettled);
+          onOpenSettled?.();
+        };
+        window.addEventListener('scrollend', markSettled);
+        setTimeout(markSettled, 1200);
+        firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
     } else {
       // Closing the project
@@ -62,7 +85,14 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
   const ProjectComponent = project.component;
 
   return (
-    <li className="relative mb-15 scroll-mt-15" data-project-card={project.id}>
+    // Deliberately not using the `layout` prop here: animating this card's
+    // own position smoothly whenever a sibling's height changes sounds nice
+    // in isolation, but it runs on its own independent timer that isn't
+    // synced with the native scrollIntoView used above/below - the two end
+    // up fighting over the same scroll position mid-transition (see the
+    // comment above the AnimatePresence block). A plain, instant reflow
+    // here is what makes the scroll destination reliable.
+    <motion.div className="relative mb-15 scroll-mt-15" data-project-card={project.id}>
       <div data-project-id={project.id}>
         <div className="box relative w-full max-w-full sm:aspect-[5/2] overflow-hidden">
         {project.mediaType === 'video' ? (
@@ -119,24 +149,26 @@ const ProjectCard = ({ project, getGraphic, isExpanded, onToggle }) => {
         </div>
       </div>
 
-      {isExpanded && (
-        <motion.div
-          ref={projectContainerRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.4 }}
-        >
-          <div id={`project-${project.id}-border`} className="mb-10 lg:mb-12 xl:mb-18"></div> 
-          <ProjectComponent
-            getGraphic={getGraphic}
-            projectElementsRef={projectElementsRef}
-            isExpanded={isExpanded}
-          />
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {(isExpanded || isRetiring) && (
+          <motion.div
+            ref={projectContainerRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div id={`project-${project.id}-border`} className="mb-10 lg:mb-12 xl:mb-18"></div>
+            <ProjectComponent
+              getGraphic={getGraphic}
+              projectElementsRef={projectElementsRef}
+              isExpanded={isExpanded}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       </div>
-    </li>
+    </motion.div>
   );
 };
 

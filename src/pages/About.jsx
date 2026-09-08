@@ -15,16 +15,30 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
   useLayoutEffect(() => {
       const elements = aboutElementsRef.current.filter(el => el !== null);
       if (elements.length === 0) return;
-      
-      const elementDelay = isFirstLoad.current ? 0.7 : 0.1;
-      
-      animate(
-        elements,
-        { y: [-20, 0], opacity: [0, 100], filter: ["blur(6px)", "blur(0px)"] },
-        { delay: stagger(0.1, { startDelay: elementDelay }), duration: 0.4 }
-      );
-      
+
+      const fontsReady = typeof document !== 'undefined' && document.fonts
+        ? Promise.race([
+            document.fonts.ready,
+            new Promise(resolve => setTimeout(resolve, 1200)),
+          ])
+        : Promise.resolve();
+
+      let cancelled = false;
+      fontsReady.then(() => {
+        if (cancelled) return;
+        const startDelay = isFirstLoad.current ? 0.2 : 0.1;
+        const controls = animate(
+          elements,
+          { y: [-20, 0], opacity: [0, 100], filter: ["blur(3px)", "blur(0px)"] },
+          { delay: stagger(0.1, { startDelay }), duration: 0.4 }
+        );
+        Promise.resolve(controls.finished ?? controls).then(() => {
+          if (!cancelled) window.dispatchEvent(new Event('hero-animation-complete'));
+        }).catch(() => {});
+      });
+
       isFirstLoad.current = false;
+      return () => { cancelled = true; };
       }, []);
 
   return (
@@ -57,13 +71,13 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
                 <p ref={el => aboutElementsRef.current[0] = el} className='text-3xl 2xl:text-4xl font-semibold tracking-[-0.03em]'>About me</p>
                 <div className='flex flex-col gap-y-3'>
                   <div ref={el => aboutElementsRef.current[1] = el} className='flex gap-x-3'>
-                    <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/ku8iVd2gLbUgPKLQ8" target='_blank'><img src="/col_flag.png" className='w-8'></img></motion.a>
-                    <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/Q3Jy6qwokZYKBfLz6" target='_blank'><img src='/usa_flag.png' className='w-8'></img></motion.a>
+                    <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/ku8iVd2gLbUgPKLQ8" target='_blank'><img src="https://cdn.lucasmcallister.com/about/col_flag.png" className='w-8'></img></motion.a>
+                    <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/Q3Jy6qwokZYKBfLz6" target='_blank'><img src='https://cdn.lucasmcallister.com/about/usa_flag.png' className='w-8'></img></motion.a>
                   </div>
                   <p ref={el => aboutElementsRef.current[2] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>My name is Lucas McAllister, and I'm a Computer Science undergrad at the University of Florida from Miami Beach. My passions for design and digital media/computers led me to UX/UI design in my freshman year, where I started designing in teams building websites for clubs I was interested in. I love seeing how thoughtful design makes an impact on people - from the way my campus architecture inspires pride to the way digital experiences shape someone's impression of a product or idea.</p>
                 </div>
               </div>
-              <img ref={el => aboutElementsRef.current[3] = el} src="/its_me.webp" className='lg:min-w-[285px] lg:w-[45%] max-w-[400px] h-auto object-contain'></img>
+              <img ref={el => aboutElementsRef.current[3] = el} src="https://cdn.lucasmcallister.com/about/its_me.webp" className='w-full lg:min-w-[285px] lg:w-[45%] max-w-[400px] h-auto object-contain'></img>
             </div>
 
             <div className='flex flex-col lg:flex-row justify-between items-start gap-8'>
@@ -79,24 +93,24 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
                 <img
                   ref={el => aboutElementsRef.current[8] =el}
                   className="absolute w-1/3 h-auto left-[5%] top-0 object-cover -translate-x-2" 
-                  src="/bravas.webp" 
+                  src="https://cdn.lucasmcallister.com/about/bravas.webp" 
                 />
                 <img 
                   ref={el => aboutElementsRef.current[9] =el}
                   className="absolute w-[55%] h-auto left-[43%] top-[1%]" 
-                  src="/canal.avif" 
+                  src="https://cdn.lucasmcallister.com/about/canal.avif" 
                 />
                 <motion.img 
                   ref={el => aboutElementsRef.current[10] =el}
                   animate={{scale: isHoodieHovering ? 1.05 : 1}}
                   className="absolute w-[40%] h-auto left-0 top-[38%] object-cover -translate-y-3 -translate-x-2" 
-                  src="/hoodie.webp" 
+                  src="https://cdn.lucasmcallister.com/about/hoodie.webp" 
                 />
                 <motion.img
                   ref={el => aboutElementsRef.current[11] =el}
                   animate={{scale: isSauceHovering ? 1.05 : 1}}
                   className="absolute w-[55%] h-auto left-[43%] top-[48%] -translate-y-4" 
-                  src="/sauce.webp" 
+                  src="https://cdn.lucasmcallister.com/about/sauce.webp" 
                 />
               </div>
             </div>

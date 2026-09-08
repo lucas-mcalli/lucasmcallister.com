@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home.jsx";
@@ -17,7 +17,7 @@ const getBreakpoint = (width) => {
 
 export default function App() {
 
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [breakpoint, setBreakpoint] = useState(() => getBreakpoint(window.innerWidth));
   const isFirstLoad = useRef(true);
   const isFirstHeroLoad = useRef(true);
@@ -33,16 +33,11 @@ export default function App() {
     return () => window.removeEventListener('resize', updateBreakpoint);
   }, []);
 
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    const html = document.documentElement;
-    if (!isDark) {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-    setIsDark(!isDark);
-  };
+  useLayoutEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark);
+  }, [isDark]);
+
+  const toggleDarkMode = () => setIsDark(prev => !prev);
 
 
   return (
