@@ -5,6 +5,13 @@
       font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
       scroll-behavior: smooth;
       scrollbar-gutter: stable;
+      background-color: #ffffff;
+      color-scheme: light;
+    }
+
+    html.dark, html.dark body {
+      background-color: oklch(20.5% 0 0); /* neutral-900 */
+      color-scheme: dark;
     }
 
     @media (min-width: 1024px) {
