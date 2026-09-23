@@ -108,7 +108,7 @@ const Navbar = ({isDark, toggleDarkMode, isFirstLoad}) => {
 
           <Link to="/about" ref={el => navElementsRef.current[3] = el} className='nav-element hidden lg:inline-block text-base underline lg:no-underline z-2'>About</Link>
           <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" target="_blank" ref={el => navElementsRef.current[4] = el} className='nav-element hidden lg:inline-block text-base underline lg:no-underline z-2'>LinkedIn</a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" ref={el => navElementsRef.current[5] = el} className='nav-element hidden lg:inline-block text-base underline lg:no-underline z-2'>Resume</a>
+          <a href="/Lucas_McAllister_Resume.pdf" target="_blank" rel="noopener noreferrer" ref={el => navElementsRef.current[5] = el} className='nav-element hidden lg:inline-block text-base underline lg:no-underline z-2'>Resume</a>
 
           <div
             ref={el => {
