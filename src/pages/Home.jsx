@@ -87,7 +87,7 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
         yGap={36}
       />
     </div>
-    <div className="px-6 lg:px-15 max-w-[1900px] mx-auto relative z-10">
+    <div className="px-6 lg:px-20 max-w-[1900px] mx-auto relative z-10">
       <div id='landing-page' className="landing-page-container h-full lg:h-[95vh] 2xl:h-[80vh] flex flex-col">
         <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
         {/* Grid */}
@@ -144,9 +144,8 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
               Welcome!
             </h2>
 
-            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-4 2xl:mb-8 text-left w-full sm:w-[80%] md:w-[65%] lg:w-full">
-              I am a product designer and Computer Science undergraduate at the
-              University of Florida. Whether it was through PC building, configuring bots for sneaker releases, or patterning and prototyping clothing designs for my job at a tailor, my passions always sat at the intersection between design and technology, which made my introduction to product design feel natural. 
+            <p className="text-gray-500 text-sm leading-relaxed mb-4 2xl:mb-8 text-left w-full sm:w-[80%] md:w-[65%] lg:w-full">
+              I am a product designer and a Computer Science 3rd-year at the University of Florida. Whether it's PC building, configuring bots for sneaker releases, or patterning and prototyping clothing designs, my passions sit at the intersection between design and technology, which made my introduction to product design feel natural. 
             </p>
 
             <h3 className="mb-4 hidden lg:block">

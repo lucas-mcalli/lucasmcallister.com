@@ -88,27 +88,27 @@ const Navbar = ({isDark, toggleDarkMode, isFirstLoad}) => {
     <nav
       ref={navRef}
       id="main-nav"
-      className={`pt-10 lg:mb-0 z-10 ${
+      className={`pt-6 lg:mb-0 z-10 ${
         isOverlayActive
-          ? `fixed top-0 inset-x-0 z-40 px-6 lg:px-15 max-w-[1900px] mx-auto pb-2 ${isDark ? 'bg-neutral-900 text-white' : 'bg-white text-black'}`
+          ? `fixed top-0 inset-x-0 z-40 px-6 lg:px-[66px] max-w-[1900px] mx-auto pb-2 ${isDark ? 'bg-neutral-900 text-white' : 'bg-white text-black'}`
           : 'relative'
       }`}
     >
       <div className="flex flex-wrap flex-row items-center justify-between">
         <Link to="/"><div id="nav-logo" className='flex gap-6 items-center'>
-          <img ref={el => navElementsRef.current[0] = el} src='/THUMBNAIL.png' className='w-8 h-8 lg:h-12 lg:w-12'/>
+          <img ref={el => navElementsRef.current[0] = el} src='/THUMBNAIL.png' className='w-8 h-8'/>
         </div></Link>
 
-        <div id="nav-links" className="flex gap-10 items-center">
+        <div id="nav-links" className="flex gap-8 items-center">
           <div className="lg:hidden">
             <div ref={el => navElementsRef.current[2] = el}>
               <Hamburger toggled={isOpen} toggle={setIsOpen} size={20} />
             </div>
           </div>
 
-          <Link to="/about" ref={el => navElementsRef.current[3] = el} className='nav-element hidden lg:inline-block text-xl underline lg:no-underline z-2'>About</Link>
-          <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" target="_blank" ref={el => navElementsRef.current[4] = el} className='nav-element hidden lg:inline-block text-xl underline lg:no-underline z-2'>LinkedIn</a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" ref={el => navElementsRef.current[5] = el} className='nav-element hidden lg:inline-block text-xl underline lg:no-underline z-2'>Resume</a>
+          <Link to="/about" ref={el => navElementsRef.current[3] = el} className='nav-element hidden lg:inline-block text-base underline lg:no-underline z-2'>About</Link>
+          <a href="https://www.linkedin.com/in/lucas-mcallister-29a794289/" target="_blank" ref={el => navElementsRef.current[4] = el} className='nav-element hidden lg:inline-block text-base underline lg:no-underline z-2'>LinkedIn</a>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" ref={el => navElementsRef.current[5] = el} className='nav-element hidden lg:inline-block text-base underline lg:no-underline z-2'>Resume</a>
 
           <div
             ref={el => {
@@ -117,7 +117,7 @@ const Navbar = ({isDark, toggleDarkMode, isFirstLoad}) => {
             }}
             onClick={toggleDarkMode}
             id='dark-mode-button'
-            className={`will-change-transform cursor-pointer hidden lg:inline-block w-12 h-12 bg-[#D9D9D9] rounded-full dark:border-white border mt-[6px] ${isDark ? "drop-shadow-[0_0_20px_#ffffff]" : "drop-shadow-[0_0_20px_rgba(0,0,0,0.5)]"} nav-element`}>
+            className={`will-change-transform cursor-pointer hidden lg:inline-block w-9 h-9 bg-[#D9D9D9] rounded-full dark:border-white border mt-[2px] ${isDark ? "drop-shadow-[0_0_8px_#ffffff]" : "drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]"} nav-element`}>
           </div>
         </div>
       </div>
