@@ -29,6 +29,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
   const navbarRef = useRef(null);
   const galleryRef = useRef(null);
   const [viewportHeight, setViewportHeight] = useState(() => typeof window === 'undefined' ? 0 : window.innerHeight);
+  const [isGalleryVisible, setIsGalleryVisible] = useState(() => typeof window === 'undefined' || window.innerWidth >= 1024);
   const [navbarHeight, setNavbarHeight] = useState(72);
   const [fadeAmount, setFadeAmount] = useState(0);
   const [isHoodieHovering, setIsHoodieHovering] = useState(false);
@@ -46,6 +47,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
     ? Math.min(1, initialGalleryProgress + fadeDistance / viewportHeight)
     : 1;
   const dissolveProgress = useTransform(galleryApproach, value => {
+    if (!isGalleryVisible) return 0;
     const range = Math.max(0.001, dissolveEnd - initialGalleryProgress);
     const linearProgress = Math.max(0, Math.min(1, (value - initialGalleryProgress) / range));
     return linearProgress * linearProgress * (3 - 2 * linearProgress);
@@ -58,10 +60,15 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
   });
 
   useEffect(() => {
-    const updateViewportHeight = () => setViewportHeight(window.innerHeight);
-    updateViewportHeight();
-    window.addEventListener('resize', updateViewportHeight);
-    return () => window.removeEventListener('resize', updateViewportHeight);
+    const updateViewport = () => {
+      setViewportHeight(window.innerHeight);
+      const galleryVisible = window.innerWidth >= 1024;
+      setIsGalleryVisible(galleryVisible);
+      if (!galleryVisible) setFadeAmount(0);
+    };
+    updateViewport();
+    window.addEventListener('resize', updateViewport);
+    return () => window.removeEventListener('resize', updateViewport);
   }, []);
 
   useLayoutEffect(() => {
@@ -168,7 +175,10 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
                     <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/ku8iVd2gLbUgPKLQ8" target='_blank'><img src="https://cdn.lucasmcallister.com/about/col_flag.png" className='w-8'></img></motion.a>
                     <motion.a whileHover={{scale: 1.1}} href="https://maps.app.goo.gl/Q3Jy6qwokZYKBfLz6" target='_blank'><img src='https://cdn.lucasmcallister.com/about/usa_flag.png' className='w-8'></img></motion.a>
                   </div>
-                  <p ref={el => aboutElementsRef.current[2] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>My name is Lucas McAllister, and I'm a Computer Science undergrad at the University of Florida from Miami Beach. My passions for design and digital media/computers led me to UX/UI design in my freshman year, where I started designing in teams building websites for clubs I was interested in. I love seeing how thoughtful design makes an impact on people - from the way my campus architecture inspires pride to the way digital experiences shape someone's impression of a product or idea.</p>
+                  <p ref={el => aboutElementsRef.current[2] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>
+                    Welcome! I am a product designer and third-year Computer Science student at the University of Florida. I especially enjoy the early ideation phase of design and creating AI-enabled experiences.<br /><br />
+                    I was introduced to UX during my freshman year, designing sites for clubs I was interested in as a way to get more involved on campus. My passion for design began much earlier, though, while I was admiring the design of the parts for my first PC build in 2019. Since then, I’ve been obsessed with design, whether through collecting sneakers, tailoring, or traveling to see different architecture styles.
+                  </p>
                 </div>
               </div>
               <img ref={el => aboutElementsRef.current[3] = el} src="https://cdn.lucasmcallister.com/about/its_me.webp" className='w-full lg:min-w-[285px] lg:w-[45%] max-w-[400px] h-auto object-contain'></img>
@@ -178,7 +188,7 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
               <div className='flex flex-col gap-y-2 2xl:gap-y-4 lg:max-w-[50%]'>
                 <p ref={el => aboutElementsRef.current[4] = el} className='font-sans text-xl xl:text-2xl 2xl:text-3xl font-semibold'>Balance</p>
                 <div className='flex flex-col gap-y-5'>
-                  <p ref={el => aboutElementsRef.current[5] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Outside of design, I enjoy cooking and creating my own recipes, playing beach volleyball, building computers and working with PC hardware, reselling and collecting sneakers and fashion items, and traveling, having been to 10 countries so far.</p>
+                  <p ref={el => aboutElementsRef.current[5] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Outside of design, I enjoy cooking and creating my own recipes, playing beach volleyball, rock climbing, reselling & collecting sneakers and clothes, and traveling, having been to 10 countries so far.</p>
                   <p ref={el => aboutElementsRef.current[6] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>Some interesting personal stuff I've been up to recently:</p>
                   <p ref={el => aboutElementsRef.current[7] =el} className='text-gray-500 text-sm lg:text-base 2xl:text-lg leading-relaxed'>-Ranking every restaurant I've been to<br/>-Sewing a <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsHoodieHovering(true)} onHoverEnd={() => setIsHoodieHovering(false)}>hoodie</motion.a> from a pattern I drafted<br/>-Perfecting my <motion.a className='bg-yellow-200 dark:bg-yellow-400/30 font-sans cursor-default' onHoverStart={() => setIsSauceHovering(true)} onHoverEnd={() => setIsSauceHovering(false)}>vodka sauce</motion.a> recipe</p>
                 </div>

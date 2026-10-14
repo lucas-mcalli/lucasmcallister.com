@@ -35,7 +35,7 @@ function CyclingGalleryPhoto({ imagePool, initialSrc }) {
 
     let timeoutId
     let cancelled = false
-    const scheduleNextPhoto = () => {
+    const scheduleNextPhoto = (isFirstSwitch = false) => {
       timeoutId = window.setTimeout(() => {
         const currentSrc = currentSrcRef.current
         const candidates = imagePool.filter(src => src !== currentSrc)
@@ -65,10 +65,10 @@ function CyclingGalleryPhoto({ imagePool, initialSrc }) {
         }).catch(() => {
           if (!cancelled) scheduleNextPhoto()
         })
-      }, 3000 + Math.random() * 2000)
+      }, isFirstSwitch ? 1000 + Math.random() * 1500 : 3000 + Math.random() * 2000)
     }
 
-    scheduleNextPhoto()
+    scheduleNextPhoto(true)
     return () => {
       cancelled = true
       window.clearTimeout(timeoutId)
@@ -87,18 +87,16 @@ function CyclingGalleryPhoto({ imagePool, initialSrc }) {
     return () => window.clearTimeout(timeoutId)
   }, [photo.previous])
 
-  const imageClassName = 'absolute inset-0 m-0 h-80 w-full rounded object-cover object-left-top p-0'
+  const imageClassName = 'absolute inset-0 m-0 h-full w-full rounded object-cover object-center p-0'
   const currentImageNumber = photo.current.match(/gallery_(\d+)\.avif$/)?.[1]
 
   return (
-    <div ref={tileRef} className="relative h-80 w-full overflow-hidden rounded">
+    <div ref={tileRef} className="relative aspect-[3/4] w-full overflow-hidden rounded">
       {photo.previous !== null && (
         <motion.img
           key={`previous-${photo.previous}`}
           src={photo.previous}
           className={imageClassName}
-          height={400}
-          width={400}
           alt=""
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
@@ -110,8 +108,6 @@ function CyclingGalleryPhoto({ imagePool, initialSrc }) {
         key={`current-${photo.current}`}
         src={photo.current}
         className={imageClassName}
-        height={400}
-        width={400}
         alt={currentImageNumber ? `Gallery photo ${currentImageNumber}` : 'Gallery photo'}
         initial={photo.previous === null ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -130,6 +126,8 @@ export function ParallaxGallery({
 }) {
   const gridRef = useRef(null)
   const photoElementsRef = useRef([])
+  const columnElementsRef = useRef([])
+  const [measuredContentHeight, setMeasuredContentHeight] = useState(0)
   const [viewport, setViewport] = useState(() => typeof window === 'undefined'
     ? { height: 0, width: 0 }
     : { height: window.innerHeight, width: window.innerWidth }
@@ -153,19 +151,41 @@ export function ParallaxGallery({
     )
 
     return () => controls.stop()
-  }, [])
+  }, [viewport.width >= 1024])
 
-  const columnCount = viewport.width >= 1280 ? 5 : 3
+  const isXlScreen = viewport.width >= 1280
+  const isLargeScreen = viewport.width >= 1024
+  const visibleImages = isXlScreen ? images : images.slice(0, 16)
+  const columnCount = isXlScreen ? 5 : 4
   const imageColumns = Array.from({ length: columnCount }, (_, columnIndex) => {
-    const start = Math.floor(images.length * columnIndex / columnCount)
-    const end = Math.floor(images.length * (columnIndex + 1) / columnCount)
-    return images.slice(start, end).map((src, index) => ({ src, index: start + index }))
+    const start = Math.floor(visibleImages.length * columnIndex / columnCount)
+    const end = Math.floor(visibleImages.length * (columnIndex + 1) / columnCount)
+    return visibleImages.slice(start, end).map((src, index) => ({ src, index: start + index }))
   })
   const maxColumnLength = Math.max(0, ...imageColumns.map(column => column.length))
-  // Each image is 20rem tall with a 2.5rem gap; the grid keeps 10rem below the images.
-  const contentHeight = maxColumnLength ? maxColumnLength * 360 + 120 : 0
+  const estimatedColumnWidth = isXlScreen
+    ? (viewport.width - 304) / 5
+    : (viewport.width - 168) / 4
+  const estimatedContentHeight = maxColumnLength
+    ? maxColumnLength * (Math.max(0, estimatedColumnWidth) * 4 / 3 + 40) + 120
+    : 0
+  const contentHeight = measuredContentHeight || estimatedContentHeight
+
+  useLayoutEffect(() => {
+    const columns = columnElementsRef.current.filter(Boolean)
+    if (!columns.length || !('ResizeObserver' in window)) return
+
+    const updateContentHeight = () => {
+      const tallestColumn = Math.max(...columns.map(column => column.offsetHeight))
+      setMeasuredContentHeight(Math.ceil(tallestColumn + 120))
+    }
+    const observer = new ResizeObserver(updateContentHeight)
+    columns.forEach(column => observer.observe(column))
+    updateContentHeight()
+    return () => observer.disconnect()
+  }, [isLargeScreen, columnCount, images.length])
   const fullScreenScrollDistance = viewport.height
-    ? Math.max(viewport.height, contentHeight - viewport.height)
+    ? Math.max(0, contentHeight - viewport.height)
     : 0
   const scrollDistance = fullScreen ? fullScreenScrollDistance : 200
   const { scrollY, scrollYProgress } = useScroll(fullScreen
@@ -174,30 +194,37 @@ export function ParallaxGallery({
   )
 
   const translateYColumns = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance])
+  const columnSpread = 200
+  const columnRotation = 10
   const translateXColumns = [
-    useTransform(scrollYProgress, [0, 1], [0, -200]),
-    useTransform(scrollYProgress, [0, 1], [0, -80]),
+    useTransform(scrollYProgress, [0, 1], [0, -columnSpread]),
+    useTransform(scrollYProgress, [0, 1], [0, -columnSpread * 0.4]),
     useTransform(scrollYProgress, [0, 1], [0, 0]),
-    useTransform(scrollYProgress, [0, 1], [0, 80]),
-    useTransform(scrollYProgress, [0, 1], [0, 200]),
+    useTransform(scrollYProgress, [0, 1], [0, columnSpread * 0.4]),
+    useTransform(scrollYProgress, [0, 1], [0, columnSpread]),
   ]
   const rotateColumns = [
-    useTransform(scrollYProgress, [0, 1], [0, -10]),
-    useTransform(scrollYProgress, [0, 1], [0, -5]),
+    useTransform(scrollYProgress, [0, 1], [0, -columnRotation]),
+    useTransform(scrollYProgress, [0, 1], [0, -columnRotation * 0.5]),
     useTransform(scrollYProgress, [0, 1], [0, 0]),
-    useTransform(scrollYProgress, [0, 1], [0, 5]),
-    useTransform(scrollYProgress, [0, 1], [0, 10]),
+    useTransform(scrollYProgress, [0, 1], [0, columnRotation * 0.5]),
+    useTransform(scrollYProgress, [0, 1], [0, columnRotation]),
   ]
   const scrollCueOpacity = useTransform(scrollY, [0, 50], [1, 0])
   const titleOpacity = useTransform(scrollYProgress, [0.55, 1], [1, 0])
 
+  if (!isLargeScreen) return null
+
   const columns = (
-    <div className="mx-auto grid max-w-[1600px] grid-cols-3 items-start gap-10 px-10 py-15 xl:grid-cols-5 xl:gap-14">
+    <div className="mx-auto grid w-full max-w-[2200px] grid-cols-4 items-start gap-10 px-6 py-15 xl:grid-cols-5 xl:gap-14 xl:px-10">
       {imageColumns.map((column, columnIndex) => {
-        const animationIndex = columnCount === 3 ? columnIndex * 2 : columnIndex
+        const animationIndex = columnCount === 4 && columnIndex >= 2
+          ? columnIndex + 1
+          : columnIndex
         return (
           <motion.div
             key={`grid-${columnIndex + 1}`}
+            ref={element => { columnElementsRef.current[columnIndex] = element }}
             className="grid gap-10"
             style={{
               y: translateYColumns,
