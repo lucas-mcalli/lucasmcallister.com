@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
 import { useRef } from 'react';
-import { useProjectAnimation } from '../helpers/useProjectAnimation';
-import { useActiveSection } from '../helpers/useActiveSection';
-import Timeline from "./Timeline.jsx"
+import { useProjectAnimation } from '../../helpers/useProjectAnimation';
+import { useActiveSection } from '../../helpers/useActiveSection';
+import Timeline from "../ui/Timeline.jsx"
 
 const GGProject = ({getGraphic, projectElementsRef, isExpanded}) => {
 

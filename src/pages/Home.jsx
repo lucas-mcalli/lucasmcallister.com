@@ -2,10 +2,10 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import '../input.css';
 import { animate, stagger } from "motion";
 import { motion } from "motion/react"
-import Navbar from "../components/Navbar.jsx"
-import ProjectCard from "../components/ProjectCard.jsx"
-import Footer from "../components/Footer.jsx"
-import Waves from '../components/Waves.jsx';
+import Navbar from "../components/ui/Navbar.jsx"
+import ProjectCard from "../components/projects/ProjectCard.jsx"
+import Footer from "../components/ui/Footer.jsx"
+import Waves from '../components/ui/Waves.jsx';
 import { projectsData } from '../data/projectsData';
 import { getGraphic } from '../helpers/getGraphic';
 
@@ -309,4 +309,3 @@ export default function Home({ isDark, toggleDarkMode, isFirstLoad, isFirstHeroL
     </div>
   );
 }
-

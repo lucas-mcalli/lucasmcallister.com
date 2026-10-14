@@ -1,16 +1,77 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
-import { animate, motion, stagger } from 'motion/react';
+import { animate, motion, stagger, useMotionValueEvent, useScroll, useTransform } from 'motion/react';
 import '../input.css';
 
-import Navbar from "../components/Navbar.jsx"
-import Footer from "../components/Footer.jsx"
-import Waves from '../components/Waves.jsx';
+import Navbar from "../components/ui/Navbar.jsx"
+import Footer from "../components/ui/Footer.jsx"
+import Waves from '../components/ui/Waves.jsx';
+import { ParallaxGallery } from '../components/ui/ParallaxGallery.jsx';
+
+const galleryImagePool = Array.from(
+  { length: 95 },
+  (_, index) => `https://cdn.lucasmcallister.com/about/gallery_photos/gallery_${index + 1}.avif`
+)
+const galleryImageNumbers = Array.from({ length: 95 }, (_, index) => index + 1)
+for (let index = galleryImageNumbers.length - 1; index > 0; index--) {
+  const randomIndex = Math.floor(Math.random() * (index + 1))
+  const currentNumber = galleryImageNumbers[index]
+  galleryImageNumbers[index] = galleryImageNumbers[randomIndex]
+  galleryImageNumbers[randomIndex] = currentNumber
+}
+
+const galleryImages = galleryImageNumbers
+  .slice(0, 20)
+  .map(number => galleryImagePool[number - 1])
 
 export default function About({isDark, toggleDarkMode, isFirstLoad}){
 
   const aboutElementsRef = useRef([]);
+  const navbarRef = useRef(null);
+  const galleryRef = useRef(null);
+  const [viewportHeight, setViewportHeight] = useState(() => typeof window === 'undefined' ? 0 : window.innerHeight);
+  const [navbarHeight, setNavbarHeight] = useState(72);
+  const [fadeAmount, setFadeAmount] = useState(0);
   const [isHoodieHovering, setIsHoodieHovering] = useState(false);
   const [isSauceHovering, setIsSauceHovering] = useState(false);
+
+  const { scrollYProgress: galleryApproach } = useScroll({
+    target: galleryRef,
+    offset: ['start end', 'start start'],
+  });
+  const initialGalleryProgress = viewportHeight
+    ? Math.max(0, Math.min(1, (viewportHeight - navbarHeight) / viewportHeight))
+    : 0;
+  const fadeDistance = Math.min(320, viewportHeight * 0.4);
+  const dissolveEnd = viewportHeight
+    ? Math.min(1, initialGalleryProgress + fadeDistance / viewportHeight)
+    : 1;
+  const dissolveProgress = useTransform(galleryApproach, value => {
+    const range = Math.max(0.001, dissolveEnd - initialGalleryProgress);
+    const linearProgress = Math.max(0, Math.min(1, (value - initialGalleryProgress) / range));
+    return linearProgress * linearProgress * (3 - 2 * linearProgress);
+  });
+  const navbarOpacity = useTransform(dissolveProgress, [0, 1], [1, 0]);
+  const grainOpacity = useTransform(dissolveProgress, [0, 0.4, 1], [0, 0.24, 0.38]);
+
+  useMotionValueEvent(dissolveProgress, 'change', value => {
+    setFadeAmount(Math.max(0, Math.min(1, value)));
+  });
+
+  useEffect(() => {
+    const updateViewportHeight = () => setViewportHeight(window.innerHeight);
+    updateViewportHeight();
+    window.addEventListener('resize', updateViewportHeight);
+    return () => window.removeEventListener('resize', updateViewportHeight);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!navbarRef.current) return;
+    const updateNavbarHeight = () => setNavbarHeight(navbarRef.current?.offsetHeight ?? 72);
+    updateNavbarHeight();
+    const observer = new ResizeObserver(updateNavbarHeight);
+    observer.observe(navbarRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useLayoutEffect(() => {
       const elements = aboutElementsRef.current.filter(el => el !== null);
@@ -48,22 +109,55 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
         isDark={isDark}
         affectedCharColor={isDark ? "#332501ff" : "#f6de8fff"}
       /> */}
-      <Waves
-        lineColor={isDark ? "#1f1f1f" : "#F5F5F5"}
-        backgroundColor={isDark ? "rgba(0,0,0,0)" : "rgba(255, 255, 255, 0)"}
-        waveSpeedX={0}
-        waveSpeedY={0.04}
-        waveAmpX={15}
-        waveAmpY={25}
-        friction={0.75}
-        tension={0.001}
-        maxCursorMove={20}
-        xGap={12}
-        yGap={36}
-      />
-      <div className="px-6 lg:px-20 max-w-[1900px] mx-auto relative z-10 flex flex-col flex-1">
-        <div id='landing-page' className="landing-page-container flex flex-col flex-1">
-          <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <Waves
+          lineColor={isDark ? "#1f1f1f" : "#F5F5F5"}
+          backgroundColor={isDark ? "rgba(0,0,0,0)" : "rgba(255, 255, 255, 0)"}
+          waveSpeedX={0}
+          waveSpeedY={0.04}
+          waveAmpX={15}
+          waveAmpY={25}
+          friction={0.75}
+          tension={0.001}
+          maxCursorMove={20}
+          xGap={12}
+          yGap={36}
+        />
+      </div>
+      <div className="relative z-10 w-full">
+        <div className="relative">
+          <motion.div
+            ref={navbarRef}
+            className="sticky top-0 z-30 px-6 lg:px-20 max-w-[1900px] mx-auto"
+            style={{
+              opacity: navbarOpacity,
+              pointerEvents: fadeAmount >= 0.99 ? 'none' : 'auto',
+            }}
+          >
+            <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} isFirstLoad={isFirstLoad}/>
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-20 mix-blend-overlay"
+              style={{ opacity: grainOpacity }}
+            >
+              <svg className="h-full w-full" preserveAspectRatio="none">
+                <filter id="about-navbar-grain" x="0" y="0" width="100%" height="100%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="8" result="grain" />
+                  <feColorMatrix in="grain" type="saturate" values="0" />
+                  <feComponentTransfer>
+                    <feFuncA type="table" tableValues="0 0.18" />
+                  </feComponentTransfer>
+                </filter>
+                <rect width="100%" height="100%" filter="url(#about-navbar-grain)" />
+              </svg>
+            </motion.div>
+          </motion.div>
+          <div ref={galleryRef}>
+            <ParallaxGallery images={galleryImages} imagePool={galleryImagePool} fullScreen />
+          </div>
+        </div>
+        <div className="px-6 lg:px-20 max-w-[1900px] mx-auto relative z-10 flex flex-col flex-1">
+          <div id='landing-page' className="landing-page-container flex flex-col flex-1">
           <div className="flex-1 flex flex-col gap-y-24 pt-8 lg:pt-20">
 
             <div className='flex flex-col lg:flex-row justify-between items-start gap-8'>
@@ -114,9 +208,11 @@ export default function About({isDark, toggleDarkMode, isFirstLoad}){
                 />
               </div>
             </div>
+
           </div>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </div>
     

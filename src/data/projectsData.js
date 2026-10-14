@@ -1,7 +1,7 @@
-import CarullaProject from '../components/CarullaProject';
-import GGProject from '../components/GGProject';
-import AtriumProject from '../components/AtriumProject';
-import TrajectoryProject from '../components/TrajectoryProject';
+import CarullaProject from '../components/projects/CarullaProject';
+import GGProject from '../components/projects/GGProject';
+import AtriumProject from '../components/projects/AtriumProject';
+import TrajectoryProject from '../components/projects/TrajectoryProject';
 
 export const projectsData = [
   {
