@@ -2,7 +2,7 @@
 export default function TrajectoryProject({getGraphic}) {
 
   return (
-    <div className='w-full mx-auto'>
+    <div className='w-full mx-auto text-pretty [&_h3]:text-balance [&_h4]:text-balance'>
     <section className='flex flex-col gap-8 lg:gap-16 scroll-mt-30 md:scroll-mt-40'>
       <div className='subsectionContainer w-[90%] flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-center'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Problem</h2>

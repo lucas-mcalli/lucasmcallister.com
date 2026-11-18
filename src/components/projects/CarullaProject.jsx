@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 export default function CarullaProject({getGraphic}) {
 
   return (
-    <div className='w-full mx-auto'>
+    <div className='w-full mx-auto text-pretty [&_h3]:text-balance [&_h4]:text-balance'>
     <section className='flex flex-col gap-8 lg:gap-16 scroll-mt-25 lg:scroll-mt-15'>
       <img src="https://cdn.lucasmcallister.com/carulla/carulla_cooking_mockup.webp" className="h-auto" alt="Image of cooking mockup" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>

@@ -20,17 +20,17 @@ function NumberBadge({ n }) {
 export default function HelpityProject() {
 
   return (
-    <div className='w-full mx-auto'>
+    <div className='w-full mx-auto text-pretty [&_h3]:text-balance [&_h4]:text-balance'>
     <section className='flex flex-col gap-8 lg:gap-16 scroll-mt-25 lg:scroll-mt-15'>
       <img src="https://cdn.lucasmcallister.com/helpity/helpity_wordmark.png" className="block w-full h-auto" alt="Helpity wordmark" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Problem</h2>
         <div className='flex flex-col gap-4'>
-          <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold'>Problem headline goes here.</h3>
-          <p className='font-sans text-sm lg:text-base text-gray-500 w-full 2xl:max-w-[80%]'>
-            Problem paragraph one. Describe the context and who is affected.</p>
-          <p className='font-sans text-sm lg:text-base text-gray-500 w-full 2xl:max-w-[80%]'>
-            Problem paragraph two. Explain why existing solutions fall short.</p>
+          <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold'>Academic coding platforms are centered on asynchronous & solitary work, limiting collaboration, academic integrity, and instructor guidance.</h3>
+          <p className='font-sans text-sm lg:text-base text-gray-500 w-full 2xl:max-w-[80%] text-balance'>
+            Platforms like Codio and zyBooks center on self-paced, asynchronous assignments, even though industry work is collaborative, built on pair programming, code review, and shared codebases.</p>
+          <p className='font-sans text-sm lg:text-base text-gray-500 w-full 2xl:max-w-[80%] text-balance'>
+            Meanwhile, instructors who want to guide students through code live often fall back on screen-sharing from an individual text editor, which lets students watch but gives them no way to take part or get help in the moment.</p>
         </div>
       </div>
       <div className='w-full flex gap-6 lg:gap-12 xl:gap-24 justify-center py-5'>
@@ -41,7 +41,7 @@ export default function HelpityProject() {
       <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Solution</h2>
-        <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full 2xl:w-270'>Solution headline goes here.</h3>
+        <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full 2xl:w-270 text-wrap'>Live teaching & individual practice with AI assistance built for the classroom.</h3>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start'>
         <div className='flex flex-col items-start gap-2'>
