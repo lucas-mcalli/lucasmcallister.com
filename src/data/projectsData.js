@@ -2,8 +2,9 @@ import CarullaProject from '../components/projects/CarullaProject';
 import GGProject from '../components/projects/GGProject';
 import AtriumProject from '../components/projects/AtriumProject';
 import TrajectoryProject from '../components/projects/TrajectoryProject';
+import HelpityProject from '../components/projects/HelpityProject';
 
-export const projectsData = [
+export const projectsData = [,
   {
     id: 'carulla',
     title: 'Carulla - Case Study',
@@ -14,7 +15,7 @@ export const projectsData = [
     disabled: false,
     extra: null
   },
-    {
+  {
     id: 'trajectory',
     title: 'Trajectory',
     subtitle: 'Travel planning Chrome extension',
@@ -28,6 +29,19 @@ export const projectsData = [
     } 
   },
   {
+    id: 'helpity',
+    title: 'Helpity',
+    subtitle: 'Coding collaboration tool for classrooms',
+    media: 'https://cdn.lucasmcallister.com/helpity/helpity_hero.mp4',
+    mediaType: 'video',
+    component: HelpityProject,
+    disabled: true,
+    extra: {
+      info: 'Try it out',
+      link: 'https://www.helpity.app'
+    } 
+  },
+  {
     id: 'atrium',
     title: 'Atrium',
     subtitle: 'Event hosting web-app',
@@ -35,7 +49,10 @@ export const projectsData = [
     mediaType: 'image',
     component: AtriumProject,
     disabled: false,
-    extra: null
+    extra: {
+      info: 'View the demo',
+      link: 'https://atrium.ink'
+    }
   },
   {
     id: 'gator gaming',
@@ -46,6 +63,9 @@ export const projectsData = [
     mediaType: 'image',
     component: GGProject,
     disabled: false,
-    extra: null
+    extra: {
+      info: 'Visit the site',
+      link: 'https://www.gatorgaminguf.com/'
+    }
   }
 ];

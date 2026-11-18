@@ -3,7 +3,6 @@ import { motion, animate, hover, AnimatePresence } from 'motion/react';
 
 const ProjectCard = ({ project, getGraphic, isExpanded, isRetiring, onToggle, onOpenSettled }) => {
   const expandButtonRef = useRef(null);
-  const projectElementsRef = useRef([]);
   const projectContainerRef = useRef(null);
 
   // Apply hover animation to expand button (only when enabled)
@@ -159,11 +158,7 @@ const ProjectCard = ({ project, getGraphic, isExpanded, isRetiring, onToggle, on
             transition={{ duration: 0.4 }}
           >
             <div id={`project-${project.id}-border`} className="mb-10 lg:mb-12 xl:mb-18"></div>
-            <ProjectComponent
-              getGraphic={getGraphic}
-              projectElementsRef={projectElementsRef}
-              isExpanded={isExpanded}
-            />
+            <ProjectComponent getGraphic={getGraphic} />
           </motion.div>
         )}
       </AnimatePresence>
