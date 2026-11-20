@@ -41,40 +41,40 @@ export default function HelpityProject() {
       <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>
         <h2 className='text-2xl font-otto xl:text-4xl font-semibold tracking-tighter'>Solution</h2>
-        <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full 2xl:w-270 text-wrap'>Live teaching & individual practice with AI assistance built for the classroom.</h3>
+        <h3 className='text-xl xl:text-2xl 2xl:text-3xl font-semibold w-full text-wrap'>Live teaching & individual practice with AI assistance built for the classroom.</h3>
       </div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start'>
-        <div className='flex flex-col items-start gap-2'>
-          <Placeholder label='Feature 1 video' />
-          <p className='font-semibold text-xs lg:text-sm w-full'>
-            Feature 1
-          </p>
-          <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
-            Short feature description
-          </p>
-        </div>
-        <Placeholder label='Feature 1 image' />
-      </div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start lg:-mt-10'>
-        <Placeholder label='Feature 2 image' />
-        <div className='flex flex-col items-start gap-2'>
-          <Placeholder label='Feature 2 video' />
-          <p className='font-semibold text-xs lg:text-sm w-full'>
-            Feature 2
-          </p>
-          <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
-            Short feature description
-          </p>
-        </div>
-      </div>
-      <div className='flex flex-col items-start gap-2'>
-        <Placeholder label='Feature 3 graphic' aspect='aspect-[16/6]' className='lg:-mt-10' />
+      <div className='flex flex-col items-start gap-2 w-full'>
+        <video src='https://cdn.lucasmcallister.com/helpity/collaboration_vid.mp4' className='block w-full h-auto' autoPlay muted loop playsInline aria-label='Realtime code collaboration demo'/>
         <p className='font-semibold text-xs lg:text-sm w-full'>
-          Feature 3
+          Live collaboration
         </p>
         <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
-          Short feature description
+          Instructors code in a window the whole class can see, then bring up any student who raised a hand to edit alongside them.
         </p>
+      </div>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start lg:-mt-10'>
+        <img src='https://cdn.lucasmcallister.com/helpity/teacher_dash.avif' className='block w-full h-auto' alt='Instructor dashboard for monitoring student progress' />
+        <div className='flex flex-col items-start gap-2'>
+          <video src='https://cdn.lucasmcallister.com/helpity/proctoring_demo.mp4' className='block w-full h-auto' autoPlay muted loop playsInline aria-label='Realtime proctoring demo'/>
+          <p className='font-semibold text-xs lg:text-sm w-full'>
+            Student practice with instructor oversight
+          </p>
+          <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
+            Each student solves a matching problem in their own window, while instructors see everyone’s progress and attempts live.
+          </p>
+        </div>
+      </div>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4 lg:gap-8 w-full mx-auto items-start lg:-mt-10'>
+        <div className='flex flex-col items-start gap-2'>
+          <video src='https://cdn.lucasmcallister.com/helpity/helpity_customization_demo.mp4' className='block w-full h-auto' autoPlay muted loop playsInline aria-label='Customization demo'/>
+          <p className='font-semibold text-xs lg:text-sm w-full'>
+            A customizable AI assistant for every student
+          </p>
+          <p className='text-xs lg:text-sm text-gray-500 w-full -mt-2'>
+            Highlight any code, and in just a click, Helpity floats over to explain it in simple language, never giving away the answer outright.
+          </p>
+        </div>
+        <video src='https://cdn.lucasmcallister.com/helpity/helpity_demo.mp4' className='block w-full h-auto' autoPlay muted loop playsInline aria-label='Helpity (AI assistant) demo'/>
       </div>
       <hr className="DIVIDER w-full border-0 border-t border-neutral-200 dark:border-zinc-800 my-6 sm:my-8 md:my-12 lg:my-16" />
       <div className='subsectionContainer flex flex-col sm:flex-row gap-4 sm:gap-24 md:gap-32 lg:gap-48 2xl:gap-60 justify-between lg:justify-start'>
